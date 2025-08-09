@@ -1,0 +1,68 @@
+---
+title: "AI Agents"
+description: "Setting up Minimal's AI Agents"
+---
+
+## Overview
+
+With Minimal AI, you can set up AI Customer Support Agents and let them handle tickets in your helpdesk just like a human would. For optimal performance, we want to make sure that the Agents are connected to your systems that they are trained properly such that they follow your business' processes while maintaining an on-brand tone-of-voice.
+
+## Setting up AI Agents
+
+Follow this step-by-step process to set up your AI Agents. You can create an Agent by going to [Dashboard \> Agents](https://gominimal.ai/dashboard/agents) and clicking "Add agent". From there, you'll see the following customisation options.
+
+### Agent Name
+
+The name for this Agent. This name is not visible to your customers, only you are able to see the name.
+
+### Channels
+
+Channels appear once you have added a helpdesk through integrations. Once a channel is connected and the Agent is activated, the Agent will start writing suggestions or automated messages in this channel based on your [automation settings](https://gominimal.ai/dashboard/automate).
+
+### Stores
+
+Select the stores that this Agent can access while answering tickets.
+
+### Training Center Base
+
+Select the [training center](/training/protocols) that this Agent can access. This determines the business processes that the Agent will follow while resolving your tickets.
+
+### Website
+
+Add webpages that you want the Agent to access. More info on websites can be found [here](/set-up-and-integrations/integrations/website).
+
+### Language settings
+
+Self explanatory.
+
+### Tone of Voice
+
+Describe the tone of voice you want the Agent to use in replies. Be as specific as possible and give examples. The Agent will interpret these instructions very literally, so be deliberate on the details you give here. For example, if you say: _"Be inspirational and motivating"_, the Agent will be very inspirational and motivating. It is normal to update tone-of-voice over time. It's trial and error before you find the optimal balance. 
+
+Never describe multi-step procedures, details about integrations and other business processes in tone of voice, rather use protcols for adding processes and integration specific instructions.
+
+Some frequently asked questions on Tone of Voice:
+
+- **Can the Tone of Voice be empty?**\
+  Yes, the Agent has some tone of voice instructions already. It will be a helpful customer support assistant unless prompted otherwise.
+- **Can I teach the Agent what greeing / signoff to use in Tone of Voice?**\
+  Yes you can. You could say: _"Always open messages with Hi [name], and close with Best [name]"_. Then the Agent will always open/close messages with these specific greetings/signatures.
+
+### Rules
+
+Rules are general notes on how the Agent should write a reply to a customer. These rules do not influence whether the Agent will answer nor when it will reply (e.g. time of day etc.). The rules are always used once the Agent has already decided to write a message (either automated or as a suggestion).
+
+Examples of rules are:
+
+_"Never talk about ingredients"\
+"We never contact external services, such as banks unless stated in protocols"\
+"Always use our company name SitRight in that exact format, regardless of how the customer writes it"_\
+_"If the customer is explicitly happy, ask them for a review and send them the following invitation link: https://www.trustpilot.com/review/sitright.nl"_
+
+<Note>
+  The Agent will use **Tone of Voice** and **Rules** for every reply, no matter the type of question. Hence these settings are extremely powerful and give you full control over the Agent's style and behaviour.
+</Note>
+
+### No Reply Settings
+
+Allows you to set topics that the Agent should never reply to. If a message is sent that triggers the no reply settings, the Agent will do nothing and leave the ticket open for the user. Be as specific as possible for optimal results.

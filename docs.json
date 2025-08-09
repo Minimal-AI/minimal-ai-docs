@@ -21,17 +21,17 @@
               {
                 "group": "Integrations",
                 "pages": [
+                  "set-up-and-integrations/integrations/website",
                   "set-up-and-integrations/integrations/custom-integrations"
                 ]
               },
-              "AI Agents"
+              "set-up-and-integrations/ai-agents"
             ]
           },
           {
             "group": "Training",
             "pages": [
-              "Protocols",
-              "Tone-of-voice"
+              "training/protocols"
             ]
           }
         ]
