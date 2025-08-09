@@ -5,11 +5,9 @@ description: "Integrating your custom systems with Minimal AI"
 
 ## Overview
 
-To integrate the Minimal AI Agent with your webshop or WMS system, we ask for a few API endpoints that allow us to retrieve order and product data, and (optionally) perform certain actions. The endpoints listed here are **examples only** — you are free to provide whatever format, structure, or endpoints fit your system. We are flexible and happy to adapt.
+To integrate the Minimal AI Agent with your custom webshop or WMS system, we ask for a few API endpoints that allow us to retrieve order and product data, and (optionally) perform certain actions. The endpoints listed here are **examples only** — you are free to provide whatever format, structure, or endpoints fit your system. We are flexible and happy to adapt.
 
----
-
-1. **Retrieving Order Information**
+### **Retrieving Order Information**
 
 Purpose: the AI Agent must be able to fetch order data based on customer details.
 
@@ -21,7 +19,7 @@ GET /api/orders
 
 Supported query parameters (one per request):
 
-- email (e.g. /api/orders?email=customer@email.com)
+- email (e.g. /api/orders?email=[customer@email.com](mailto:customer@email.com))
 - order_number (e.g. /api/orders?order_number=ORD123456)
 - name (optional, e.g. /api/orders?name=John Smith)
 
@@ -53,9 +51,7 @@ Example response:
 ]
 ```
 
----
-
-1. **Product Descriptions via Feed**
+### **Product Descriptions via Feed**
 
 Purpose: the AI Agent needs to access product descriptions and specifications.
 
@@ -64,15 +60,15 @@ What we need:
 - A product feed URL (e.g. your Channable export)
 - Basic authentication if required (e.g. https://user:password@webshop.com/feed.xml)
 
----
-
-1. **Real-time Product Information**
+### **Real-time Product Information**
 
 Purpose: allow the AI Agent to answer questions about price, availability, and product features.
 
 Example endpoint:
 
+```
 POST /api/products
+```
 
 Example request body:
 
@@ -105,17 +101,17 @@ Example response:
 
 _Note: it's important that product IDs or SKUs are consistent across the feed, order data, and product data._
 
----
-
-1. **Optional API Actions**
+### **Optional API Actions**
 
 For advanced use cases, the AI Agent can perform actions on behalf of the customer. These are entirely optional and depend on what you want to allow.
 
 Example endpoints:
 
-- POST /api/orders/{order_number}/return-label
-- POST /api/orders/{order_number}/cancel
-- PUT /api/orders/{order_number}/address
+```
+POST /api/orders/order_number/return-label
+POST /api/orders/order_number/cancel
+PUT /api/orders/order_number/address
+```
 
 Example request body for address change:
 
@@ -130,17 +126,17 @@ Example request body for address change:
 }
 ```
 
----
-
-1. **WMS Integration (optional)**
+### **WMS Integration (optional)**
 
 If your WMS has separate endpoints (for stock levels, warehouse locations, or fulfillment status), the AI Agent can use those too.
 
 Example WMS endpoints:
 
-- GET /api/warehouse/inventory?product_id=SKU1234
-- GET /api/warehouse/locations?order_number=ORD123456
-- GET /api/warehouse/status?order_number=ORD123456
+```
+GET /api/warehouse/inventory?product_id=SKU1234
+GET /api/warehouse/locations?order_number=ORD123456
+GET /api/warehouse/status?order_number=ORD123456
+```
 
 These can return things like:
 
@@ -150,9 +146,7 @@ These can return things like:
 
 As always: structure and naming are up to you.
 
----
-
-1. **Authentication**
+### **Authentication**
 
 All endpoints should be protected.
 
@@ -162,9 +156,7 @@ We support the following:
 - Bearer Tokens
 - IP whitelisting (optional)
 
----
-
-Final Notes
+### Final Notes
 
 The endpoints above are suggestions only. You are free to implement whatever API structure and format works best for your systems. We will adapt to your setup.
 
