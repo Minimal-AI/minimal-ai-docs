@@ -16,12 +16,6 @@
         "description": "How to use Minimal AI",
         "groups": [
           {
-            "group": "Getting started",
-            "pages": [
-              "index"
-            ]
-          },
-          {
             "group": "Set up & Integrations",
             "pages": [
               {
