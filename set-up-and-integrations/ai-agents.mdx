@@ -9,7 +9,9 @@ With Minimal AI, you can set up AI Customer Support Agents and let them handle t
 
 ## Setting up AI Agents
 
-Follow this step-by-step process to set up your AI Agents. You can create an Agent by going to [Dashboard \> Agents](https://gominimal.ai/dashboard/agents) and clicking "Add agent". From there, you'll see the following customisation options.
+Follow this step-by-step process to set up your AI Agents. You can create an Agent by going to [Dashboard \> Agents](https://gominimal.ai/dashboard/agents) and clicking "Add agent". From there, you'll see the following customisation options. 
+
+Once an Agent is activated, it will resolve tickets (either automated or as suggestion) in the connected channels. The Agent will only resolve tickets that have been received once the Agent is activated, it does not take actions on previous tickets. It can take up to 120 seconds before the Agent action is visible in your helpdesk, based on complexity of the ticket and your helpdesks' processing speed (Zendesk and Trengo are known to be slow).
 
 ### Agent Name
 
@@ -37,7 +39,7 @@ Self explanatory.
 
 ### Tone of Voice
 
-Describe the tone of voice you want the Agent to use in replies. Be as specific as possible and give examples. The Agent will interpret these instructions very literally, so be deliberate on the details you give here. For example, if you say: _"Be inspirational and motivating"_, the Agent will be very inspirational and motivating. It is normal to update tone-of-voice over time. It's trial and error before you find the optimal balance. 
+Describe the tone of voice you want the Agent to use in replies. Be as specific as possible and give examples. The Agent will interpret these instructions very literally, so be deliberate on the details you give here. For example, if you say: _"Be inspirational and motivating"_, the Agent will be very inspirational and motivating. It is normal to update tone-of-voice over time. It's trial and error before you find the optimal balance.
 
 Never describe multi-step procedures, details about integrations and other business processes in tone of voice, rather use protcols for adding processes and integration specific instructions.
 
@@ -54,10 +56,8 @@ Rules are general notes on how the Agent should write a reply to a customer. The
 
 Examples of rules are:
 
-_"Never talk about ingredients"\
-"We never contact external services, such as banks unless stated in protocols"\
-"Always use our company name SitRight in that exact format, regardless of how the customer writes it"_\
-_"If the customer is explicitly happy, ask them for a review and send them the following invitation link: https://www.trustpilot.com/review/sitright.nl"_
+_"Never talk about ingredients""We never contact external services, such as banks unless stated in protocols""Always use our company name SitRight in that exact format, regardless of how the customer writes it"_\
+[_"If the customer is explicitly happy, ask them for a review and send them the following invitation link: https://www.trustpilot.com/review/sitright.nl"_](https://www.trustpilot.com/review/sitright.nl)
 
 <Note>
   The Agent will use **Tone of Voice** and **Rules** for every reply, no matter the type of question. Hence these settings are extremely powerful and give you full control over the Agent's style and behaviour.
