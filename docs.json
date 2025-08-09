@@ -18,8 +18,7 @@
           {
             "group": "Getting started",
             "pages": [
-              "index",
-              "quickstart"
+              "index"
             ]
           },
           {
@@ -28,8 +27,6 @@
               {
                 "group": "Integrations",
                 "pages": [
-                  "set-up-and-integrations/integrations/shopify",
-                  "set-up-and-integrations/integrations/zendesk",
                   "set-up-and-integrations/integrations/custom"
                 ]
               },
