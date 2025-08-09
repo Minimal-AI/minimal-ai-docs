@@ -7,7 +7,7 @@ description: "Integrating your custom systems with Minimal AI"
 
 To integrate the Minimal AI Agent with your custom webshop or WMS system, we ask for a few API endpoints that allow us to retrieve order and product data, and (optionally) perform certain actions. The endpoints listed here are **examples only** — you are free to provide whatever format, structure, or endpoints fit your system. We are flexible and happy to adapt.
 
-### **Retrieving Order Information**
+## **Retrieving Order Information**
 
 Purpose: the AI Agent must be able to fetch order data based on customer details.
 
@@ -51,7 +51,7 @@ Example response:
 ]
 ```
 
-### **Product Descriptions via Feed**
+## **Product Descriptions via Feed**
 
 Purpose: the AI Agent needs to access product descriptions and specifications.
 
@@ -60,7 +60,7 @@ What we need:
 - A product feed URL (e.g. your Channable export)
 - Basic authentication if required (e.g. https://user:password@webshop.com/feed.xml)
 
-### **Real-time Product Information**
+## **Real-time Product Information**
 
 Purpose: allow the AI Agent to answer questions about price, availability, and product features.
 
@@ -101,7 +101,7 @@ Example response:
 
 _Note: it's important that product IDs or SKUs are consistent across the feed, order data, and product data._
 
-### **Optional API Actions**
+## **Optional API Actions**
 
 For advanced use cases, the AI Agent can perform actions on behalf of the customer. These are entirely optional and depend on what you want to allow.
 
@@ -126,7 +126,7 @@ Example request body for address change:
 }
 ```
 
-### **WMS Integration (optional)**
+## **WMS Integration (optional)**
 
 If your WMS has separate endpoints (for stock levels, warehouse locations, or fulfillment status), the AI Agent can use those too.
 
@@ -146,7 +146,7 @@ These can return things like:
 
 As always: structure and naming are up to you.
 
-### **Authentication**
+## **Authentication**
 
 All endpoints should be protected.
 
@@ -156,7 +156,7 @@ We support the following:
 - Bearer Tokens
 - IP whitelisting (optional)
 
-### Final Notes
+## Final Notes
 
 The endpoints above are suggestions only. You are free to implement whatever API structure and format works best for your systems. We will adapt to your setup.
 
