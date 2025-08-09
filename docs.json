@@ -13,7 +13,7 @@
       {
         "dropdown": "Documentation",
         "icon": "book",
-        "description": "How to use the Example Co. product",
+        "description": "How to use Minimal AI",
         "groups": [
           {
             "group": "Getting started",
@@ -23,29 +23,26 @@
             ]
           },
           {
-            "group": "Customization",
+            "group": "Set up & Integrations",
             "pages": [
-              "settings",
-              "users",
-              "features"
+              {
+                "group": "Integrations",
+                "pages": [
+                  "set-up-and-integrations/integrations/shopify",
+                  "set-up-and-integrations/integrations/zendesk",
+                  "set-up-and-integrations/integrations/custom"
+                ]
+              },
+              "AI Agents"
             ]
           },
           {
-            "group": "Billing",
+            "group": "Training",
             "pages": [
-              "billing/overview",
-              "billing/payments",
-              "billing/subscriptions"
+              "Protocols",
+              "Tone-of-voice"
             ]
           }
-        ]
-      },
-      {
-        "dropdown": "Changelog",
-        "icon": "history",
-        "description": "Updates and changes",
-        "pages": [
-          "changelog"
         ]
       }
     ]
