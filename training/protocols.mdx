@@ -9,7 +9,7 @@ Protocols allow the AI Agent to follow your business processes perfectly. This e
 
 ## The Training Center
 
-Protocols can be written in the [Training Center](https://gominimal.ai/dashboard/training-center), where they are grouped in categories and bases. 
+Protocols can be written in the [Training Center](https://gominimal.ai/dashboard/training-center), where they are grouped in categories and bases.
 
 **Base** = collection of categories with protocols that can be assigned to an Agent\
 **Category** = group of protocols with similar topics
@@ -26,6 +26,33 @@ For clarity and scannability, each category should clearly indicate what it is a
 
 ## How to write protocols
 
-Once you have created categories, it's time to write protocols. Per protocol, 
+Once you have created categories, it's time to write protocols. Protocol can be created by clicking the "add new protocol" button within each category. Protocols can be written by talking to our AI Manager. To get started, tell the manager what the protocol should be about. This can be done in any language. For example:
 
-### Templates
+- _Help me write a protocl about returning orders_
+- _I want to write a protocol about customers asking where their package is_
+
+The manager will then ask you questions based on your input, and will help write the protocol. It is best practice to **be as detailed and specific** as possible. Tell the Manager from what systems certain information needs to be retrieved, for example: "_if the package has been fullfilled longer than 4 days ago according to Shopify then do ..._". Also, make sure to think about all possible scenario's and edge cases that can happen, this will improve performance. If the AI Agent does not find the answer to a specific scenario in a protocol, it won't know how to answer the question.
+
+After the AI Manager has written the protocol, check it thoroughly, as the AI Manager may make mistakes. If you want to add or edit details, just explain to the AI Manager what changes he needs to make, he will then proceed to do so and show you the proposed changes before you can save and publish them to production.
+
+Tip: protocols can also be edited manually by clicking on the protocol, it then turns into a basic text editor that you can use like notion. Afterwards, don't forget to save and publish your changes.
+
+### Activatinng & Automating protocols
+
+Protocols can be activated or deactivated. If a protocol is deactivated, it won't be used by the AI Agent. If it's active and not automated, the AI Agent will write suggestions if this protocol is deemed relevant. If the protocol is active and automated, the AI Agent will fully automate the message sent to the customer, unless it should escalate to a human (see next topic) or if it requires an action that has not been set-up yet in your system (e.g. cancelling order).
+
+<Info>
+  If a message from a customer contains multiple topics/questions, protocols need to exist for ALL of these topics, otherwise no message will be generated. Also, only if all relevant protocols are set to "automated", an automated message will be generated.
+</Info>
+
+### Escalating to human
+
+To determine exactly in what scenario's the AI Agent should leave the ticket for a human (this means, no reply at all), you can tell the AI Manager in what specific situations the ticket should be escalated to a human. The AI Manager will then create tags to indicate at what moments in the flow a ticket will be escalated. You can also manually create these tags by typing a forward slash ("/").
+
+## What protocols should I write?
+
+Each scenario that can arise in support should be covered by a protocol. If a protocol is missing, the Agent will not create an answer for messages that contain that specific scenario. It's advisable to make protocols non-overlapping or MECE (mutually exclusive, collectively exhaustive). For example, instead of the protocols "_returning product a_" and "_returning product b_", create "_returning order_" that combines both. 
+
+<Info>
+  Some protocols might need to refer to each other. For example, if a customer complains about damage, it might at a certain point need to follow the return instructions. **We are working on this feature, but for now copy the return protocol to both protocols.**
+</Info>
