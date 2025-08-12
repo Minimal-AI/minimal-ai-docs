@@ -21,10 +21,10 @@
               {
                 "group": "Integrations",
                 "pages": [
-                  "set-up-and-integrations/integrations/website",
-                  "set-up-and-integrations/integrations/custom-integrations",
-                  "set-up-and-integrations/integrations/shopify",
-                  "set-up-and-integrations/integrations/gorgias"
+                  "set-up-and-integrations/integrations/website.mdx",
+                  "set-up-and-integrations/integrations/custom-integrations.mdx",
+                  "set-up-and-integrations/integrations/shopify.mdx",
+                  "set-up-and-integrations/integrations/gorgias.mdx"
                 ]
               },
               "set-up-and-integrations/ai-agents"
