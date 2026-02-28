@@ -1,172 +1,170 @@
 ---
 title: "Custom Integrations"
-description: "Connect your custom systems with Minimal AI"
+description: "How to connect the Minimal AI Agent to your custom systems"
 ---
 
 ## Overview
 
-To integrate the Minimal AI Agent with your custom webshop or WMS system, we ask for a few API endpoints that allow us to retrieve order and product data, and (optionally) perform certain actions. The endpoints listed here are **examples only** — you are free to provide whatever format, structure, or endpoints fit your system. We are flexible and happy to adapt.
+The Minimal AI Agent uses workflows to connect to your systems. Because workflows are fully flexible, we can work with virtually any API structure — there are no strict requirements on format, naming, or endpoints. This guide provides ideas for what to expose and technical guidelines for delivery.
 
-<Note>
-  Before creating custom API endpoints, first double check if the software your are trying to implement is not already part of our [standard integrations](https://gominimal.ai/dashboard/integrations).
-</Note>
+Before building custom endpoints, check whether your platform is already covered by our [standard integrations](/integrations).
 
-## **Retrieving Order Information**
+---
 
-Purpose: the AI Agent must be able to fetch order data based on customer details.
+## What Data & Actions to Expose
 
-Example endpoint:
+Below are common categories of endpoints our customers provide. Pick what's relevant to your use case — you don't need all of them.
 
-```
-GET /api/orders
-```
+### Order Data
 
-Supported query parameters (one per request):
+Let the AI agent look up orders so it can answer questions like _"Where is my order?"_ or _"Can I still cancel?"_
 
-- email (e.g. /api/orders?email=[customer@email.com](mailto:customer@email.com))
-- order_number (e.g. /api/orders?order_number=ORD123456)
-- name (optional, e.g. /api/orders?name=John Smith)
-
-Example response:
+**Direct lookup endpoint** — a single endpoint that accepts query parameters:
 
 ```
-[
-  {
-    "order_number": "ORD123456",
-    "email": "customer@email.com",
-    "name": "John Smith",
-    "items": [
-      {
-        "product_id": "SKU1234",
-        "name": "Product Name",
-        "quantity": 1,
-        "price": 49.99
-      }
-    ],
-    "order_status": "shipped",
-    "payment_status": "paid",
-    "returned": FALSE,
-    "tracking_url": "https://tracking.postnl.nl/track-and-trace/3SCSYB0557832-AT-2140",
-    "shipping_address": {
-      "street": "New Street",
-      "city": "Amsterdam",
-      "postal_code": "1011AA",
-      "country": "NL"
-    },
-    "created_at": "2025-08-01T10:00:00Z"
-  }
-]
+GET /api/orders?email=customer@email.com&order_number=ORD123456
 ```
 
-## **Product Descriptions via Feed**
+Useful fields to include:
 
-Purpose: the AI Agent needs to access product descriptions and specifications.
+| Field            | Example                               |
+| ---------------- | ------------------------------------- |
+| Order number     | `ORD123456`                           |
+| Order status     | `shipped`, `processing`, `delivered`  |
+| Line items       | Product ID/SKU, name, quantity, price |
+| Payment status   | `paid`, `pending`, `refunded`         |
+| Tracking URL     | `https://tracking.postnl.nl/...`      |
+| Shipping address | Street, city, postal code, country    |
+| Return status    | `true` / `false`                      |
+| Created at       | `2025-08-01T10:00:00Z`                |
 
-What we need:
+**Alternatively**, if you already have an order export or webhook system, we can sync from that instead.
 
-- A product feed URL (e.g. your Channable export)
-- Basic authentication if required (e.g. https://user:password@webshop.com/feed.xml)
+### Product Information
 
-## **Real-time Product Information**
+The agent needs product data to answer questions about pricing, availability, and specifications.
 
-Purpose: allow the AI Agent to answer questions about price, availability, and product features.
+<AccordionGroup>
+  <Accordion title="Option A: Product feed (recommended for large catalogs)">
+    Provide a feed URL (e.g. a Channable, Google Shopping, or custom XML/JSON export). We sync this periodically so the agent always has up-to-date product knowledge.
 
-Example endpoint:
+    ```
+    https://yourshop.com/feeds/products.xml
+    https://user:password@yourshop.com/feeds/products.json
+    ```
+
+    This works well for relatively static data like product descriptions, images, and categories.
+  </Accordion>
+  <Accordion title="Option B: Real-time product endpoint (recommended for stock & pricing)">
+    For data that changes frequently (stock levels, pricing), a real-time endpoint works better:
+
+    ```
+    POST /api/products
+    ```
+
+    ```json
+    {
+      "product_ids": ["SKU1234", "SKU5678"]
+    }
+    ```
+
+    Useful fields to return: product ID, name, price, stock availability, description, variant info
+  </Accordion>
+</AccordionGroup>
+
+<Info>
+  Use consistent product IDs / SKUs across your order data, feeds, and product endpoints.
+</Info>
+
+### Other Examples
+
+Customer profile — name, email, language, account creation date, and linked pet profiles. Useful as the starting point of every conversation.
+
+Loyalty & vouchers — outstanding balance, available discount codes, or referral credits. Customers ask about these regularly.
+
+Communication preferences — newsletter subscription, language preference, and notification settings. Allows the agent to update preferences without manual intervention.
+
+Payment information — active payment method, billing address, and outstanding payments. Useful for questions about failed payments or updating a payment method.
+
+Inventory / WMS — real-time stock levels per product or SKU, and the fulfillment status of a specific order within the pick/pack/ship process. Useful when delays are not yet visible in the order status.
+
+Marketing platform — which email campaigns or discount promotions a customer has received. Prevents confusion when a customer asks about an offer they saw in their inbox.
+
+Return portal — whether a return request has been created, the current status, and whether a return label has been sent. Particularly relevant for Just Russel given the sensitive return policy around personalized products.
+
+## Actions
+
+With workflows, the agent can perform actions on behalf of the customer. These are entirely optional — expose only what you want the agent to be able to do.
+
+Common examples:
+
+| Action                  | Example Endpoint                               |
+| ----------------------- | ---------------------------------------------- |
+| Generate a return label | `POST /api/orders/{order_number}/return-label` |
+| Cancel an order         | `POST /api/orders/{order_number}/cancel`       |
+| Update shipping address | `PUT /api/orders/{order_number}/address`       |
+| Request a refund        | `POST /api/orders/{order_number}/refund`       |
+| Newsletter preferences  | `POST /api/customers/{id}/preferences`         |
+
+## Technical Requirements
+
+### Response Format
+
+We work with any response format, but **JSON** is preferred. XML and CSV feeds are also supported for product data.
+
+### Authentication
+
+All endpoints must be protected. We support:
+
+| **Bearer token** | Send us a static API key; we include it as `Authorization: Bearer <token>` |
+
+| **Basic auth** | Provide a username and password |
+
+| **API key header** | Custom header (e.g. `X-API-Key: <key>`) |
+
+| **IP whitelisting** | We can provide a static IP to whitelist (ask us) |
+
+### Environments
+
+If you have a staging or test environment, share that alongside production so we can validate the integration without affecting live data.
+
+### Rate Limits
+
+Let us know if your API has rate limits so we can configure our workflows accordingly. For most use cases, request volume is low — each request is triggered by an individual customer conversation.
+
+## Security Best Practices
+
+### Require Multiple Matching Parameters
+
+For endpoints that return or modify sensitive customer data, we strongly recommend requiring **multiple identifying parameters** to match before returning a result. This prevents unauthorized access even if a single identifier is guessed or leaked.
+
+**Example: require both order number AND email**
 
 ```
-POST /api/products
+GET /api/orders?order_number=ORD123456&email=customer@email.com
 ```
 
-Example request body:
+The endpoint should return data **only** if the order number belongs to the provided email address. If they don't match, return a `404` or `403`.
 
-```
-{
-  "product_ids": ["SKU1234", "SKU5678", "SKU9999"]
-}
-```
+Recommended combinations:
 
-Example response:
+- Order number + email address
 
-```
-[
-  {
-    "product_id": "SKU1234",
-    "name": "Product Name",
-    "price": 49.99,
-    "in_stock": true,
-    "description": "Full product description"
-  },
-  {
-    "product_id": "SKU5678",
-    "name": "Another Product",
-    "price": 29.99,
-    "in_stock": false,
-    "description": "Out of stock item"
-  }
-]
-```
+- Customer ID + email address
 
-_Note: it's important that product IDs or SKUs are consistent across the feed, order data, and product data._
+This mirrors how carriers like PostNL and DHL verify identity on their tracking pages.
 
-## **Optional API Actions**
+### Scope Permissions
 
-For advanced use cases, the AI Agent can perform actions on behalf of the customer. These are entirely optional and depend on what you want to allow.
+If your API supports scoped tokens or permissions, issue a token with the **minimum required access**:
 
-Example endpoints:
+- Read-only for data retrieval endpoints
+- Write access only for specific actions you want the agent to perform
 
-```
-POST /api/orders/order_number/return-label
-POST /api/orders/order_number/cancel
-PUT /api/orders/order_number/address
-```
+### Audit Logging
 
-Example request body for address change:
+We recommend logging all API requests made with the token we provide. This gives you a full audit trail of what the agent accessed or modified on your system.
 
-```
-{
-  "shipping_address": {
-    "street": "New Street",
-    "city": "Amsterdam",
-    "postal_code": "1011AA",
-    "country": "NL"
-  }
-}
-```
+## Questions?
 
-## **WMS Integration (optional)**
-
-If your WMS has separate endpoints (for stock levels, warehouse locations, or fulfillment status), the AI Agent can use those too.
-
-Example WMS endpoints:
-
-```
-GET /api/warehouse/inventory?product_id=SKU1234
-GET /api/warehouse/locations?order_number=ORD123456
-GET /api/warehouse/status?order_number=ORD123456
-```
-
-These can return things like:
-
-- Real-time inventory by product
-- Physical location of the item
-- Status within the pick/pack/ship process
-
-As always: structure and naming are up to you.
-
-## **Authentication**
-
-All endpoints should be protected.
-
-We support the following:
-
-- Basic Authentication
-- Bearer Tokens
-- IP whitelisting (optional)
-
-## Final Notes
-
-The endpoints above are suggestions only. You are free to implement whatever API structure and format works best for your systems. We will adapt to your setup.
-
-Let us know if you have any questions or technical preferences.
-
-You can email me at [titus@gominimal.ai](mailto:titus@gominimal.ai)
+If you have any questions or technical preferences, reach out to us at [founders@gominimal.ai](mailto:titus@gominimal.ai). We're happy to adapt to whatever setup works best for your systems.
