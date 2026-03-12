@@ -21,7 +21,7 @@ Let the AI agent look up orders so it can answer questions like _"Where is my or
 
 **Direct lookup endpoint** — a single endpoint that accepts query parameters:
 
-```
+```text
 GET /api/orders?email=customer@email.com&order_number=ORD123456
 ```
 
@@ -48,7 +48,7 @@ The agent needs product data to answer questions about pricing, availability, an
   <Accordion title="Option A: Product feed (recommended for large catalogs)">
     Provide a feed URL (e.g. a Channable, Google Shopping, or custom XML/JSON export). We sync this periodically so the agent always has up-to-date product knowledge.
 
-    ```
+    ```text
     https://yourshop.com/feeds/products.xml
     https://user:password@yourshop.com/feeds/products.json
     ```
@@ -58,7 +58,7 @@ The agent needs product data to answer questions about pricing, availability, an
   <Accordion title="Option B: Real-time product endpoint (recommended for stock & pricing)">
     For data that changes frequently (stock levels, pricing), a real-time endpoint works better:
 
-    ```
+    ```text
     POST /api/products
     ```
 
@@ -139,7 +139,7 @@ For endpoints that return or modify sensitive customer data, we strongly recomme
 
 **Example: require both order number AND email**
 
-```
+```text
 GET /api/orders?order_number=ORD123456&email=customer@email.com
 ```
 
@@ -165,4 +165,4 @@ We recommend logging all API requests made with the token we provide.
 
 ## Questions?
 
-If you have any questions or technical preferences, reach out to us at [founders@gominimal.ai](mailto:titus@gominimal.ai). We're happy to adapt to whatever setup works best for your systems.
+If you have any questions or technical preferences, reach out to us at [founders@gominimal.ai](mailto:titus@gominimal.ai). We're happy to adapt to whatever setup works best for your systems.
