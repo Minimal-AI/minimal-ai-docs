@@ -34,7 +34,8 @@
           {
             "group": "Training",
             "pages": [
-              "training/protocols"
+              "training/protocols",
+              "training/actions"
             ]
           }
         ]
