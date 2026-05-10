@@ -1,0 +1,123 @@
+---
+title: "Agentic Storefront"
+---
+
+## What Is Agentic Storefront?
+
+Agentic Storefront lets you add an AI chat widget to your website. Customers can ask questions directly on your site, and your AI Agent can answer using your configured protocols, website knowledge, product data, and connected lookup integrations.
+
+<Note>
+  Storefront is currently available as a chat widget only. **More appearance options and proactive sales experiences are coming later.**
+</Note>
+
+## How Storefront Differs From A Regular AI Agent
+
+A regular AI Agent can draft replies for review, automate replies, or escalate conversations depending on your setup.
+
+Storefront is simpler and stricter: it can only **automate** or **escalate**.
+
+It does not create drafts. If the AI Agent is allowed to answer, it sends the answer directly to the shopper. If it should not answer, it escalates the conversation to your inbox (Minimal AI inbox or helpdesk channel of choice).
+
+## Instructions Video
+
+<Frame>
+  <iframe src="TODO_VIDEO_URL" title="How to set up Agentic Storefront" className="aspect-video w-full rounded-xl" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+</Frame>
+
+## How To Set It Up
+
+<Steps>
+  <Step title="Create and configure your storefront">
+    Go to **Storefront** in Minimal and create a new storefront.
+
+    Configure the storefront name, welcome message, colors, escalation settings, and CSAT settings.
+  </Step>
+  <Step title="Add the storefront to an AI Agent">
+    Connect the storefront channel to the AI Agent that should handle shopper conversations.
+
+    This agent should have the protocols, websites, product sources, and lookup integrations it needs to answer customer questions.
+  </Step>
+  <Step title="Set the AI Agent to automate">
+    Enable automation for the AI Agent.
+
+    Storefront does not use drafts, so automation must be enabled for the AI Agent to send replies in chat.
+  </Step>
+  <Step title="Use enough training tickets and adjust the automation prompt">
+    Choose one of the automation prompt styles below.
+  </Step>
+  <Step title="Set chat to true in automation > advanced">
+    Enable chat behavior for the AI Agent so it can respond correctly in live storefront conversations.
+  </Step>
+  <Step title="Set delay to 0">
+    Set the automation delay to `0`.
+
+    Storefront chat should feel live. A delay that works for email or helpdesk tickets usually feels too slow for chat.
+  </Step>
+</Steps>
+
+## Automation Prompt Options
+
+Choose the automation prompt that matches how much control you want.
+
+### Version 1: Safe Chat Automation
+
+Use this when you want the AI Agent to automate low-risk chat replies and answers backed by real lookup data.
+
+```txt
+Automate responses in the following situations:
+
+- Opening messages and greetings, such as "Hey", "Hello", or "Hi there"
+- Sign-offs and closing messages, such as "Thank you", "Have a great day", or "Let me know if you need anything else"
+- Simple acknowledgements and confirmations, such as "Got it", "I understand", or "Noted"
+- Any response that retrieved data from a lookup integration, including order lookups, product lookups, website lookups, customer account lookups, inventory lookups, tracking lookups, or any other integration that fetched information to answer the customer's question
+
+The key principle: if the response is either a conversational courtesy or backed by actual data retrieved from lookups, automate it.
+```
+
+<Tip>
+  This is the safer setup. It works best when your protocols clearly say which situations can be automated.
+</Tip>
+
+### Version 2: All-In Chat Automation
+
+Use this when you want the AI Agent to automate as much as possible.
+
+```txt
+Automate all responses, regardless of topic, complexity, or whether lookups were used.
+```
+
+<Warning>
+  This overrides protocol-level automation settings and automates everything that is not escalated. Guardrails still apply, but you should only use this when your AI Agent instructions and escalation rules are strong.
+</Warning>
+
+## Recommended Safe Setup
+
+For most teams, start with **Version 1: Safe Chat Automation**.
+
+This lets the AI Agent automate:
+
+- Greetings
+- Sign-offs
+- Simple acknowledgements
+- Product lookups
+- Website lookups
+- Order, customer, inventory, or tracking lookups
+- Other answers backed by retrieved integration data
+
+Anything more complex should be handled by protocols that explicitly allow automation or by escalation.
+
+## Inbox Behavior
+
+Storefront conversations appear in your inbox.
+
+You can review messages, escalations, and CSAT feedback there.
+
+<Note>
+  You cannot reply to storefront conversations from the inbox yet. For now, the inbox is used for visibility, escalations, and follow-up.
+</Note>
+
+## Put Storefront Live On Your Site
+
+Copy your storefront install snippet from the **Storefront** page in Minimal.
+
+Add the snippet to the `<head>` of your website, right before the closing `</head>` tag.
