@@ -42,8 +42,55 @@ It does not create drafts. If the AI Agent is allowed to answer, it sends the an
 
     Storefront does not use drafts, so automation must be enabled for the AI Agent to send replies in chat.
   </Step>
-  <Step title="Use enough training tickets and adjust the automation prompt">
+  <Step title="Set up the automation prompt">
     Choose one of the automation prompt styles below.
+
+    **Choose the automation prompt that matches how much control you want.**
+
+    ### Version 1: Conservative Automation
+
+    Use this when you want the AI Agent to automate low-risk chat replies and answers backed by real lookup data.
+
+    ```txt
+    Automate responses in the following situations:
+    
+    - Opening messages and greetings, such as "Hey", "Hello", or "Hi there"
+    - Sign-offs and closing messages, such as "Thank you", "Have a great day", or "Let me know if you need anything else"
+    - Simple acknowledgements and confirmations, such as "Got it", "I understand", or "Noted"
+    - Any response that retrieved data from a lookup integration, including order lookups, product lookups, website lookups, customer account lookups, inventory lookups, tracking lookups, or any other integration that fetched information to answer the customer's question
+    
+    The key principle: if the response is either a conversational courtesy or backed by actual data retrieved from lookups, automate it.
+    ```
+
+    <Tip>
+      This is the conservative setup. It works best when your protocols clearly say which situations can be automated.
+    </Tip>
+
+    ### Version 2: All-In Chat Automation
+
+    Use this when you want the AI Agent to automate as much as possible.
+
+    ```txt
+    Automate all responses, regardless of topic, complexity, or whether lookups were used.
+    ```
+
+    <Warning>
+      This overrides protocol-level automation settings and automates everything that is not escalated. Guardrails still apply, but you should only use this when your AI Agent instructions and escalation rules are strong.
+    </Warning>
+
+    ## Recommended Conservative Setup
+
+    For most teams, start with **Version 1: Safe Chat Automation**.
+
+    This lets the AI Agent automate:
+
+    - Greetings
+    - Sign-offs
+    - Simple acknowledgements
+    - Product lookups
+    - Website lookups
+    - Order, customer, inventory, or tracking lookups
+    - Other answers backed by retrieved integration data
   </Step>
   <Step title="Set chat to true in automation > advanced">
     Enable chat behavior for the AI Agent so it can respond correctly in live storefront conversations.
@@ -54,57 +101,6 @@ It does not create drafts. If the AI Agent is allowed to answer, it sends the an
     Storefront chat should feel live. A delay that works for email or helpdesk tickets usually feels too slow for chat.
   </Step>
 </Steps>
-
-## Automation Prompt Options
-
-Choose the automation prompt that matches how much control you want.
-
-### Version 1: Safe Chat Automation
-
-Use this when you want the AI Agent to automate low-risk chat replies and answers backed by real lookup data.
-
-```txt
-Automate responses in the following situations:
-
-- Opening messages and greetings, such as "Hey", "Hello", or "Hi there"
-- Sign-offs and closing messages, such as "Thank you", "Have a great day", or "Let me know if you need anything else"
-- Simple acknowledgements and confirmations, such as "Got it", "I understand", or "Noted"
-- Any response that retrieved data from a lookup integration, including order lookups, product lookups, website lookups, customer account lookups, inventory lookups, tracking lookups, or any other integration that fetched information to answer the customer's question
-
-The key principle: if the response is either a conversational courtesy or backed by actual data retrieved from lookups, automate it.
-```
-
-<Tip>
-  This is the safer setup. It works best when your protocols clearly say which situations can be automated.
-</Tip>
-
-### Version 2: All-In Chat Automation
-
-Use this when you want the AI Agent to automate as much as possible.
-
-```txt
-Automate all responses, regardless of topic, complexity, or whether lookups were used.
-```
-
-<Warning>
-  This overrides protocol-level automation settings and automates everything that is not escalated. Guardrails still apply, but you should only use this when your AI Agent instructions and escalation rules are strong.
-</Warning>
-
-## Recommended Safe Setup
-
-For most teams, start with **Version 1: Safe Chat Automation**.
-
-This lets the AI Agent automate:
-
-- Greetings
-- Sign-offs
-- Simple acknowledgements
-- Product lookups
-- Website lookups
-- Order, customer, inventory, or tracking lookups
-- Other answers backed by retrieved integration data
-
-Anything more complex should be handled by protocols that explicitly allow automation or by escalation.
 
 ## Inbox Behavior
 
