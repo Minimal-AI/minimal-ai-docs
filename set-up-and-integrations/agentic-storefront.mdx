@@ -1,7 +1,142 @@
 ---
 title: "Agentic Storefront (Beta)"
+description: "Install and configure the Minimal Agentic Storefront widget on your webstore"
 ---
+
+The Agentic Storefront widget adds Minimal's AI shopping assistant to your webstore. Shoppers can ask questions and get page-aware answers directly on your site, and escalate to a human when needed.
 
 ## Instruction Video
 
 <iframe width="100%" height="420" src="https://www.loom.com/embed/d25a4f1ec1434cb5b185fc426bec4803" frameBorder="0" allowFullScreen />
+
+## Before you start
+
+<Note>
+  You configure and install the widget from [Dashboard \> Storefront](https://gominimal.ai/dashboard/storefront). The dashboard generates install snippets with your unique widget ID already filled in, so copying them from there is always the most reliable option.
+</Note>
+
+Make sure you have:
+
+- A storefront channel created in the dashboard, with a connected [website source](/set-up-and-integrations/integrations/website) so the assistant has content to answer from.
+- Access to edit your storefront's theme or HTML (or a tag manager such as Google Tag Manager).
+
+## Installation
+
+<Steps>
+  <Step title="Add your allowed origins">
+    In [Dashboard \> Storefront](https://gominimal.ai/dashboard/storefront), open the **Install** section and add every website origin where the widget is allowed to load, for example `https://shop.example.com`.
+
+    The widget only loads on origins you list here. The apex domain and the leading `www` are treated as the same origin, so `example.com` and `www.example.com` are both covered by one entry.
+
+    <Warning>
+      If an origin is missing from this list, the widget will refuse to load on that domain. This is the most common reason a freshly installed widget does not appear.
+    </Warning>
+  </Step>
+  <Step title="Install the widget script">
+    Copy the **Install widget script** snippet from the dashboard and paste it once on every storefront page where Minimal is allowed to run (typically right before the closing `</body>` tag, or via your tag manager).
+
+    It looks like this, with your own host and widget ID filled in:
+
+    ```html
+    <script async src="https://app.gominimal.ai/storefront-widget.js" data-widget-id="sw_pub_xxxxxxxxxxxxxxxx"></script>
+    ```
+
+    - `src` points at Minimal's hosted loader. Keep the exact URL from the dashboard.
+    - `data-widget-id` is the public ID of your storefront channel (it starts with `sw_pub_`). It is safe to expose in your page source.
+
+    The loader validates the page origin, fetches your widget config, and mounts the chat in a hosted iframe. No channel keys or secrets are placed in your page.
+  </Step>
+  <Step title="(Optional) Add an inline product-page open target">
+    To let shoppers open the assistant from within a product page (using that page's configured questions), paste the inline block into your product-page template wherever you want the open target to appear:
+
+    ```html
+    <div
+      data-minimal-storefront-inline-chat
+      data-widget-id="sw_pub_xxxxxxxxxxxxxxxx"
+    ></div>
+    ```
+
+    Use the same `data-widget-id` as the script snippet. You still need the widget script from the previous step on the page for the inline target to work.
+  </Step>
+</Steps>
+
+<Warning>
+  The floating widget only appears on pages you mark as **active** in the website sitemap under [Dashboard \> Storefront](https://gominimal.ai/dashboard/storefront). If the widget is installed but does not show on a page, check that the page (or its parent folder) is set to active. See [Choose where the widget appears](#choose-where-the-widget-appears).
+</Warning>
+
+## Platform notes
+
+<AccordionGroup>
+  <Accordion title="Shopify">
+    Add the widget script to your theme's `theme.liquid`, just before `</body>`, so it loads on every storefront page. For the inline open target, add the `<div>` block to your product template (`product.liquid` or the relevant product section). Remember to add your `myshopify.com` domain and any custom domain to the allowed origins.
+  </Accordion>
+
+  <Accordion title="Google Tag Manager">
+    Create a **Custom HTML** tag containing the widget script snippet and set it to fire on the pages where the widget should appear (for example, All Pages). GTM injects the loader for you. The inline product-page open target must be placed directly in your product template, not through GTM.
+  </Accordion>
+
+  <Accordion title="Custom / other platforms">
+    Paste the widget script once in your global layout or footer so it is present on every page, then add the inline `<div>` block only on product templates if you want the inline open target. Any platform works as long as you can insert HTML and the page origin is in your allowed origins list.
+  </Accordion>
+</AccordionGroup>
+
+## Website content and where the widget appears
+
+You manage the widget's knowledge and behavior from the **Website** tab in [Dashboard \> Storefront](https://gominimal.ai/dashboard/storefront), where your crawled pages appear as a sitemap. See the [Website integration](/set-up-and-integrations/integrations/website) for more on connecting content.
+
+### Choose where the widget appears
+
+Every page, folder, and the website itself has an **active** toggle in the sitemap. The floating widget only appears on pages that are set to active:
+
+- Toggling a **folder** active or inactive applies to every page inside it.
+- An individual **page** can override its folder.
+- If the widget is installed but does not show on a page, confirm that page (or its parent folder) is active.
+
+<Note>
+  Marking a page inactive stops the widget from showing there and removes the page from the knowledge used for answers. Use this for pages like carts, checkout, or account pages.
+</Note>
+
+### Advanced crawl options
+
+When you connect or configure your website, open **Advanced** to control how Minimal crawls your store:
+
+- **Submit a sitemap** - point Minimal at your sitemap URL so it discovers pages reliably instead of only following links.
+- **Additional delay between scrapes** - add a delay between page requests to avoid overloading your server or hitting rate limits on large stores.
+
+You can also narrow the crawl with include and ignore paths under **Crawl scope** (for example, only crawl `/products`, or ignore `/cart`).
+
+### Influence the suggested questions
+
+The widget shows **suggested questions** to shoppers. Minimal auto-generates these per page after crawling, and you can adjust them from the sitemap:
+
+- Select a **page** to edit that page's questions, or switch it to inherit from its folder.
+- Select a **folder** and choose **Override at folder level** to use one shared set of questions for every page in that folder.
+- Select the **website** row to set default questions for the whole site.
+
+Edit, add, remove, or reorder the questions and save. Your custom questions replace the auto-generated ones for that scope.
+
+## Verify your installation
+
+1. Open a page on an allowed origin in a fresh browser tab.
+2. Confirm the widget launcher appears and opens the chat.
+3. Ask a question and confirm you get a page-aware answer.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="The widget does not appear">
+    Check that the page's origin is listed under allowed origins, that the current page (or its folder) is set to **active** in the website sitemap, that the storefront channel is active, and that the kill switch is off in the dashboard. Also confirm the script snippet is actually present in the page source.
+  </Accordion>
+
+  <Accordion title="It works on one domain but not another">
+    Each domain you serve the storefront on must be added as an allowed origin. The apex and `www` variant count as one origin, but separate domains (for example a staging domain) need their own entry.
+  </Accordion>
+
+  <Accordion title="I updated a snippet from an older install">
+    Older snippets used a `data-channel-key` attribute. Replace them with the current snippet that uses `data-widget-id`. Copy the latest snippet from the dashboard to be sure.
+  </Accordion>
+
+  <Accordion title="I need to disable the widget quickly">
+    Use the per-channel kill switch in [Dashboard \> Storefront](https://gominimal.ai/dashboard/storefront) to turn the widget off immediately without removing the snippet from your site.
+  </Accordion>
+</AccordionGroup>
