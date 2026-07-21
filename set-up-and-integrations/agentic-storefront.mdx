@@ -18,7 +18,12 @@ The Agentic Storefront widget adds Minimal's AI shopping assistant to your webst
 Make sure you have:
 
 - A storefront channel created in the dashboard, with a connected [website source](/set-up-and-integrations/integrations/website) so the assistant has content to answer from.
+- The storefront connected as a channel to an **active** [AI Agent](/set-up-and-integrations/ai-agents). Without this, the widget loads but cannot generate replies.
 - Access to edit your storefront's theme or HTML (or a tag manager such as Google Tag Manager).
+
+<Warning>
+  We recommend always creating a **new, dedicated AI Agent** for your storefront and connecting the storefront as one of its channels. A storefront that is not connected as a channel to an active agent is the most common reason the widget loads but never replies.
+</Warning>
 
 ## Installation
 
@@ -126,6 +131,10 @@ Edit, add, remove, or reorder the questions and save. Your custom questions repl
 <AccordionGroup>
   <Accordion title="The widget does not appear">
     Check that the page's origin is listed under allowed origins, that the current page (or its folder) is set to **active** in the website sitemap, that the storefront channel is active, and that the kill switch is off in the dashboard. Also confirm the script snippet is actually present in the page source.
+  </Accordion>
+
+  <Accordion title="The widget appears but doesn't reply">
+    The storefront must be connected as a channel to an **active** AI Agent. If no active agent has the storefront set as a channel, the widget loads but cannot generate answers. We recommend creating a new, dedicated agent for the storefront and connecting it. See [AI Agents](/set-up-and-integrations/ai-agents).
   </Accordion>
 
   <Accordion title="It works on one domain but not another">
