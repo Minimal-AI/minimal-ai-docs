@@ -1,0 +1,37 @@
+---
+title: "Kustomer"
+description: "Connect Kustomer to Minimal AI"
+---
+
+Connecting Kustomer lets your AI agents read and reply to conversations in your Kustomer workspace.
+
+## What you'll need
+
+- **API key** — an API key created in your Kustomer security settings.
+- **API base URL** (optional) — leave the default unless Kustomer told you to use a specific region URL.
+
+## Create your Kustomer API key
+
+<Info>
+  You need to be a Kustomer **admin** (or have Security permissions) to create API keys.
+</Info>
+
+<Steps>
+  <Step title="Open API keys">
+    In Kustomer, go to **Settings \> Security \> API Keys** and click **Add API Key**.
+  </Step>
+  <Step title="Name it and assign roles">
+    Give the key a clear name (for example, `Minimal AI`) and assign the roles it needs to read and update conversations and customers.
+  </Step>
+  <Step title="Copy the key">
+    Click **Create** and copy the token immediately — Kustomer only shows it once.
+  </Step>
+</Steps>
+
+## Connect in Minimal AI
+
+Go to [Dashboard \> Integrations](https://gominimal.ai/dashboard/integrations), click **Add an integration \> Kustomer**, and paste your API key. Leave the API base URL on its default value unless you have a region-specific URL.
+
+<Warning>
+  API keys are shown only once and carry the roles you assigned. Keep the key secret and only paste it into Minimal AI.
+</Warning>

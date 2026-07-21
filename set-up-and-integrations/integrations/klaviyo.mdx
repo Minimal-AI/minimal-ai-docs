@@ -1,0 +1,36 @@
+---
+title: "Klaviyo"
+description: "Connect Klaviyo to Minimal AI"
+---
+
+Connecting Klaviyo lets your AI agents look up customer, list, and marketing data from Klaviyo.
+
+## What you'll need
+
+- **Private API key** — a private key from your Klaviyo account (starts with `pk_`).
+
+## Create your Klaviyo private API key
+
+<Info>
+  You need an **Owner**, **Admin**, or **Manager** role to create API keys.
+</Info>
+
+<Steps>
+  <Step title="Open API keys">
+    In Klaviyo, click your account name in the lower left, go to **Settings**, and open the **API keys** tab.
+  </Step>
+  <Step title="Create a private key">
+    Under **Private API Keys**, click **Create Private API Key**, give it a name (for example, `Minimal AI`), and choose a scope. Read-only is enough for lookups.
+  </Step>
+  <Step title="Copy the key">
+    Click **Create** and copy the key immediately — Klaviyo won't show it again.
+  </Step>
+</Steps>
+
+## Connect in Minimal AI
+
+Go to [Dashboard \> Integrations](https://gominimal.ai/dashboard/integrations), click **Add an integration \> Klaviyo**, and paste your private API key.
+
+<Warning>
+  Private keys can read and write data. Keep the key secret and only paste it into Minimal AI's Klaviyo integration.
+</Warning>

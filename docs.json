@@ -26,12 +26,74 @@
             "group": "Integrations",
             "pages": [
               "set-up-and-integrations/integrations/overview",
+              {
+                "group": "Ticketing & helpdesk",
+                "icon": "headset",
+                "pages": [
+                  "set-up-and-integrations/integrations/gorgias",
+                  "set-up-and-integrations/integrations/intercom",
+                  "set-up-and-integrations/integrations/zendesk",
+                  "set-up-and-integrations/integrations/freshdesk",
+                  "set-up-and-integrations/integrations/front",
+                  "set-up-and-integrations/integrations/kustomer",
+                  "set-up-and-integrations/integrations/dixa",
+                  "set-up-and-integrations/integrations/trengo",
+                  "set-up-and-integrations/integrations/richpanel",
+                  "set-up-and-integrations/integrations/cm",
+                  "set-up-and-integrations/integrations/omnidesk"
+                ]
+              },
+              {
+                "group": "Stores & ecommerce",
+                "icon": "cart-shopping",
+                "pages": [
+                  "set-up-and-integrations/integrations/shopify",
+                  "set-up-and-integrations/integrations/woocommerce",
+                  "set-up-and-integrations/integrations/prestashop",
+                  "set-up-and-integrations/integrations/magento",
+                  "set-up-and-integrations/integrations/lightspeed"
+                ]
+              },
+              {
+                "group": "Operations & backend",
+                "icon": "gears",
+                "pages": [
+                  "set-up-and-integrations/integrations/active-ants",
+                  "set-up-and-integrations/integrations/channable",
+                  "set-up-and-integrations/integrations/channeldock",
+                  "set-up-and-integrations/integrations/channelengine",
+                  "set-up-and-integrations/integrations/checkoutchamp",
+                  "set-up-and-integrations/integrations/circuit",
+                  "set-up-and-integrations/integrations/davanti-wics",
+                  "set-up-and-integrations/integrations/easypost",
+                  "set-up-and-integrations/integrations/firmhouse",
+                  "set-up-and-integrations/integrations/itsperfect",
+                  "set-up-and-integrations/integrations/juo",
+                  "set-up-and-integrations/integrations/klaviyo",
+                  "set-up-and-integrations/integrations/love-loyalty",
+                  "set-up-and-integrations/integrations/mailcampaigns",
+                  "set-up-and-integrations/integrations/mirakl",
+                  "set-up-and-integrations/integrations/monta",
+                  "set-up-and-integrations/integrations/odoo",
+                  "set-up-and-integrations/integrations/oracle-netsuite",
+                  "set-up-and-integrations/integrations/parcelwill",
+                  "set-up-and-integrations/integrations/picqer",
+                  "set-up-and-integrations/integrations/prediko",
+                  "set-up-and-integrations/integrations/printapi",
+                  "set-up-and-integrations/integrations/qls",
+                  "set-up-and-integrations/integrations/recharge",
+                  "set-up-and-integrations/integrations/referralcandy",
+                  "set-up-and-integrations/integrations/returnista",
+                  "set-up-and-integrations/integrations/returnless",
+                  "set-up-and-integrations/integrations/sendcloud",
+                  "set-up-and-integrations/integrations/shipbob",
+                  "set-up-and-integrations/integrations/shopware",
+                  "set-up-and-integrations/integrations/skio",
+                  "set-up-and-integrations/integrations/yotpo"
+                ]
+              },
               "set-up-and-integrations/integrations/website",
-              "set-up-and-integrations/integrations/shopify",
-              "set-up-and-integrations/integrations/gorgias",
-              "set-up-and-integrations/integrations/intercom",
-              "set-up-and-integrations/integrations/custom-integrations",
-              "set-up-and-integrations/integrations/other"
+              "set-up-and-integrations/integrations/custom-integrations"
             ]
           },
           {

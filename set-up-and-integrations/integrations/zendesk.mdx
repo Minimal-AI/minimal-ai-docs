@@ -1,0 +1,39 @@
+---
+title: "Zendesk"
+description: "Connect Zendesk to Minimal AI"
+---
+
+Connecting Zendesk lets your AI agents read and reply to tickets directly in your Zendesk helpdesk.
+
+## What you'll need
+
+- **Subdomain** — the `{subdomain}` in `https://{subdomain}.zendesk.com`.
+- **Email** — the email address of the (admin) agent whose API access you'll use.
+- **API token** — generated in the Zendesk Admin Center.
+- **Sunshine Conversations App ID, Key ID and Secret** (optional) — only needed if you use Zendesk's Sunshine Conversations messaging. If you provide one, provide all three.
+
+## Create your Zendesk API token
+
+<Info>
+  You need to be a Zendesk **administrator** to manage API tokens.
+</Info>
+
+<Steps>
+  <Step title="Enable API token access">
+    In Zendesk, open the **Admin Center**, then go to **Apps and integrations \> APIs \> Zendesk API**. On the **Settings** tab, turn **Token access** on.
+  </Step>
+  <Step title="Create the token">
+    Go to **Apps and integrations \> APIs \> API tokens** and click **Add API token**. Add a description (for example, `Minimal AI`) and click **Save**.
+  </Step>
+  <Step title="Copy the token">
+    Copy the token and store it somewhere safe. Zendesk only shows the full token once.
+  </Step>
+</Steps>
+
+## Connect in Minimal AI
+
+Go to [Dashboard \> Integrations](https://gominimal.ai/dashboard/integrations), click **Add an integration \> Zendesk**, and fill in your subdomain, email, and API token. Leave the Sunshine fields blank unless you use Sunshine Conversations.
+
+<Warning>
+  Never share your API token with third parties. Only paste it into Minimal AI's Zendesk integration.
+</Warning>

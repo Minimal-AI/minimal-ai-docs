@@ -1,0 +1,36 @@
+---
+title: "Oracle NetSuite"
+description: "Connect Oracle NetSuite to Minimal AI"
+---
+
+Connecting Oracle NetSuite lets your AI agents look up orders, items, and customer data from NetSuite.
+
+## What you'll need
+
+Minimal AI uses NetSuite's Token-Based Authentication (TBA). You'll need:
+
+- **Account ID** — your NetSuite account ID.
+- **Consumer key** and **Consumer secret** — from an integration record.
+- **Token ID** and **Token secret** — from an access token.
+
+## Create your NetSuite credentials
+
+<Steps>
+  <Step title="Create an integration record">
+    In NetSuite, go to **Setup \> Integration \> Manage Integrations \> New**. Enable **Token-Based Authentication** and save. NetSuite shows the **Consumer Key** and **Consumer Secret** once — copy them.
+  </Step>
+  <Step title="Create an access token">
+    Go to **Setup \> Users/Roles \> Access Tokens \> New**. Select your integration, user, and role, then save. NetSuite shows the **Token ID** and **Token Secret** once — copy them.
+  </Step>
+  <Step title="Find your account ID">
+    Your **Account ID** is shown under **Setup \> Company \> Company Information**.
+  </Step>
+</Steps>
+
+## Connect in Minimal AI
+
+Go to [Dashboard \> Integrations](https://gominimal.ai/dashboard/integrations), click **Add an integration \> Oracle NetSuite**, and fill in your account ID, consumer key, consumer secret, token ID, and token secret.
+
+<Warning>
+  Consumer and token secrets are shown only once. Keep them secret and only paste them into Minimal AI.
+</Warning>

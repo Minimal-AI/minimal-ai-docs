@@ -1,0 +1,33 @@
+---
+title: "PrestaShop"
+description: "Connect PrestaShop to Minimal AI"
+---
+
+Connecting PrestaShop gives your AI agents access to orders, products, and customer data so they can answer store questions accurately.
+
+## What you'll need
+
+- **Base URL** — your store URL, including `https://`.
+- **API key** — a 32-character webservice key from your PrestaShop back office.
+
+## Create your PrestaShop webservice key
+
+<Steps>
+  <Step title="Enable the webservice">
+    In the PrestaShop back office, go to **Advanced Parameters \> Webservice** and set **Enable PrestaShop Webservice** to **Yes**.
+  </Step>
+  <Step title="Add a new key">
+    Click **Add new webservice key**, then click **Generate** to create a unique 32-character key. Add a description such as `Minimal AI`.
+  </Step>
+  <Step title="Set permissions">
+    Grant the key permissions for the resources the agent needs (such as orders, products, and customers), then **Save**.
+  </Step>
+</Steps>
+
+## Connect in Minimal AI
+
+Go to [Dashboard \> Integrations](https://gominimal.ai/dashboard/integrations), click **Add an integration \> PrestaShop**, and fill in your base URL (including `https://`) and API key.
+
+<Warning>
+  Keep your webservice key secret and serve your store over HTTPS. Only paste the key into Minimal AI.
+</Warning>

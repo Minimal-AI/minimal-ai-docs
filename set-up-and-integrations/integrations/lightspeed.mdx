@@ -1,0 +1,34 @@
+---
+title: "Lightspeed"
+description: "Connect Lightspeed eCom to Minimal AI"
+---
+
+Connecting Lightspeed eCom gives your AI agents access to orders, products, and customer data so they can answer store questions accurately.
+
+## What you'll need
+
+- **Base URL** — your store URL, for example `https://store1.com/`.
+- **API key** and **API secret** — created in your Lightspeed back office.
+- **Country code** — for example `nl`, `be`, or `de`.
+
+## Create your Lightspeed API key
+
+<Steps>
+  <Step title="Open Developers">
+    In your Lightspeed eCom back office, go to **Settings \> Store Settings \> Developers** and click **New API key**.
+  </Step>
+  <Step title="Name and enable it">
+    Enter a name (for example, `Minimal AI`) and **Save**. Then enable the key and select the permissions the agent needs (orders, products, customers), and **Save** again.
+  </Step>
+  <Step title="Copy the key and secret">
+    Under **Details**, copy the **API key**, then click **Show** to reveal and copy the **API secret**.
+  </Step>
+</Steps>
+
+## Connect in Minimal AI
+
+Go to [Dashboard \> Integrations](https://gominimal.ai/dashboard/integrations), click **Add an integration \> Lightspeed**, and fill in your base URL, API key, API secret, and country code.
+
+<Warning>
+  The API secret is shown only once when you create the key. Store it securely and only paste it into Minimal AI.
+</Warning>
