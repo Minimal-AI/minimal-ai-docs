@@ -121,8 +121,8 @@
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:niek@gominimal.ai"
+        "label": "AI Manager",
+        "href": "https://gominimal.ai/dashboard/ai-manager"
       }
     ],
     "primary": {

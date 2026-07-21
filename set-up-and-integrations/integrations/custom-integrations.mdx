@@ -143,22 +143,22 @@ For endpoints that return or modify sensitive customer data, we strongly recomme
 GET /api/orders?order_number=ORD123456&email=customer@email.com
 ```
 
-The endpoint should return data **only** if the order number belongs to the provided email address. If they don't match, return a `404` or `403`.
+The endpoint should return data **only** if the order number belongs to the provided email address. If they don't match, return a `404` or `403`.
 
-Recommended combinations:
+Recommended combinations:
 
-- Order number + email address
-- Customer ID + email address
+- Order number + email address
+- Customer ID + email address
 
-This mirrors how carriers like PostNL and DHL verify identity on their tracking pages.
+This mirrors how carriers like PostNL and DHL verify identity on their tracking pages.
 
 ### Scope Permissions
 
-If your API supports scoped tokens or permissions, issue a token with the **minimum required access**:
+If your API supports scoped tokens or permissions, issue a token with the **minimum required access**:
 
-- Read-only for data retrieval endpoints
-- Write access only for specific actions you want the agent to perform
+- Read-only for data retrieval endpoints
+- Write access only for specific actions you want the agent to perform
 
 ## Questions?
 
-If you have any questions or technical preferences, reach out to us at [founders@gominimal.ai](mailto:founders@gominimal.ai) We're happy to adapt to whatever setup works best for your systems.
+If you have any questions or technical preferences, ask the [AI Manager](https://gominimal.ai/dashboard/ai-manager) in your dashboard. The setup can be adapted to whatever works best for your systems.

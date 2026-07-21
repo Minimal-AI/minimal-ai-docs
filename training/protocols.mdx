@@ -5,17 +5,17 @@ description: "A guide on creating protocols for your AI Agent + templates"
 
 ## Overview
 
-The AI Agents use protocols to resolve tickets according to your business processes. It's the way to teach your AI Agents how to tackle specific problems, what integrations to use and what to tell customers. It is important to write protocols for all situations that can occur. For E-commerce, think about for returns, cancellations, exchanges, complaints, broken products and many more.
+Protocols are how you teach your AI Agents to resolve tickets according to your business processes. Each protocol covers one scenario — how to handle it, which integrations to use, and what to tell the customer. If a scenario isn't covered by a protocol, the agent won't know how to answer it, so aim to cover every situation that can come up in your support. For e-commerce that usually means returns, cancellations, exchanges, order status, complaints, damaged products, and more.
 
 ## Training Center
 
-Protocols can be written in the [Training Center](https://gominimal.ai/dashboard/training-center), where they are grouped in bases and categories.
+Protocols live in the [Training Center](https://gominimal.ai/dashboard/training-center), organised into **bases** and **categories**.
 
 **Bases**\
-A base is a collection of categories with protocols that can be assigned to an AI Agent
+A base is a collection of categories and protocols that you assign to an AI Agent. The base determines which processes that agent follows.
 
 **Categories**\
-For clarity and scannability, each category in a base should clearly indicate what it is about. Also, categories should be mutually exclusive from one another. We often see these categories:
+Categories group related protocols. Each category should have a clear, self-explanatory name, and categories should be mutually exclusive. Common categories:
 
 - Orders, Shipment & Delivery
 - Returns, Cancellations & Exchanges
@@ -26,93 +26,111 @@ For clarity and scannability, each category in a base should clearly indicate wh
 - Complaints, Defects & Warranty
 - Other
 
-Feel free to deviate from this structure, if that feels better for your business. Later on this page, we'll share templates and best practices.
+Feel free to deviate from this structure if another split fits your business better. Templates and best practices are further down this page.
 
-## Protocols
+## Writing protocols with the AI Manager
 
-Once you have created categories, it's time to write protocols. Protocol can be created by clicking the "add new protocol" button within each category. Protocols can be written by talking to our AI Manager. To get started, tell the manager what the protocol should be about. This can be done in any language. For example:
+Create a protocol with the **Add protocol** button inside a category. The easiest way to write one is by talking to the [AI Manager](https://gominimal.ai/dashboard/ai-manager) — just tell it what the protocol should cover, in any language. For example:
 
 - _Help me write a protocol about returning orders_
-- _I want to write a protocol about customers asking where their package is_
+- _I want a protocol for customers asking where their package is_
 
-The manager will then ask you questions based on your input, and will help write the protocol. It is best practice to **be as detailed and specific** as possible. Tell the Manager from what systems certain information needs to be retrieved, for example: "_if the package has been fullfilled longer than 4 days ago according to Shopify then do ..._". Also, make sure to think about all possible scenario's and edge cases that can happen, this will improve performance. If the AI Agent does not find the answer to a specific scenario in a protocol, it won't know how to answer the question.
+The AI Manager asks follow-up questions and drafts the protocol with you. Be **as detailed and specific as possible** — tell it which system each piece of information comes from (for example, _"if the order was fulfilled more than 4 days ago according to Shopify, then…"_) and think through every scenario and edge case. The more complete the protocol, the better the agent performs.
 
-After the AI Manager has written the protocol, check it thoroughly before saving, as the AI Manager may make mistakes. If you want to add or edit details, just explain to the AI Manager what changes to make, he will then proceed to do so and show you the proposed changes before you can save and publish them.
+<Note>
+  The AI Manager is deliberately a quality gatekeeper. It may push back, ask sharp questions, or suggest that your content belongs in a different protocol, in **Rules**, or in **Tone of Voice** instead. This keeps your protocol library clean and non-overlapping.
+</Note>
 
-In a protocol, you can determine when a ticket should be escalated to a human. This means that the AI Agent will not reply or create a suggestion to this ticket if this specific situation happens. It allows you full control over when the AI Agent should handover to the team. In practice, the AI Agent will then not do anything, the ticket will be left open until a human Agent picks it up.
-
-Protocols can also be edited manually by clicking on the protocol, it then turns into a basic text editor that you can use like notion. Afterwards, don't forget to save and publish your changes.
+After the AI Manager drafts a protocol, **review it carefully before saving** — it can make mistakes. To change something, just describe the edit; the AI Manager will show you the proposed change before you save and publish. You can also edit any protocol by hand: click into it to open a simple text editor, then save and publish your changes.
 
 <Check>
-  Try asking the AI Manager for tips for and gaps in your protocol. It will be able to help you spot improvements or even suggest general process optimization.
+  Ask the AI Manager for gaps and improvements in your protocols. It can learn from your real ticket history to point out missing scenarios and suggest where automation is safe to enable.
 </Check>
 
-**Use this checklist for every protocol:**
+### Referencing integrations and actions
 
-1. A protocol should not contain mistakes or actions that are not possible.
-2. A protocol should cover all cases that can arise. For example, a protocol about _"Returning Orders"_ should cover steps for all the different reasons for returning orders, all the different time windows (e.g. order has been delivered more than 30 days ago AND less than 30 days ago). Also, think about what happens when the customer wants to return items in a single package, loses the return form etc. However, a customer asking for their return status is a different protocol and should not be put in the "Returning Orders" protocol.
-3. A protocol should never contradict other protocols. Make sure all protocols are mutually exclusive and collectively exhaustive.
-4. A protocol should clearly state what information to get from what integration.\
-   **Bad**:_"if the order has been returned then.."_ \
-   **Good:** _"if the order has been marked as returned in Monta, then..."_
-5. A protocol should not contain instructions on tone-of-voice or general rules that apply to every AI Agent interaction (those should be put in the AI Agent settings)
+Inside a protocol, refer to integrations in plain language — for example, _"retrieve the order status from Shopify"_. You can only reference integrations that are actually connected to the base.
 
-### Activating & Automating Protocols
+To let the agent *do* something (not just look things up), reference an **action** using the forward-slash (`/`) command in the editor and picking the action you want, such as cancelling an order or updating an address. See [Actions](/training/actions) for how actions are set up.
 
-Protocols can be active or paused. If a protocol is paused, it won't be used by the AI Agent - even if it's part of a base that is connected to the AI Agent. If the protocol is active and automated, the AI Agent will fully automate the message sent to the customer, unless it should escalate to a human  or if it requires an action that has not been set-up yet in your system (e.g. cancelling order).
+### Activating and automating protocols
+
+Each protocol has two toggles:
+
+- **Active** — when on, the agent can use this protocol. When paused, the agent ignores it even if it's part of a connected base.
+- **Automated** — when on, the agent can send replies for this protocol automatically. When off, it drafts a suggestion for your team instead.
+
+Actions have their own automation toggle *per protocol*. An action only runs automatically when **both** the protocol **and** the action are set to automated (and global automation is enabled). If the protocol is automated but the action isn't, the agent will **propose** the action and wait for a human to approve it.
 
 <Info>
-  When a customer message contains multiple topics or questions, the AI Agent requires protocols for EVERY topic mentioned. If even one topic lacks a corresponding protocol, the system will not generate an automated response.
+  When a customer message covers multiple topics, the agent needs a protocol for **every** topic mentioned. If even one topic lacks a protocol, the agent won't send an automated reply.
 </Info>
 
-### Escalating to human
+### Escalating to a human
 
-To determine exactly in what scenario's the AI Agent should leave the ticket for a human (this means, no reply at all and the ticket left open), you can tell the AI Manager in what specific situations the ticket should be escalated to a human. The AI Manager will then create tags to indicate at what moments in the flow a ticket will be escalated. You can also manually create these tags by typing a forward slash ("/").
+Within a protocol you decide exactly when a ticket should be handed to a human. There are two ways to escalate:
+
+- **Silent escalation** — the agent sends no message and leaves the ticket open for your team to pick up.
+- **Escalate with a message** — the agent sends a short holding reply (for example, letting the customer know a specialist will follow up) and then leaves the ticket for a human.
+
+Tell the AI Manager exactly when each type should happen and it will add the right escalation points; you can also add them manually with the `/` command in the editor.
+
+<Warning>
+  Escalate sparingly. Before adding an escalation, ask: can the protocol simply answer the question, or resolve it with an action? Only hand off to a human when that's genuinely the right outcome — over-escalating means more work for your team and slower replies for customers.
+</Warning>
+
+## Best practices
+
+Use this checklist for every protocol:
+
+1. **No mistakes or impossible steps.** Don't reference actions or data the agent can't actually access.
+2. **Cover every case.** A _"Returning Orders"_ protocol should handle all reasons for returning, all time windows (e.g. delivered more than vs. less than 30 days ago), multiple items in one package, a lost return form, and so on. (A customer asking for their *return status* is a different scenario and belongs in its own protocol.)
+3. **Don't contradict other protocols.** Keep the whole library MECE — **m**utually **e**xclusive and **c**ollectively **e**xhaustive.
+4. **Be explicit about which integration provides which information.**\
+   **Bad:** _"if the order has been returned then…"_\
+   **Good:** _"if the order has been marked as returned in Monta, then…"_
+5. **Keep each protocol self-contained.** Protocols can't reference each other, so if two scenarios share steps (for example a damage complaint that ends in a return), include those steps in both protocols.
+6. **No tone or general rules in protocols.** Tone of voice and always-on do's and don'ts belong in your [AI Agent settings](/set-up-and-integrations/ai-agents), not in a protocol.
 
 ## What protocols should I write?
 
-Each scenario that can arise in support should be covered by a protocol. If a protocol is missing, the Agent will not create an answer for messages that contain that specific scenario. It's advisable to make protocols non-overlapping or MECE (mutually exclusive, collectively exhaustive). For example, instead of the protocols "_returning product a_" and "_returning product b_", create "_returning order_" that combines both.
+Cover every scenario that can arise in support. If a protocol is missing, the agent won't answer messages about that scenario. Keep protocols non-overlapping (MECE) — for example, instead of separate _"returning product a"_ and _"returning product b"_ protocols, write one _"returning order"_ protocol that covers both.
 
-For example, for a typical E-commerce store we advice the following categories and protocols:
+For a typical e-commerce store, we recommend the following categories and protocols:
 
 - **Orders, Shipment & Delivery**
-  - **Order and Shipment Status** - Protocol covering order confirmation delays, processing timeframes, shipment notifications, tracking number issues, delivery date estimates, backorder communications, split shipment explanations, carrier delays, and proactive status update requirements.
-  - **Package Not Delivered** - Protocol for scenarios where tracking shows delivered but customer hasn't received package, including verification steps, carrier investigation procedures, theft reporting, neighbor delivery checks, safe place deliveries, and replacement/refund authorization timelines.
-  - **Partial or Incomplete Delivery** - Protocol for missing items in shipments, covering inventory verification, item location tracking, remaining item dispatch procedures, compensation for delays, and communication about when missing items will arrive separately.
-  - **Cancellling or modifying orders**
+  - **Order and Shipment Status** — order confirmation delays, processing timeframes, shipment notifications, tracking number issues, delivery date estimates, backorder communications, split shipment explanations, carrier delays, and proactive status updates.
+  - **Package Not Delivered** — tracking shows delivered but the customer hasn't received it: verification steps, carrier investigation, theft reporting, neighbour/safe-place delivery checks, and replacement/refund timelines.
+  - **Partial or Incomplete Delivery** — missing items in a shipment: inventory verification, item tracking, dispatch of remaining items, compensation for delays, and communication about separate arrivals.
+  - **Cancelling or Modifying Orders**
 - **Returns, Cancellations & Exchanges**
-  - **Returning Product** - Enhanced protocol including return eligibility verification, condition requirements, return window policies, return authorization generation, prepaid label provision, packaging requirements, inspection procedures, and processing timeframes.
-  - **Status Return & Refund** - Protocol covering return shipment tracking, receipt confirmation, item inspection status updates, refund processing stages, payment method-specific refund timelines, partial refunds, and refund failure resolution.
-  - **Exchanging Product** - Protocol for size/color exchanges including availability checks, price difference handling, exchange shipping procedures, return of original item requirements, and exchange processing timelines.
+  - **Returning Product** — return eligibility, condition requirements, return windows, return authorisation, prepaid labels, packaging requirements, inspection, and processing timeframes.
+  - **Status Return & Refund** — return shipment tracking, receipt confirmation, inspection status, refund stages, payment-method-specific refund timelines, partial refunds, and failure resolution.
+  - **Exchanging Product** — size/colour exchanges: availability checks, price-difference handling, exchange shipping, return of the original item, and timelines.
 - **Complaints, Defects & Warranty**
-  - **Damaged Product on Arrival** - Protocol covering damage assessment procedures, photo documentation requirements, packaging inspection, carrier claim procedures, immediate replacement authorization, expedited shipping options, and prevention of future damage.
-  - **Damaged Item After Usage** - Protocol distinguishing between manufacturing defects, normal wear, misuse, warranty coverage verification, repair versus replacement options, manufacturer liaison procedures, and proof of purchase requirements.
-
-  **Products**
-  - **Product Information & Specifications** - Protocol covering detailed product questions, technical specifications, size charts, compatibility issues, ingredient lists, material composition, care instructions, and product comparison requests.
-  - **Product Availability & Stock** - Protocol for out-of-stock inquiries, restock notifications, backorder timelines, discontinued items, seasonal availability, regional stock differences, and pre-order procedures.
-  - **Product Recommendations & Alternatives** - Protocol for suggesting similar products, cross-selling opportunities, size/style alternatives when preferred item unavailable, and personalized recommendation requests based on customer history.
-
-  **Payments & Invoices**
-  - **Payment Processing Issues** - Protocol for declined transactions, payment method failures, bank authorization problems, currency conversion issues, saved payment method errors, and checkout completion problems.
-  - **Billing Disputes & Corrections** - Protocol covering incorrect charges, duplicate transactions, unauthorized payments, price matching requests, promotional discount failures, and billing address mismatches.
-  - **Invoice Management** - Protocol for invoice requests, VAT receipt generation, corporate billing requirements, payment term modifications, and accounting department coordination for business customers.
-
-  **Subscriptions (for subscription businesses only)**
-  - **Subscription Modifications** - Protocol for changing subscription frequency, pausing subscriptions, upgrading/downgrading plans, delivery date changes, and temporary holds during travel or illness.
-  - **Subscription Billing & Renewals** - Protocol covering auto-renewal notifications, failed payment recovery, subscription price changes, billing cycle questions, and payment method updates for recurring charges.
-  - **Subscription Cancellation** - Protocol for immediate cancellation, end-of-period cancellation, cancellation confirmation, final billing procedures, data retention policies, and win-back offers.
-
-  **Account**
-  - **Account Access & Security** - Protocol for password resets, account lockouts, two-factor authentication setup, suspicious activity reports, unauthorized access concerns, and security verification procedures.
-  - **Profile & Preferences Management** - Protocol for updating personal information, communication preferences, notification settings, privacy controls, marketing opt-outs, and data correction requests.
-  - **Account Closure & Data Requests** - Protocol covering account deletion procedures, GDPR compliance, data export requests, right to be forgotten, account reactivation options, and final account settlements.
-
-  **Other**
-  - **Technical Support & Website Issues** - Protocol for website functionality problems, mobile app crashes, search result issues, page loading errors, browser compatibility problems, and accessibility concerns.
-  - **General Inquiries & Feedback** - Protocol for business hour questions, contact information requests, feedback submission, suggestion processing, complaint escalation, and corporate information queries.
-  - **Legal & Compliance Matters** - Protocol covering terms of service questions, privacy policy inquiries, regulatory compliance issues, age verification problems, and legal document requests.
+  - **Damaged Product on Arrival** — damage assessment, photo documentation, packaging inspection, carrier claims, replacement authorisation, expedited shipping, and prevention.
+  - **Damaged Item After Usage** — distinguishing manufacturing defects from wear or misuse, warranty verification, repair vs. replacement, manufacturer liaison, and proof of purchase.
+- **Products**
+  - **Product Information & Specifications** — detailed product questions, specs, size charts, compatibility, ingredients, materials, care instructions, and comparisons.
+  - **Product Availability & Stock** — out-of-stock inquiries, restock notifications, backorder timelines, discontinued items, seasonal and regional availability, and pre-orders.
+  - **Product Recommendations & Alternatives** — similar products, cross-sells, alternatives when the preferred item is unavailable, and personalised recommendations.
+- **Payments & Invoices**
+  - **Payment Processing Issues** — declined transactions, payment-method failures, bank authorisation problems, currency conversion, saved-method errors, and checkout problems.
+  - **Billing Disputes & Corrections** — incorrect or duplicate charges, unauthorised payments, price-matching, promo-code failures, and billing address mismatches.
+  - **Invoice Management** — invoice requests, VAT receipts, corporate billing, payment-term changes, and accounting coordination for business customers.
+- **Subscriptions (for subscription businesses only)**
+  - **Subscription Modifications** — changing frequency, pausing, upgrading/downgrading, delivery-date changes, and temporary holds.
+  - **Subscription Billing & Renewals** — auto-renewal notifications, failed-payment recovery, price changes, billing-cycle questions, and payment-method updates.
+  - **Subscription Cancellation** — immediate vs. end-of-period cancellation, confirmation, final billing, data retention, and win-back offers.
+- **Account**
+  - **Account Access & Security** — password resets, lockouts, two-factor setup, suspicious-activity reports, and verification procedures.
+  - **Profile & Preferences Management** — updating personal info, communication preferences, notification settings, privacy controls, and data corrections.
+  - **Account Closure & Data Requests** — account deletion, GDPR compliance, data export, right to be forgotten, reactivation, and final settlements.
+- **Other**
+  - **Technical Support & Website Issues** — website bugs, app crashes, search issues, page errors, browser compatibility, and accessibility.
+  - **General Inquiries & Feedback** — business hours, contact info, feedback and suggestions, and complaint escalation.
+  - **Legal & Compliance Matters** — terms of service, privacy policy, regulatory compliance, age verification, and legal document requests.
 
 <Info>
-  Some protocols might need to refer to each other. For example, if a customer complains about damage, it might at a certain point need to follow the return instructions. **We are working on this feature, but for now copy the return protocol to both protocols.**
+  Some scenarios overlap — a damage complaint may end in a return, for example. Because protocols can't reference each other, include the shared steps directly in each protocol that needs them.
 </Info>

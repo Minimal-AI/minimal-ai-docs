@@ -5,65 +5,128 @@ description: "Guide on setting up Minimal's AI Agents"
 
 ## Overview
 
-With Minimal AI, you can set up AI Customer Support Agents and let them handle tickets in your helpdesk just like a human would. For optimal performance, we want to make sure that the Agents are connected to your systems that they are trained properly such that they follow your business' processes while maintaining an on-brand tone-of-voice.
+With Minimal AI, you set up AI customer support agents that resolve tickets in your helpdesk just like a human would. An agent works best when it's connected to your systems, trained on your business processes through [protocols](/training/protocols), and given a clear tone of voice so every reply is on-brand.
 
-## Setting up AI Agents
+## How an agent handles a ticket
 
-Follow this step-by-step process to set up your AI Agents. You can create an Agent by going to [Dashboard \> Agents](https://gominimal.ai/dashboard/agents) and clicking "Add agent". From there, you'll see the customisation options that are listed below.
+When a new message comes in, your agent works through a series of steps. Understanding them makes it much easier to tune behaviour, because each step is driven by different settings.
 
-Once an Agent is activated, it will resolve tickets in the connected channels. The Agent will only reply to messages that are received while the Agent is set on "active". It can take up to 120 seconds before the Agent reply is visible in your helpdesk based on complexity of the ticket and your helpdesks' speed of notifying our platform.
+<Steps>
+  <Step title="Reply decision">
+    First the agent decides whether to engage at all. Driven by your **Reply settings** and **Rules** — for example, it can skip automated notifications, spam, or messages from business partners.
+  </Step>
+  <Step title="Understand the request">
+    It identifies what the customer is actually asking, including when a single message contains multiple questions.
+  </Step>
+  <Step title="Match protocols">
+    It finds the [protocol(s)](/training/protocols) that cover each topic in the message.
+  </Step>
+  <Step title="Gather data">
+    It calls your connected [integrations](/set-up-and-integrations/integrations/overview) to look up whatever the protocol needs — an order status, a subscription, tracking info, and so on.
+  </Step>
+  <Step title="Write the reply">
+    It drafts the answer, applying your **Rules**, **Tone of Voice**, and **language settings**.
+  </Step>
+  <Step title="Safety & automation checks">
+    Finally it decides whether to send the reply automatically or leave it as a suggestion for your team, based on your automation settings and guardrails.
+  </Step>
+</Steps>
+
+<Note>
+  These steps are independent. Your **Tone of Voice** and **Protocols** shape *what the reply says*, but they do **not** influence whether the agent replies — that's decided only by your **Reply settings** and **Rules**. Keeping this separation in mind makes tuning much more predictable.
+</Note>
+
+<Tip>
+  Not sure why an agent replied, stayed silent, or didn't automate a specific ticket? Ask the [AI Manager](https://gominimal.ai/dashboard/ai-manager) in your dashboard — it can inspect a run and explain what happened at each step.
+</Tip>
+
+## Setting up an AI Agent
+
+Create an agent from [Dashboard \> Agents](https://gominimal.ai/dashboard/agents) and clicking **Add agent**. From there you'll see the settings described below.
+
+An agent only processes tickets while it's set to **active**, and it only replies to messages that arrive during that time. After a message comes in, a reply typically appears within a minute or two — this depends on the complexity of the ticket, your configured [response delay](https://gominimal.ai/dashboard/automate), and how quickly your helpdesk notifies our platform.
 
 ### Agent Name
 
-The name for this Agent. This name is not visible to your customers, only you are able to see the name.
+The name for this agent. It's only visible to you, never to your customers.
 
 ### Channels
 
-Channels appear once you have added a helpdesk through integrations. Once a channel is connected and the Agent is activated, the Agent will start writing suggestions or automated messages in this channel based on your [automation settings](https://gominimal.ai/dashboard/automate).
+Channels appear once you've connected a helpdesk through [integrations](/set-up-and-integrations/integrations/overview). Once a channel is connected and the agent is active, the agent starts writing suggestions or automated messages in that channel based on your [automation settings](https://gominimal.ai/dashboard/automate).
 
 ### Stores
 
-Select the stores that this Agent can access while answering tickets.
+Select the stores this agent can access while answering tickets — used for order, customer, and product lookups.
 
 ### Training Center Base
 
-Select the [training center](/training/protocols) that this Agent can access. This determines the business processes that the Agent will follow while resolving your tickets.
+Select the [Training Center base](/training/protocols) this agent can access. The base determines which business processes (protocols) the agent follows while resolving tickets.
 
 ### Website
 
-Add webpages that you want the Agent to access. More info on websites can be found [here](/set-up-and-integrations/integrations/website).
+Add webpages you want the agent to reference. More on connecting website content [here](/set-up-and-integrations/integrations/website).
 
 ### Language settings
 
-Control the language that your AI Agents write replies in. Select "Use same language of incoming ticket" to make sure the AI Agent replies in the language of the customer. To implement custom language logic, such as having the AI Agent answer in Dutch (if customer speaks Dutch) or English only, select "Other" and describe your logic it in natural language. Additionally, the AI Agent can also generate translations of incoming messages (and suggestions if not in automation mode) . Once toggled on, select the preferred language to translate messages in. If the message is sent in your preferred language, no translation will be made.
+Control the language your agent replies in. Select **Use same language as incoming ticket** to have the agent reply in the customer's language. For custom logic — for example, reply in Dutch to Dutch customers and English to everyone else — select **Other** and describe the logic in plain language.
+
+The agent can also generate **translations** of incoming messages (and of suggestions, when not in automation mode) for your human team. Once enabled, pick the language to translate into. If a message is already in your preferred language, no translation is made.
 
 ### Tone of Voice
 
-Describe the tone of voice you want the Agent to use in replies. Be as specific as possible and give examples. The Agent will interpret these instructions very literally, so be deliberate on the details you give here. For example, if you say: _"Be inspirational and motivating"_, the Agent will be very inspirational and motivating. It is normal to update tone-of-voice over time. It's trial and error before you find the optimal balance.
+Describe how you want the agent to *sound*. Tone of Voice only affects the **style** of a reply — phrasing, openings, and sign-offs — never *what* the agent does or which steps it follows.
 
-Never describe multi-step procedures, details about integrations and other business processes in tone of voice, rather use [protocols](/training/protocols) for adding processes and integration specific instructions.
+Be specific and give examples; the agent follows these instructions literally. For example, if you write _"Be inspirational and motivating"_, replies will be very inspirational and motivating. Expect to refine tone of voice over time — it's normal to iterate before you find the right balance.
 
-Some frequently asked questions on Tone of Voice:
+<Warning>
+  Never put multi-step procedures, integration details, or business processes in Tone of Voice. Those belong in [protocols](/training/protocols). Tone of Voice is about *how* things are said, not *what* is done.
+</Warning>
 
-- **Can the Tone of Voice be empty?**\
-  Yes, the Agent has some tone of voice instructions already. It will be a helpful customer support assistant unless prompted otherwise.
-- **Can I teach the Agent what greeting / signoff to use in Tone of Voice?**\
-  Yes you can. You could say: _"Always open messages with Hi \[name\], and close with Best \[name\]"_. Then the Agent will always open/close messages with these specific greetings/signatures.
+Frequently asked questions:
+
+- **Can Tone of Voice be empty?**\
+  Yes. The agent already has sensible default tone instructions and behaves as a helpful support assistant unless you tell it otherwise.
+- **Can I set a greeting / sign-off in Tone of Voice?**\
+  Yes. For example: _"Always open with Hi \[name\], and close with Best, \[name\]"_. The agent will then consistently use those openings and sign-offs.
 
 ### Rules
 
-Rules are general notes on how the Agent should write a reply to a customer. These rules do not influence whether the Agent will answer nor when it will reply (e.g. time of day etc.). The rules are always used once the Agent has already decided to write a message (either automated or as a suggestion).
+Rules are always-on do's and don'ts that apply to **every** reply, regardless of topic. They shape *how* the agent behaves once it has decided to reply. Rules can include guidance on when to escalate to a human, but they should **not** contain integration steps or automation logic — keep those in [protocols](/training/protocols) and your [automation settings](https://gominimal.ai/dashboard/automate).
 
-Examples of rules are:
+Examples of rules:
 
-- _"Never talk about ingredients""We never contact external services, such as banks unless stated in protocols"_
-- _"Always use our company name SitRight in that exact format, regardless of how the customer writes it"_
-- [_"If the customer explicitly mentiones they are happy, ask them for a review and send them the following invitation link: https://www.trustpilot.com/review/sitright.nl"_](https://www.trustpilot.com/review/sitright.nl)
+- _"Never discuss ingredients unless a protocol says otherwise."_
+- _"Always write our company name as SitRight, regardless of how the customer spells it."_
+- _"If the customer says they're happy, invite them to leave a review and share our review link."_
 
 <Note>
-  The Agent will use **Tone of Voice** and **Rules** for every reply, no matter the type of question. Hence these settings are extremely powerful and give you full control over the Agent's style and behaviour.
+  **Tone of Voice** and **Rules** are applied to every reply, no matter the question. That makes them powerful levers for controlling your agent's overall style and behaviour.
 </Note>
 
-### No Reply Settings
+### Reply settings (when to stay silent)
 
-Allows you to set topics that the Agent should never reply to. If a message is sent that triggers the no reply topics, the Agent will do nothing and leave the ticket open for the user. You can see this as a spam-filter, but for the AI Agent. Be as specific as possible for the most reliable results.
+Reply settings let you tell the agent which messages it should **not** reply to. When a message matches, the agent does nothing and leaves the ticket open for your team — think of it as a spam filter for your agent. Be as specific as possible for reliable results.
+
+Common examples:
+
+- Messages from marketplaces like bol.com
+- Messages from business partners or suppliers
+- Sales pitches from people trying to sell you products or services
+
+## Automation vs. suggestions
+
+Every reply is either **sent automatically** or left as a **suggestion (draft)** for a human to review and send. You control this in your [automation settings](https://gominimal.ai/dashboard/automate).
+
+- **Suggestion mode** — the agent drafts a reply and leaves it in your helpdesk for a human to review. This is the safest way to start.
+- **Automated mode** — the agent sends replies on its own. A reply is only sent automatically when automation is enabled *and* the relevant protocol is set to automate *and* it passes your guardrails.
+
+A few safeguards always apply in automated mode:
+
+- **Guardrails** block automatic sending when something looks off — for example toxic language, prompt-injection attempts, unfilled placeholders, or a customer explicitly asking for a human. When a guardrail trips, the agent leaves a draft instead of sending.
+- **Rate limits** cap how many messages the agent will auto-send per ticket and per hour, so it can't run away in a loop.
+- **Human takeover** — once a human replies in a ticket, the agent stops automating on that ticket (unless you've enabled continuing after takeover).
+- **Response delay** — a configurable delay (30 seconds by default) before a reply is sent or drafted, so replies don't feel instant and your team has a moment to intervene.
+
+<Tip>
+  Start in suggestion mode, review how the agent performs, and switch topics to automated once you're confident in the results. The [AI Manager](https://gominimal.ai/dashboard/ai-manager) can help you decide which protocols are ready to automate.
+</Tip>
