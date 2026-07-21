@@ -1,0 +1,54 @@
+---
+title: "Gorgias"
+description: "Connect Gorgias to Minimal AI"
+---
+
+Connecting Gorgias lets your AI agents read and reply to conversations directly in your Gorgias helpdesk.
+
+## Instructions
+
+Watch the following video for detailed instructions on how to create your Gorgias API tokens.
+
+<iframe src="https://www.loom.com/embed/fe6edf7748524f2988e0ac87e393c8b5?sid=c398d2e3-73f3-4f5f-af35-c5bf3d70964f" title="Loom Video" className="w-full h-96 rounded-xl" />
+
+To connect Gorgias, fill in the API key and subdomain through [Dashboard \> Integrations](https://gominimal.ai/dashboard/integrations) \> Gorgias.
+
+## Choosing who replies (sender)
+
+When you enable automation on a Gorgias channel for an AI Agent, you pick a **Sender**: the Gorgias user your agent's automated messages are sent as. The selected channel still determines which mailbox the email is sent from; the sender determines who authors it. If you don't choose one, Minimal defaults to the built-in **Gorgias Bot**.
+
+### Which users can be senders
+
+Gorgias only delivers an outgoing reply when its "from" user matches a real mailbox in your Gorgias workspace. Because of that, Minimal only lets you pick a sender that is either:
+
+- the built-in **Gorgias Bot** user (always available, and used by default), or
+- a Gorgias user whose **email address is also connected as an email channel (mailbox)** in that same Gorgias workspace.
+
+The sender dropdown on the agent shows the active, send-capable users from the connected workspace. If none qualify, you'll see a message like _"No Gorgias users in this workspace can author outgoing replies. Connect an email channel whose mailbox matches a Gorgias user, or use the built-in Gorgias Bot."_
+
+### Create a custom, branded sender
+
+To have your agent reply from your own address (for example `support@yourbrand.com`) instead of the Gorgias Bot, set up **one account that is a Gorgias user, an email mailbox, and the API account, all on the same email address**:
+
+<Steps>
+  <Step title="Create the Gorgias user">
+    In Gorgias, go to **Settings \> Users** and add a user with the email address you want replies to come from (for example `support@yourbrand.com`).
+  </Step>
+  <Step title="Connect that email as a channel (mailbox)">
+    In Gorgias, go to **Settings \> Channels \> Email** and connect the same address as an email channel. This is what turns the address into a valid sender mailbox that Gorgias will accept on outgoing replies.
+  </Step>
+  <Step title="Connect Minimal's Gorgias API with that account">
+    Generate the API key while signed in as that user, and use that user's **email \+ API key** when connecting Gorgias in Minimal. Keeping the API account, mailbox, and sender on the same email guarantees the sender is always valid.
+  </Step>
+  <Step title="Select the sender on your agent">
+    On the AI Agent, choose this user in the **Sender** field. If it doesn't appear yet, refresh the page so the sender list reloads.
+  </Step>
+</Steps>
+
+<Note>
+  If you don't need a branded sender, leave the default **Gorgias Bot**. It always works and requires no mailbox setup.
+</Note>
+
+<Tip>
+  To add another sender later, add the user in Gorgias under **Settings \> Users** and make sure their email is connected as an email channel. Once they're active in Gorgias, they'll appear in the Sender dropdown after you refresh.
+</Tip>
