@@ -16,19 +16,27 @@
         "description": "How to use Minimal AI",
         "groups": [
           {
-            "group": "Set up & Integrations",
+            "group": "Get started",
             "pages": [
-              {
-                "group": "Integrations",
-                "pages": [
-                  "set-up-and-integrations/integrations/website",
-                  "set-up-and-integrations/integrations/custom-integrations",
-                  "set-up-and-integrations/integrations/gorgias",
-                  "set-up-and-integrations/integrations/intercom",
-                  "set-up-and-integrations/integrations/shopify",
-                  "set-up-and-integrations/integrations/other"
-                ]
-              },
+              "index",
+              "quickstart"
+            ]
+          },
+          {
+            "group": "Integrations",
+            "pages": [
+              "set-up-and-integrations/integrations/overview",
+              "set-up-and-integrations/integrations/website",
+              "set-up-and-integrations/integrations/shopify",
+              "set-up-and-integrations/integrations/gorgias",
+              "set-up-and-integrations/integrations/intercom",
+              "set-up-and-integrations/integrations/custom-integrations",
+              "set-up-and-integrations/integrations/other"
+            ]
+          },
+          {
+            "group": "AI Agents",
+            "pages": [
               "set-up-and-integrations/ai-agents",
               "set-up-and-integrations/agentic-storefront"
             ]

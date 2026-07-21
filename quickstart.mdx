@@ -1,68 +1,64 @@
 ---
 title: "Quickstart"
-description: "Start building your first AI support agents in minutes"
+description: "Set up your first Minimal AI support agent in four steps"
 ---
 
-## Get started in three steps
+This guide walks you through going from a fresh account to a working AI support
+agent. Everything happens in the [Minimal dashboard](https://gominimal.ai/dashboard).
 
-Get your documentation site running locally and make your first customization.
+<Steps>
+  <Step title="Connect your systems" icon="plug">
+    Go to [Dashboard \> Integrations](https://gominimal.ai/dashboard/integrations)
+    and connect your helpdesk (for example [Gorgias](/set-up-and-integrations/integrations/gorgias)
+    or [Intercom](/set-up-and-integrations/integrations/intercom)), your store
+    (for example [Shopify](/set-up-and-integrations/integrations/shopify)), and
+    your [website content](/set-up-and-integrations/integrations/website).
 
-### Step 1: Integrate your systems
+    See the [Integrations overview](/set-up-and-integrations/integrations/overview)
+    for everything you can connect.
+  </Step>
+  <Step title="Create an AI Agent" icon="robot">
+    Go to [Dashboard \> Agents](https://gominimal.ai/dashboard/agents) and click
+    **Add agent**. Set its channels, stores, language, tone of voice, and rules.
 
-<AccordionGroup>
-  <Accordion title="Connect your helpdesk, store and other systems" icon="sunset">
-    Navigate to [dashboard \> integrations](https://gominimal.ai/dashboard/integrations) and connect your systems.
-  </Accordion>
-</AccordionGroup>
+    See [AI Agents](/set-up-and-integrations/ai-agents) for what each setting does.
+  </Step>
+  <Step title="Train it with protocols" icon="list-check">
+    In the [Training Center](https://gominimal.ai/dashboard/training-center), write
+    protocols so the agent follows your business processes — returns,
+    cancellations, order status, and more.
 
-### Step 2: Create an AI Agent and write your first protocols
+    You can write protocols by chatting with the [AI Manager](https://gominimal.ai/dashboard/ai-manager).
+    See [Protocols](/training/protocols) to get started.
+  </Step>
+  <Step title="Test, then go live" icon="rocket">
+    Test your agent in the [Playground](https://gominimal.ai/dashboard/playground):
+    start a session, select your agent, and chat as if you were a customer.
 
-<AccordionGroup>
-  <Accordion title="Install our GitHub app" icon="github">
-    Install the Mintlify GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app).
-
-    Our GitHub app automatically deploys your changes to your docs site, so you don't need to manage deployments yourself.
-  </Accordion>
-  <Accordion title="Update your site name and colors" icon="palette">
-    For a first change, let's update the name and colors of your docs site.
-
-    1. Open `docs.json` in your editor.
-    2. Change the `"name"` field to your project name.
-    3. Update the `"colors"` to match your brand.
-    4. Save and see your changes instantly at `http://localhost:3000`.
-
-    <Tip>
-      Try changing the primary color to see an immediate difference\!
-    </Tip>
-  </Accordion>
-</AccordionGroup>
-
-### Step 3: Go live
-
-<Accordion title="Publish your docs" icon="rocket">
-  1. Commit and push your changes.
-  2. Your docs will update and be live in moments\!
-</Accordion>
+    When you're happy, set the agent to **active** and configure your
+    [automation settings](https://gominimal.ai/dashboard/automate) to decide when
+    it replies automatically versus suggesting a reply.
+  </Step>
+</Steps>
 
 ## Next steps
 
-Now that you have your docs running, explore these key features:
-
 <CardGroup cols={2}>
-  <Card title="Write Content" icon="pen-to-square" href="/essentials/markdown">
-    Learn MDX syntax and start writing your documentation.
+  <Card title="Integrations" icon="plug" href="/set-up-and-integrations/integrations/overview">
+    Connect more systems and custom APIs.
   </Card>
-  <Card title="Customize style" icon="palette" href="/essentials/settings">
-    Make your docs match your brand perfectly.
+  <Card title="Agentic Storefront" icon="store" href="/set-up-and-integrations/agentic-storefront">
+    Add the AI assistant to your webstore.
   </Card>
-  <Card title="Add code examples" icon="square-code" href="/essentials/code">
-    Include syntax-highlighted code blocks.
+  <Card title="Actions" icon="bolt" href="/training/actions">
+    Let agents take action in your systems.
   </Card>
-  <Card title="API documentation" icon="code" href="/api-reference/introduction">
-    Auto-generate API docs from OpenAPI specs.
+  <Card title="AI Agents" icon="robot" href="/set-up-and-integrations/ai-agents">
+    Fine-tune tone of voice and rules.
   </Card>
 </CardGroup>
 
 <Note>
-  **Need help?** See our [full documentation](https://mintlify.com/docs) or join our [community](https://mintlify.com/community).
+  **Need help?** Message [niek@gominimal.ai](mailto:niek@gominimal.ai) or ask the
+  [AI Manager](https://gominimal.ai/dashboard/ai-manager) in your dashboard.
 </Note>
