@@ -1,0 +1,64 @@
+---
+title: "Intercom"
+description: "Connect Intercom to Minimal AI"
+---
+
+Connect Intercom to Minimal AI by creating an app in Intercom's Developer Hub and adding its credentials to the Intercom integration on our platform. You will copy the app's **access token** and **client secret** into Minimal AI, and configure **webhooks** so Intercom sends conversation events to Minimal.
+
+## Create an app in the Developer Hub
+
+<Steps>
+  <Step title="Open the Developer Hub">
+    In Intercom, go to **Settings \> Integrations \> Developer Hub**.
+
+    <Frame>
+      ![Intercom settings with the Developer Hub option under Integrations](/images/integrations/intercom/1-intercom-settings-developer-hub.png)
+    </Frame>
+  </Step>
+  <Step title="Create a new app">
+    On the **Your apps** page, click **New app** and create an app for your workspace.
+
+    <Frame>
+      ![Developer Hub Your apps page with the New app button](/images/integrations/intercom/2-developer-hub-your-apps.png)
+    </Frame>
+  </Step>
+</Steps>
+
+## Add the credentials to Minimal AI
+
+Open your app and go to **Configure \> Authentication**. You will find the access token and client secret here.
+
+<Frame>
+  ![Intercom app Authentication page showing the access token, OAuth client secret, and permissions](/images/integrations/intercom/3-authentication-access-token.png)
+</Frame>
+
+<Steps>
+  <Step title="Copy the access token">
+    Copy the **access token** and paste it into the Intercom integration in [Dashboard \> Integrations](https://gominimal.ai/dashboard/integrations).
+  </Step>
+  <Step title="Copy the client secret">
+    Generate (if needed) and copy the **client secret**, then add it to the same Intercom integration in Minimal AI.
+  </Step>
+</Steps>
+
+<Warning>
+  Never share your access token or client secret with third parties. Only paste them into Minimal AI's Intercom integration.
+</Warning>
+
+## Configure webhooks
+
+In your Intercom app, go to **Configure \> Webhooks** and set the endpoint URL to:
+
+```text
+https://gominimal.ai/api/webhook-ingress/intercom
+```
+
+Subscribe to the following topics:
+
+- `conversation.admin.replied`
+- `conversation.operator.replied`
+- `conversation.user.created`
+- `conversation.user.replied`
+- `ticket.created`
+
+Once the credentials are saved in Minimal AI and the webhooks are active, Intercom conversations will flow into Minimal AI.
