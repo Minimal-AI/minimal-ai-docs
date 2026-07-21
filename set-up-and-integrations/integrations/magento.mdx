@@ -1,0 +1,40 @@
+---
+title: "Magento"
+description: "Connect Magento (Adobe Commerce) to Minimal AI"
+---
+
+Connecting Magento (Adobe Commerce) gives your AI agents access to orders, products, and customer data so they can answer store questions accurately.
+
+## What you'll need
+
+- **Base URL** — your store URL, for example `https://store1.com/`.
+- **Consumer key** and **Consumer secret** — generated when you create the integration.
+- **Access token** and **Access token secret** — shown after you activate the integration.
+- **Store ID** — for example `1`.
+- **Currency code** — for example `EUR`.
+
+## Create a Magento integration
+
+<Steps>
+  <Step title="Add a new integration">
+    In the Magento Admin, go to **System \> Extensions \> Integrations** and click **Add New Integration**. Enter a name (for example, `Minimal AI`).
+  </Step>
+  <Step title="Grant API access">
+    In the **API** tab, set **Resource Access** to the resources the agent needs (orders, products, customers), then **Save**.
+  </Step>
+  <Step title="Activate to reveal tokens">
+    Back in the integrations grid, click **Activate** and confirm. Magento then displays the **Consumer Key**, **Consumer Secret**, **Access Token**, and **Access Token Secret**. Copy all four.
+  </Step>
+</Steps>
+
+<Note>
+  You can find your **Store ID** and **Currency code** under **Stores \> Settings \> All Stores** and **Stores \> Configuration \> General \> Currency Setup**.
+</Note>
+
+## Connect in Minimal AI
+
+Go to [Dashboard \> Integrations](https://gominimal.ai/dashboard/integrations), click **Add an integration \> Magento**, and fill in the base URL, the four OAuth values, your store ID, and currency code.
+
+<Warning>
+  These tokens grant API access to your store data. Keep them secret and only paste them into Minimal AI.
+</Warning>

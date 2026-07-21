@@ -1,0 +1,36 @@
+---
+title: "Odoo"
+description: "Connect Odoo to Minimal AI"
+---
+
+Connecting Odoo lets your AI agents look up orders, products, and customer data from your Odoo instance.
+
+## What you'll need
+
+- **Base URL** — your Odoo URL, for example `https://yourcompany.odoo.com`.
+- **Database name** — the name of your Odoo database.
+- **Username** — the login (email) of the Odoo user to authenticate as.
+- **API key** — an Odoo API key for that user.
+
+## Create your Odoo API key
+
+<Steps>
+  <Step title="Open account security">
+    In Odoo, click your avatar and open **My Profile \> Account Security** (or **Preferences \> Account Security**).
+  </Step>
+  <Step title="Create a new API key">
+    Click **New API Key**, enter a description (for example, `Minimal AI`), and copy the generated key. Odoo shows it only once.
+  </Step>
+</Steps>
+
+<Note>
+  Your **Database name** is shown on the Odoo login screen or in your instance settings. On Odoo Online it usually matches the subdomain in your base URL.
+</Note>
+
+## Connect in Minimal AI
+
+Go to [Dashboard \> Integrations](https://gominimal.ai/dashboard/integrations), click **Add an integration \> Odoo**, and fill in your base URL, database name, username, and API key.
+
+<Warning>
+  Keep your API key secret and only paste it into Minimal AI's Odoo integration.
+</Warning>

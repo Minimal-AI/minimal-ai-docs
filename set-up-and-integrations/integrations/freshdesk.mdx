@@ -1,0 +1,34 @@
+---
+title: "Freshdesk"
+description: "Connect Freshdesk to Minimal AI"
+---
+
+Connecting Freshdesk lets your AI agents read and reply to tickets directly in your Freshdesk helpdesk.
+
+## What you'll need
+
+- **Subdomain** — your organisation subdomain, the `{subdomain}` in `https://{subdomain}.freshdesk.com`.
+- **API key** — the personal API key from your Freshdesk profile.
+
+## Find your Freshdesk API key
+
+<Info>
+  Use the API key of an **administrator** so agents can read and update all tickets. API access is not available on the free (Sprout) plan, and the key only appears once your agent profile is verified.
+</Info>
+
+<Steps>
+  <Step title="Open your profile settings">
+    Log in to Freshdesk, click your **profile picture** in the top-right corner, and select **Profile settings**.
+  </Step>
+  <Step title="Reveal your API key">
+    In the right-hand pane, click **View API key** and complete the CAPTCHA. Copy the key that appears.
+  </Step>
+</Steps>
+
+## Connect in Minimal AI
+
+Go to [Dashboard \> Integrations](https://gominimal.ai/dashboard/integrations), click **Add an integration \> Freshdesk**, and fill in your subdomain and API key.
+
+<Warning>
+  Resetting your API key in Freshdesk disconnects every app using it. Keep the key secret and only paste it into Minimal AI.
+</Warning>

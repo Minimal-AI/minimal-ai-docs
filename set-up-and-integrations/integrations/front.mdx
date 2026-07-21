@@ -1,0 +1,36 @@
+---
+title: "Front"
+description: "Connect Front to Minimal AI"
+---
+
+Connecting Front lets your AI agents read and reply to conversations in your Front shared inbox.
+
+## What you'll need
+
+- **API token** — a Core API token created in your Front company settings.
+
+## Create your Front API token
+
+<Info>
+  You need to be a Front **admin** to create API tokens.
+</Info>
+
+<Steps>
+  <Step title="Open the Developers page">
+    In Front, go to **Settings \> Developers** and open the **API tokens** tab.
+  </Step>
+  <Step title="Create a token">
+    Click **Create API token**, give it a name (for example, `Minimal AI`), and choose its scope. Include the **Shared resources** namespace with **Read**, **Write**, and **Send** permissions so the agent can read and reply to conversations.
+  </Step>
+  <Step title="Copy the token">
+    Open the token and click **Reveal** or **Copy** to get the token value.
+  </Step>
+</Steps>
+
+## Connect in Minimal AI
+
+Go to [Dashboard \> Integrations](https://gominimal.ai/dashboard/integrations), click **Add an integration \> Front**, and paste your API token.
+
+<Warning>
+  Keep your API token secret and only paste it into Minimal AI's Front integration.
+</Warning>

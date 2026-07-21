@@ -1,0 +1,38 @@
+---
+title: "WooCommerce"
+description: "Connect WooCommerce to Minimal AI"
+---
+
+Connecting WooCommerce gives your AI agents access to orders, products, and customer data so they can answer questions like "Where is my order?" accurately.
+
+## What you'll need
+
+- **Consumer key** — starts with `ck_`.
+- **Consumer secret** — starts with `cs_`.
+- **Base URL** — your store URL, including `https://`.
+
+## Create your WooCommerce API keys
+
+<Info>
+  Make sure your WordPress permalinks are set to something other than **Plain** (Settings \> Permalinks), otherwise the REST API won't work.
+</Info>
+
+<Steps>
+  <Step title="Open the REST API settings">
+    In WordPress, go to **WooCommerce \> Settings \> Advanced \> REST API** and click **Add key**.
+  </Step>
+  <Step title="Create a key with read/write access">
+    Enter a description (for example, `Minimal AI`), select a user with access to orders, and set **Permissions** to **Read/Write**. Click **Generate API key**.
+  </Step>
+  <Step title="Copy the key and secret">
+    Copy the **Consumer key** and **Consumer secret** now — the secret is only shown once.
+  </Step>
+</Steps>
+
+## Connect in Minimal AI
+
+Go to [Dashboard \> Integrations](https://gominimal.ai/dashboard/integrations), click **Add an integration \> WooCommerce**, and fill in your consumer key, consumer secret, and base URL (including `https://`).
+
+<Warning>
+  Keep your consumer key and secret safe. Revoking the key in WooCommerce disconnects the integration.
+</Warning>
