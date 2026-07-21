@@ -60,6 +60,10 @@ Make sure you have:
   </Step>
 </Steps>
 
+<Warning>
+  The floating widget only appears on pages you mark as **active** in the website sitemap under [Dashboard \> Storefront](https://gominimal.ai/dashboard/storefront). If the widget is installed but does not show on a page, check that the page (or its parent folder) is set to active. See [Choose where the widget appears](#choose-where-the-widget-appears).
+</Warning>
+
 ## Platform notes
 
 <AccordionGroup>
@@ -76,6 +80,41 @@ Make sure you have:
   </Accordion>
 </AccordionGroup>
 
+## Website content and where the widget appears
+
+You manage the widget's knowledge and behavior from the **Website** tab in [Dashboard \> Storefront](https://gominimal.ai/dashboard/storefront), where your crawled pages appear as a sitemap. See the [Website integration](/set-up-and-integrations/integrations/website) for more on connecting content.
+
+### Choose where the widget appears
+
+Every page, folder, and the website itself has an **active** toggle in the sitemap. The floating widget only appears on pages that are set to active:
+
+- Toggling a **folder** active or inactive applies to every page inside it.
+- An individual **page** can override its folder.
+- If the widget is installed but does not show on a page, confirm that page (or its parent folder) is active.
+
+<Note>
+  Marking a page inactive stops the widget from showing there and removes the page from the knowledge used for answers. Use this for pages like carts, checkout, or account pages.
+</Note>
+
+### Advanced crawl options
+
+When you connect or configure your website, open **Advanced** to control how Minimal crawls your store:
+
+- **Submit a sitemap** - point Minimal at your sitemap URL so it discovers pages reliably instead of only following links.
+- **Additional delay between scrapes** - add a delay between page requests to avoid overloading your server or hitting rate limits on large stores.
+
+You can also narrow the crawl with include and ignore paths under **Crawl scope** (for example, only crawl `/products`, or ignore `/cart`).
+
+### Influence the suggested questions
+
+The widget shows **suggested questions** to shoppers. Minimal auto-generates these per page after crawling, and you can adjust them from the sitemap:
+
+- Select a **page** to edit that page's questions, or switch it to inherit from its folder.
+- Select a **folder** and choose **Override at folder level** to use one shared set of questions for every page in that folder.
+- Select the **website** row to set default questions for the whole site.
+
+Edit, add, remove, or reorder the questions and save. Your custom questions replace the auto-generated ones for that scope.
+
 ## Verify your installation
 
 1. Open a page on an allowed origin in a fresh browser tab.
@@ -86,7 +125,7 @@ Make sure you have:
 
 <AccordionGroup>
   <Accordion title="The widget does not appear">
-    Check that the page's origin is listed under allowed origins, that the storefront channel is active, and that the kill switch is off in the dashboard. Also confirm the script snippet is actually present in the page source.
+    Check that the page's origin is listed under allowed origins, that the current page (or its folder) is set to **active** in the website sitemap, that the storefront channel is active, and that the kill switch is off in the dashboard. Also confirm the script snippet is actually present in the page source.
   </Accordion>
 
   <Accordion title="It works on one domain but not another">
