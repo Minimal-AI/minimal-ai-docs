@@ -5,7 +5,7 @@ description: "A guide on creating protocols for your AI Agent + templates"
 
 ## Overview
 
-The AI Agents use protocols to resolve tickets accroding to your business processes. It's the way to teach your AI Agents how to tackle specific problems, what integrations to use and what to tell to custmers. It is important to write protocols for all situations that can occur. For E-commerce, think about for returns, cancellations, exchanges, complaints, broken products and many more.
+The AI Agents use protocols to resolve tickets according to your business processes. It's the way to teach your AI Agents how to tackle specific problems, what integrations to use and what to tell customers. It is important to write protocols for all situations that can occur. For E-commerce, think about for returns, cancellations, exchanges, complaints, broken products and many more.
 
 ## Training Center
 
@@ -15,7 +15,7 @@ Protocols can be written in the [Training Center](https://gominimal.ai/dashboard
 A base is a collection of categories with protocols that can be assigned to an AI Agent
 
 **Categories**\
-For clarity and scannability, each category in a base should clearly indicate what it is about. Also, categories should be mutually exclusive from other categories (i.e.  We often see these categories:
+For clarity and scannability, each category in a base should clearly indicate what it is about. Also, categories should be mutually exclusive from one another. We often see these categories:
 
 - Orders, Shipment & Delivery
 - Returns, Cancellations & Exchanges
@@ -32,7 +32,7 @@ Feel free to deviate from this structure, if that feels better for your business
 
 Once you have created categories, it's time to write protocols. Protocol can be created by clicking the "add new protocol" button within each category. Protocols can be written by talking to our AI Manager. To get started, tell the manager what the protocol should be about. This can be done in any language. For example:
 
-- _Help me write a protocl about returning orders_
+- _Help me write a protocol about returning orders_
 - _I want to write a protocol about customers asking where their package is_
 
 The manager will then ask you questions based on your input, and will help write the protocol. It is best practice to **be as detailed and specific** as possible. Tell the Manager from what systems certain information needs to be retrieved, for example: "_if the package has been fullfilled longer than 4 days ago according to Shopify then do ..._". Also, make sure to think about all possible scenario's and edge cases that can happen, this will improve performance. If the AI Agent does not find the answer to a specific scenario in a protocol, it won't know how to answer the question.
@@ -51,7 +51,7 @@ Protocols can also be edited manually by clicking on the protocol, it then turns
 
 1. A protocol should not contain mistakes or actions that are not possible.
 2. A protocol should cover all cases that can arise. For example, a protocol about _"Returning Orders"_ should cover steps for all the different reasons for returning orders, all the different time windows (e.g. order has been delivered more than 30 days ago AND less than 30 days ago). Also, think about what happens when the customer wants to return items in a single package, loses the return form etc. However, a customer asking for their return status is a different protocol and should not be put in the "Returning Orders" protocol.
-3. A protocol should never contradict other protocols. Make sure all protocols are mutually exclusive and collectively echaustive.
+3. A protocol should never contradict other protocols. Make sure all protocols are mutually exclusive and collectively exhaustive.
 4. A protocol should clearly state what information to get from what integration.\
    **Bad**:_"if the order has been returned then.."_ \
    **Good:** _"if the order has been marked as returned in Monta, then..."_
