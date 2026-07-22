@@ -1,0 +1,82 @@
+---
+title: "Automation"
+description: "How global automation and automating individual protocols work together"
+icon: "robot"
+---
+
+## Overview
+
+"Automation" in Minimal AI is not a single switch. Whether your agent sends a reply on its own is decided by **several layers that all have to line up**. The two that get confused most often are:
+
+- **Global automation** — the account-wide setting that decides whether your agent is allowed to send replies automatically at all, configured in your [automation settings](https://gominimal.ai/dashboard/automate).
+- **Automating a protocol** — the per-protocol **Automated** toggle that decides whether _that specific scenario_ may be sent automatically.
+
+Think of global automation as the **master switch** and each protocol's toggle as a **per-scenario switch**. A reply is only ever auto-sent when the master switch _and_ the relevant per-scenario switch are both on (and the reply passes your guardrails).
+
+<Note>
+  Turning on global automation does **not** automate every reply. It only unlocks automation — each protocol you want the agent to handle on its own still has to be switched to **Automated** individually.
+</Note>
+
+## Global automation vs. automating protocols
+
+|  | Global automation | Automating a protocol |
+| --- | --- | --- |
+| **Where** | [Automation settings](https://gominimal.ai/dashboard/automate) | The **Automated** toggle inside each [protocol](/training/protocols) |
+| **Scope** | The whole agent / account | One scenario |
+| **What it controls** | Whether the agent may auto-send **anything** | Whether **this** scenario may be auto-sent |
+| **When off** | Every reply is left as a suggestion, no matter the protocol | The agent drafts a suggestion for this scenario only |
+| **Analogy** | Master switch | Per-scenario switch |
+
+## The layers of automation
+
+For a reply to be sent automatically, **all** of the following must be true at once:
+
+<Steps>
+  <Step title="Global automation is on">
+    Automated mode is enabled in your [automation settings](https://gominimal.ai/dashboard/automate). If it's off, everything stays a suggestion.
+  </Step>
+  <Step title="Every matched protocol is automated">
+    Each [protocol](/training/protocols) that covers the message has its **Automated** toggle on. If a message spans multiple topics and even one matched protocol is not automated, the agent drafts a suggestion instead of sending.
+  </Step>
+  <Step title="Any actions used are automated">
+    [Actions](/training/actions) have their own automation toggle **per protocol**. An action only runs on its own when both the protocol **and** the action are automated. Otherwise the agent proposes the action and waits for a human.
+  </Step>
+  <Step title="Guardrails pass">
+    Safety checks (toxic language, prompt-injection attempts, unfilled placeholders, a customer asking for a human, rate limits, human takeover) must not trip. If one does, the agent leaves a draft.
+  </Step>
+</Steps>
+
+<Info>
+  The logic is an **AND** across all layers. Global automation on \+ protocol automated \+ action automated \+ guardrails passed → the reply is sent automatically. If any single layer is off, the agent falls back to a suggestion.
+</Info>
+
+## Active vs. Automated
+
+Don't confuse a protocol's two toggles:
+
+- **Active** — whether the agent may **use** the protocol at all. When paused, the agent ignores the protocol even if its base is connected.
+- **Automated** — whether the agent may **auto-send** replies for the protocol. When off, the agent still uses the protocol, but leaves its reply as a suggestion.
+
+A protocol must be **Active** to do anything. **Automated** only matters once the protocol is active and global automation is on.
+
+## Recommended rollout
+
+<Steps>
+  <Step title="Start in suggestion mode">
+    Keep global automation off at first. The agent drafts replies your team reviews and sends — the safest way to build trust in its answers.
+  </Step>
+  <Step title="Turn on global automation">
+    Once you're confident, enable automated mode in your [automation settings](https://gominimal.ai/dashboard/automate). This unlocks automation but doesn't change any protocol yet.
+  </Step>
+  <Step title="Automate protocols one by one">
+    Switch the **Automated** toggle on for the protocols you trust most first (simple, high-volume, low-risk scenarios), then expand from there.
+  </Step>
+</Steps>
+
+<Tip>
+  Not sure which protocols are ready to automate? Ask the [AI Manager](https://gominimal.ai/dashboard/ai-manager) — it can learn from your ticket history and suggest where automation is safe to enable.
+</Tip>
+
+<Warning>
+  Automating a protocol has no effect while global automation is off, and global automation has no effect on a protocol whose **Automated** toggle is off. Both levels have to agree before anything is sent on its own.
+</Warning>
