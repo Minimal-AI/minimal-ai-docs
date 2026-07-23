@@ -114,7 +114,6 @@
           },
           {
             "group": "Analytics",
-            "icon": "chart-line",
             "pages": [
               "analytics"
             ]
