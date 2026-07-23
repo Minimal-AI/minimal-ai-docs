@@ -19,7 +19,8 @@
             "group": "Get started",
             "pages": [
               "index",
-              "quickstart"
+              "quickstart",
+              "ai-manager"
             ]
           },
           {
@@ -107,14 +108,15 @@
             "group": "Training",
             "pages": [
               "training/protocols",
-              "training/actions"
+              "training/actions",
+              "training/automation"
             ]
           },
           {
-            "group": "Automation",
-            "icon": "robot",
+            "group": "Analytics",
+            "icon": "chart-line",
             "pages": [
-              "automation"
+              "analytics"
             ]
           }
         ]

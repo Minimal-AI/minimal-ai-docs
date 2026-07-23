@@ -1,0 +1,69 @@
+---
+title: "AI Manager"
+description: "The assistant that helps you understand, manage, and improve your AI Agents"
+icon: "wand-magic-sparkles"
+---
+
+## What the AI Manager is
+
+The [AI Manager](https://gominimal.ai/dashboard/ai-manager) is a conversational assistant in your dashboard that helps you **understand, manage, and improve your AI Agents**. Instead of hunting through settings, you describe what you want in plain language — in any language — and it does the work with you.
+
+It already has access to your setup, so you don't need to paste anything in. It can pull your agents, protocols, integrations, tickets, and analytics on demand, and it always works from live data.
+
+<Note>
+  When you give feedback or make a request, the AI Manager assumes you mean your **AI Agent's** behaviour — not itself — unless you're clearly asking about the Manager.
+</Note>
+
+## What it can do
+
+<CardGroup cols={2}>
+  <Card title="Diagnose a ticket" icon="magnifying-glass">
+    Ask why a ticket was answered a certain way, escalated, drafted, or not automated. The AI Manager reconstructs the full run and explains what happened at each step.
+  </Card>
+  <Card title="Edit configuration" icon="sliders">
+    It can update your reply prompt, rules, tone of voice, automation prompt, and guardrails — and create or edit [protocols](/training/protocols) and wire in [actions](/training/actions).
+  </Card>
+  <Card title="Review performance" icon="chart-line">
+    Ask how your agents are doing and it will pull your [analytics](/analytics) and explain the numbers, per agent and over time.
+  </Card>
+  <Card title="Surface improvements" icon="lightbulb">
+    It can learn from your recent tickets to point out the topics most worth looking at — knowledge gaps, avoidable escalations, and automation opportunities.
+  </Card>
+</CardGroup>
+
+### How it proposes changes
+
+The AI Manager is built to make changes **safe and clear**:
+
+- It leads with the recommendation — what to change and where — and keeps the reasoning short.
+- Before you approve, it spells out exactly what will happen if you say yes.
+- Edits are made through the same review flow as manual edits: protocol changes are **versioned**, and you **publish** them before they take effect.
+- [Actions](/training/actions) it adds to a protocol default to **manual approval**, so nothing runs in your connected systems until you turn on that action's automation.
+
+<Tip>
+  After a change is applied, publish it and test it end to end in the [Playground](https://gominimal.ai/dashboard/playground) — it runs the same real pipeline (protocol matching, lookups, guardrails, automation) as a live ticket.
+</Tip>
+
+## What it can't do (you do these in the dashboard)
+
+Some things are deliberately left to you in the UI. The AI Manager will point you to the right place rather than doing these itself:
+
+- Toggle a protocol's **Active** or **Automated** switches
+- Toggle **global automation** on or off
+- Toggle the **per-action automation** switch in a protocol's actions panel
+- Change the agent's **response delay**
+- Connect, disconnect, or reconfigure [integrations](/set-up-and-integrations/integrations/overview)
+- Create or delete agents, or assign [training bases](/training/protocols) to an agent
+- Edit agent settings beyond the reply prompt, rules, tone of voice, automation prompt, and guardrails prompt
+
+It also can't *simulate* an agent from within the chat. To test an agent, use the [Playground](https://gominimal.ai/dashboard/playground) (helpdesk and email agents) or the storefront **Preview** widget (storefront agents).
+
+## How it communicates
+
+- **It replies in your language.** The tickets and protocols it reads are often in your customer's language, but the AI Manager keeps its own analysis and recommendations in the language you're writing in.
+- **It uses plain names.** You'll see friendly names for actions, protocols, agents, and integrations — never internal IDs or slugs.
+- **It's honest about limits.** If it doesn't know something (for example, an exact UI location that's changed), it says so instead of guessing, and it can flag genuine issues to the Minimal AI team for you.
+
+<Tip>
+  The AI Manager is the best first stop for almost anything: "Why did this ticket escalate?", "Tighten my return protocol", "How's automation trending this week?", or "What should I improve next?".
+</Tip>

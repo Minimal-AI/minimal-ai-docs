@@ -1,0 +1,80 @@
+---
+title: "Analytics & performance"
+description: "How Minimal measures agent performance, and why raw ticket count and automation rate don't tell the full story"
+icon: "chart-line"
+---
+
+## Overview
+
+Your analytics answer two very different questions, and it's important not to mix them up:
+
+- **Volume** — *how much* am I using Minimal AI? This is about billing and workload.
+- **Performance** — *how well* are my agents actually resolving conversations? This is about quality.
+
+You'll find both on the **Usage & Performance** dashboard at [gominimal.ai/dashboard/usage-performance](https://gominimal.ai/dashboard/usage-performance). You can scope the numbers to a date range (7, 30, or 90 days, or a custom window) and filter by agent.
+
+<Note>
+  Volume and performance are **separate metrics that measure different things**. A high ticket count doesn't mean your agent is doing well, and a low one doesn't mean it's doing badly — they answer different questions.
+</Note>
+
+## Volume: billable tickets
+
+A **billable ticket** is a ticket where:
+
+1. **Minimal AI was active** — the agent produced a suggestion or an automated reply, **and**
+2. **At least one outbound reply was sent** — either a suggestion your team used, or an automated message.
+
+A ticket is counted **once**, on the first day Minimal acted on it (the first reply sent, or the first draft created for a human). Later replies on other days don't add to the count. Tickets your agent's [reply settings](/set-up-and-integrations/ai-agents) exempt (like review notifications or no-reply addresses) don't count.
+
+Billable tickets are your **usage / invoicing** number — use them to answer "how much have I used this month?" or "am I near my plan limit?". They are **not** a quality signal.
+
+## Performance: direct resolution rate
+
+The headline quality metric is **Direct Resolution Rate** — how often Minimal's output was actually used **without a human rewriting it**:
+
+**Direct Resolution Rate = ( Directly copied suggestions + Automated messages ) ÷ Total messages**
+
+A couple of definitions make this precise:
+
+- A **message** is an outbound reply Minimal generated (a suggestion or an automated send) that was **not escalated**. Escalated messages are excluded because they don't carry a clean quality signal.
+- **Directly copied** means the sent message is *semantically the same* as the agent's suggestion. Cosmetic edits (typos, punctuation, greetings, signature/logo) still count. Edits that change the **meaning or outcome** — amounts, deadlines, policies — do not.
+
+So direct resolution captures every reply that was good enough to go out as-is, **whether it was automated or a human approved the draft unchanged**.
+
+### Automation rate
+
+**Automation Rate = Automated messages ÷ Total messages** — the share of replies that went out with **no human in the loop**. It's a **subset** of direct resolution: every automated message is also a directly-resolved one, but not every directly-resolved message was automated (a human may have approved the draft as-is).
+
+## Why not "full ticket count" or "automation rate"?
+
+It's tempting to judge an agent by its total ticket count or its automation percentage. Neither tells the full story.
+
+<AccordionGroup>
+  <Accordion title="Ticket count is volume, not quality">
+    Total tickets tell you how busy you are, not how well the agent replied. Ticket volume also doesn't line up one-to-one with messages: one ticket can produce several replies (spread across different days), and when multiple agents touch a ticket it's still a single billable ticket. Measuring quality by ticket count mixes two unrelated things.
+  </Accordion>
+  <Accordion title="Automation rate alone hides rewrites and healthy caution">
+    A high automation rate looks great — until you notice humans are rewriting most of what *isn't* automated. And a correct, high-quality answer is often **deliberately** held back for human approval by your coverage settings, guardrails, or rate limits. That's the system working as intended, not a failure. So a lower automation rate isn't necessarily worse quality.
+
+    This is exactly why **direct resolution rate** is the headline number: it counts every reply that was used as-is — automated *or* human-approved — so it reflects answer quality without punishing you for keeping a human in the loop.
+  </Accordion>
+  <Accordion title="Escalations are naturally high-volume — and often correct">
+    Handing a ticket to a human is frequently the *right* outcome, and escalations pile up by their nature. Counting them as failures, or ranking problems purely by how many tickets escalated, buries the issues actually worth fixing under a mountain of hand-offs that were correct.
+  </Accordion>
+</AccordionGroup>
+
+<Info>
+  The question that matters isn't "what percentage did we automate?" — it's "how much of what Minimal produced was good enough to use as-is, and where are the real, fixable gaps?"
+</Info>
+
+## How performance is used to improve
+
+Analytics isn't just a scoreboard — it's the input to making your agents better.
+
+- **Per-ticket insights.** Every run has an insights page that explains *why* a specific reply was sent, drafted, escalated, or not automated — including which [automation](/training/automation) coverage path applied and whether guardrails passed. When aggregate numbers hide the "why", this is where you look.
+- **Addressable improvements, not raw volume.** Ask the [AI Manager](/ai-manager) to review recent tickets and it surfaces the **topics most worth looking at**, grouped into three lists: **knowledge gaps** (the agent replied but was wrong or incomplete), **avoidable escalations**, and **automation opportunities** (answers already going out as-is that could be safely automated). These are ranked by **how many tickets a realistic fix would actually resolve** — the addressable impact — not by raw ticket or escalation counts.
+- **Hypotheses, then verification.** Those topics are starting points, not verdicts. The AI Manager verifies each against your live protocols and integrations before recommending a concrete change.
+
+<Tip>
+  Lead with **direct resolution rate** (quality) and **billable tickets** (volume), then let the [AI Manager](/ai-manager) turn the trends into specific fixes — a protocol to tighten, an action to add, or a scenario that's ready to automate.
+</Tip>

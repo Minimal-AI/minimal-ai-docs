@@ -1,0 +1,112 @@
+---
+title: "Automation"
+description: "How global automation, automated protocols, and the automation prompt decide when a reply is sent on its own"
+icon: "robot"
+---
+
+## Overview
+
+"Automation" in Minimal AI is not a single switch. Whether your agent sends a reply on its own is decided by **several layers that all have to line up**:
+
+- **Global automation** — the account-wide master switch that decides whether your agent may send replies automatically *at all*. Configured in your [automation settings](https://gominimal.ai/dashboard/automate).
+- **Automation coverage** — for a specific reply, *something* has to say "this is safe to send on its own". There are **two independent ways** to get coverage: **automated protocols** and the **automation prompt**.
+- **Guardrails** — a final safety check that can still hold a reply back even when everything above says go.
+
+<Note>
+  Turning on global automation does **not** automate every reply. It only unlocks automation — each reply still needs coverage (from an automated protocol or the automation prompt) and has to pass guardrails.
+</Note>
+
+## The master switch: global automation
+
+Global automation lives in your [automation settings](https://gominimal.ai/dashboard/automate) and applies to the whole agent. When it's **off**, every reply is left as a suggestion for your team, no matter how anything else is configured. When it's **on**, automation is *unlocked* — but a reply is only sent automatically if it also gets coverage and passes guardrails.
+
+## Automation prompt vs. automated protocols
+
+This is the distinction that causes the most confusion. Both grant **coverage** — permission for a specific reply to be auto-sent — but they work very differently, and a reply is eligible if **either** one is satisfied.
+
+### Automated protocols
+
+Each [protocol](/training/protocols) has an **Automated** toggle. When a message is handled by protocols, coverage passes only if **every matched protocol** is set to Automated. If a message spans multiple topics and even one matched protocol is not automated, the reply is drafted instead of sent.
+
+This is **precise, per-scenario control**: you decide exactly which scenarios the agent may handle on its own by toggling them one at a time.
+
+### The automation prompt
+
+The **automation prompt** is a plain-language instruction in your agent's configuration that describes which kinds of replies are safe to send automatically — for example, _"Automate responses about order status, delivery times, and return policies."_ When the drafted reply fits what the prompt describes, coverage passes.
+
+The important catch: the automation prompt is evaluated from **only the conversation and the reply the agent drafted**. It does **not** see which protocols matched, what your integrations returned, or which actions were involved. So:
+
+- ✅ Good automation-prompt instructions describe **topics or types of replies**: _"Automate answers to questions about shipping times and our return window."_
+- ❌ Poor instructions rely on things the prompt can't see: _"Automate when a Shopify order lookup was performed"_ — it has no visibility into tool calls or protocols.
+
+This makes the automation prompt a **broad, topic-level allowance** you can set once, rather than toggling every protocol individually.
+
+|  | Automated protocols | Automation prompt |
+| --- | --- | --- |
+| **Where** | The **Automated** toggle inside each [protocol](/training/protocols) | The automation prompt in [Agent configuration](https://gominimal.ai/dashboard/agents) |
+| **Granularity** | Per scenario | Broad, topic-level |
+| **What it sees** | The specific matched protocol(s) | Only the conversation + the drafted reply |
+| **Best for** | Precise control over exactly which scenarios auto-send | Allowing whole categories of replies without per-protocol toggling |
+| **Coverage passes when** | Every matched protocol is Automated | The reply matches what the prompt describes |
+
+<Info>
+  Coverage is an **OR**: a reply is eligible to auto-send if its matched protocols are all automated **or** the automation prompt allows it. You don't need both.
+</Info>
+
+## The layers of automation
+
+For a reply to actually be sent automatically, **all** of the following must be true at once:
+
+<Steps>
+  <Step title="Global automation is on">
+    Automated mode is enabled in your [automation settings](https://gominimal.ai/dashboard/automate). If it's off, everything stays a suggestion.
+  </Step>
+  <Step title="The reply has coverage">
+    Either **every matched [protocol](/training/protocols) is Automated**, or the **automation prompt** allows this kind of reply. If neither is satisfied, the agent drafts a suggestion.
+  </Step>
+  <Step title="Any actions used are automated">
+    [Actions](/training/actions) have their own automation toggle **per protocol**. An action only runs on its own when both the protocol **and** the action are automated. Otherwise the agent proposes the action and waits for a human.
+  </Step>
+  <Step title="Guardrails pass">
+    Safety checks (toxic language, prompt-injection attempts, unfilled placeholders, a customer asking for a human, rate limits, human takeover) must not trip. If one does, the agent leaves a draft.
+  </Step>
+</Steps>
+
+<Info>
+  The logic is an **AND** across the layers: global automation on **+** coverage (automated protocols **or** automation prompt) **+** any actions automated **+** guardrails passed → the reply is sent automatically. If any layer fails, the agent falls back to a suggestion.
+</Info>
+
+<Tip>
+  On any ticket's insights page, the **Automation Coverage** section shows both paths side by side — automated-protocol coverage and automation-prompt coverage — so you can see which one (if either) allowed a reply to be sent, or why it was drafted.
+</Tip>
+
+## Active vs. Automated
+
+Don't confuse a protocol's two toggles:
+
+- **Active** — whether the agent may **use** the protocol at all. When paused, the agent ignores the protocol even if its base is connected.
+- **Automated** — whether the agent may **auto-send** replies for the protocol. When off, the agent still uses the protocol, but leaves its reply as a suggestion.
+
+A protocol must be **Active** to do anything. **Automated** only matters once the protocol is active and global automation is on.
+
+## Recommended rollout
+
+<Steps>
+  <Step title="Start in suggestion mode">
+    Keep global automation off at first. The agent drafts replies your team reviews and sends — the safest way to build trust in its answers.
+  </Step>
+  <Step title="Turn on global automation">
+    Once you're confident, enable automated mode in your [automation settings](https://gominimal.ai/dashboard/automate). This unlocks automation but doesn't auto-send anything on its own yet.
+  </Step>
+  <Step title="Grant coverage gradually">
+    Start by automating the protocols you trust most (simple, high-volume, low-risk scenarios). As you gain confidence, you can broaden with an automation prompt that allows whole categories of replies.
+  </Step>
+</Steps>
+
+<Tip>
+  Not sure which protocols or topics are ready to automate? Ask the [AI Manager](https://gominimal.ai/dashboard/ai-manager) — it can learn from your ticket history and point out where automation is safe to enable.
+</Tip>
+
+<Warning>
+  Coverage and global automation both have to agree before anything is sent on its own. Automating a protocol (or writing an automation prompt) has no effect while global automation is off, and global automation alone sends nothing until a reply also gets coverage.
+</Warning>
