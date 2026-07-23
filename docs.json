@@ -109,6 +109,13 @@
               "training/protocols",
               "training/actions"
             ]
+          },
+          {
+            "group": "Automation",
+            "icon": "robot",
+            "pages": [
+              "automation"
+            ]
           }
         ]
       }
