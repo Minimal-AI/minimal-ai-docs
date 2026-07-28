@@ -29,7 +29,6 @@
               "set-up-and-integrations/integrations/overview",
               {
                 "group": "Ticketing & helpdesk",
-                "icon": "headset",
                 "pages": [
                   "set-up-and-integrations/integrations/gorgias",
                   "set-up-and-integrations/integrations/intercom",
@@ -46,7 +45,6 @@
               },
               {
                 "group": "Stores & ecommerce",
-                "icon": "cart-shopping",
                 "pages": [
                   "set-up-and-integrations/integrations/shopify",
                   "set-up-and-integrations/integrations/woocommerce",
@@ -57,7 +55,6 @@
               },
               {
                 "group": "Operations & backend",
-                "icon": "gears",
                 "pages": [
                   "set-up-and-integrations/integrations/active-ants",
                   "set-up-and-integrations/integrations/channable",
