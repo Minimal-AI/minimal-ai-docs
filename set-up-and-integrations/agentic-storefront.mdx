@@ -17,13 +17,44 @@ The Agentic Storefront widget adds Minimal's AI shopping assistant to your webst
 
 Make sure you have:
 
-- A storefront channel created in the dashboard, with a connected [website source](/set-up-and-integrations/integrations/website) so the assistant has content to answer from.
+- A storefront channel created in the dashboard. Crawling a [website source](/set-up-and-integrations/integrations/website) is optional - see [Choose a website mode](#choose-a-website-mode).
 - The storefront connected as a channel to an **active** [AI Agent](/set-up-and-integrations/ai-agents). Without this, the widget loads but cannot generate replies.
 - Access to edit your storefront's theme or HTML (or a tag manager such as Google Tag Manager).
 
 <Warning>
   We recommend always creating a **new, dedicated AI Agent** for your storefront and connecting the storefront as one of its channels. A storefront that is not connected as a channel to an active agent is the most common reason the widget loads but never replies.
 </Warning>
+
+## Choose a website mode
+
+When you create a storefront you enter a **Website URL**, then pick how Minimal should use it:
+
+- **Connect and start crawl** - Minimal crawls the website and the assistant answers from your page content. You get a sitemap in the **Website** tab, per-page control over where the widget appears, and auto-generated suggested questions.
+- **Create without scraping** - Minimal skips crawling entirely. The widget runs on every page where you install the script, and the assistant answers from your AI agent's instructions and knowledge bases.
+
+<Note>
+  The **Website URL** is required either way. It sets the origin the widget is allowed to load on, and it becomes the root URL if you decide to crawl later.
+</Note>
+
+|  | Connect and start crawl | Create without scraping |
+| --- | --- | --- |
+| Answers from your page content | Yes | No |
+| Where the floating widget appears | Only on pages marked **active** | Every page where the script is installed |
+| Auto-generated suggested questions | Yes | No |
+| **Website** tab in the dashboard | Shown | Hidden |
+
+Create without scraping when your product and policy knowledge already lives in your agent's instructions and knowledge bases, when your site sits behind a login and cannot be crawled, or when you want the assistant on every page without managing a sitemap.
+
+<Warning>
+  Without a crawled website the assistant has no page context, so it cannot answer questions about the specific page a shopper is viewing. Make sure your [AI Agent](/set-up-and-integrations/ai-agents) has the instructions and knowledge bases it needs to answer on its own.
+</Warning>
+
+### Switch modes later
+
+You are not locked into the mode you picked:
+
+- **Add a website later** - on the **General** tab, choose **Connect a website** in the banner at the top. The **Website** tab appears and you can start a crawl. Crawled pages are active by default, so the widget keeps showing where it already did.
+- **Drop the website** - if you created a storefront for crawling but never connected a source, open the **Website** tab and choose **Continue without scraping**.
 
 ## Installation
 
@@ -66,7 +97,9 @@ Make sure you have:
 </Steps>
 
 <Warning>
-  The floating widget only appears on pages you mark as **active** in the website sitemap under [Dashboard \> Storefront](https://gominimal.ai/dashboard/storefront). If the widget is installed but does not show on a page, check that the page (or its parent folder) is set to active. See [Choose where the widget appears](#choose-where-the-widget-appears).
+  If you connected a crawled website, the floating widget only appears on pages you mark as **active** in the website sitemap under [Dashboard \> Storefront](https://gominimal.ai/dashboard/storefront). If the widget is installed but does not show on a page, check that the page (or its parent folder) is set to active. See [Choose where the widget appears](#choose-where-the-widget-appears).
+
+  This does not apply to storefronts created without scraping - there is no sitemap, so the widget appears on every page where you install the script.
 </Warning>
 
 ## Platform notes
@@ -88,6 +121,10 @@ Make sure you have:
 ## Website content and where the widget appears
 
 You manage the widget's knowledge and behavior from the **Website** tab in [Dashboard \> Storefront](https://gominimal.ai/dashboard/storefront), where your crawled pages appear as a sitemap. See the [Website integration](/set-up-and-integrations/integrations/website) for more on connecting content.
+
+<Note>
+  This section applies only to storefronts with a crawled website. If you created yours without scraping, the **Website** tab is hidden and none of the settings below apply. See [Choose a website mode](#choose-a-website-mode).
+</Note>
 
 ### Choose where the widget appears
 
@@ -130,7 +167,7 @@ Edit, add, remove, or reorder the questions and save. Your custom questions repl
 
 <AccordionGroup>
   <Accordion title="The widget does not appear">
-    Check that the page's origin is listed under allowed origins, that the current page (or its folder) is set to **active** in the website sitemap, that the storefront channel is active, and that the kill switch is off in the dashboard. Also confirm the script snippet is actually present in the page source.
+    Check that the page's origin is listed under allowed origins, that the storefront channel is active, and that the kill switch is off in the dashboard. Also confirm the script snippet is actually present in the page source. If your storefront has a crawled website, check that the current page (or its folder) is set to **active** in the website sitemap - storefronts created without scraping have no sitemap and are not gated this way.
   </Accordion>
 
   <Accordion title="The widget appears but doesn't reply">
