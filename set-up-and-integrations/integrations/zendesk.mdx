@@ -43,10 +43,33 @@ Connecting Zendesk lets your AI agents read and reply to tickets directly in you
   </Step>
 </Steps>
 
+## Set up Sunshine Conversations (optional)
+
+Only needed if you use Zendesk's Sunshine Conversations messaging. If you provide one of these three values, provide all three.
+
+<Steps>
+  <Step title="Open your profile">
+    In Zendesk, click your **profile icon** in the top right of the screen, then click **Manage profile**.
+  </Step>
+  <Step title="Go to the Admin Center">
+    At the top left, click **View in Admin Center**.
+  </Step>
+  <Step title="Open the Conversations API">
+    Go to **Apps and integrations \> APIs \> Conversations API**.
+
+    <Note>
+      If the Conversations API is not visible, your Zendesk plan does not include it. Contact Zendesk to have it enabled.
+    </Note>
+  </Step>
+  <Step title="Create an API token">
+    Click **Add API token**, then copy the **App ID**, **Key ID** and **Secret**. Store them somewhere safe.
+  </Step>
+</Steps>
+
 ## Connect in Minimal AI
 
-Go to [Dashboard \> Integrations](https://gominimal.ai/dashboard/integrations), click **Add an integration \> Zendesk**, and fill in your subdomain, **OAuth Client Identifier** and **OAuth Client Secret**. Leave the Sunshine fields blank unless you use Sunshine Conversations.
+Go to [Dashboard \> Integrations](https://gominimal.ai/dashboard/integrations), click **Add an integration \> Zendesk**, and fill in your subdomain, **OAuth Client Identifier** and **OAuth Client Secret**. Add the **App ID**, **Key ID** and **Secret** as well if you use Sunshine Conversations, otherwise leave those fields blank.
 
 <Warning>
-  Never share your OAuth client secret with third parties. Only paste it into Minimal AI's Zendesk integration.
+  Never share your OAuth client secret or your Sunshine Conversations secret with third parties. Only paste them into Minimal AI's Zendesk integration.
 </Warning>
