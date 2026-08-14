@@ -136,6 +136,11 @@
       "href": "https://gominimal.ai/dashboard"
     }
   },
+  "seo": {
+    "metatags": {
+      "robots": "noindex, nofollow"
+    }
+  },
   "contextual": {
     "options": [
      "copy",

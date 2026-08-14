@@ -1,0 +1,3 @@
+# Minimal AI Docs
+
+> This documentation is not available for AI crawlers or non-Google search indexes. See robots.txt.

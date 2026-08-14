@@ -1,0 +1,19 @@
+# No search indexing. Googlebot is allowed only so it can see noindex
+# tags and drop existing listings. All other crawlers are blocked.
+
+User-agent: Googlebot
+Allow: /
+Allow: /_next/image
+Disallow: /cdn-cgi/
+Disallow: /_next/
+Content-Signal: search=no, ai-train=no, ai-input=no
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Google-InspectionTool
+Allow: /
+
+User-agent: *
+Content-Signal: search=no, ai-train=no, ai-input=no
+Disallow: /
