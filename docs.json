@@ -141,6 +141,13 @@
       "robots": "noindex, nofollow"
     }
   },
+  "redirects": [
+    {
+      "source": "/llms-full.txt",
+      "destination": "/llms.txt",
+      "permanent": true
+    }
+  ],
   "contextual": {
     "options": [
      "copy",
