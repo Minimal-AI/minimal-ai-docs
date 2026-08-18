@@ -102,6 +102,15 @@
             ]
           },
           {
+            "group": "FAQ",
+            "icon": "circle-question",
+            "pages": [
+              "faq/escalated-tickets-gorgias",
+              "faq/ignored-tickets",
+              "faq/stop-replies-to-thank-you-tickets"
+            ]
+          },
+          {
             "group": "Training",
             "pages": [
               "training/protocols",
