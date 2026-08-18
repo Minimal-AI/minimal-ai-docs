@@ -1,0 +1,45 @@
+---
+title: "How do escalated tickets show up in Gorgias?"
+description: "What happens in Gorgias when your AI Agent hands a ticket to your team, and how to track those tickets"
+icon: "arrow-up-right-from-square"
+---
+
+## What happens when the agent escalates a ticket
+
+When your AI Agent decides a ticket needs a human, it escalates it instead of guessing. In Gorgias this looks like:
+
+<Steps>
+  <Step title="Minimal adds an internal note">
+    The agent posts an internal note on the ticket stating that Minimal escalated it. This note is only visible to your team, never to the customer.
+  </Step>
+  <Step title="The ticket stays open">
+    Minimal leaves the ticket **open** in Gorgias so it doesn't get lost in a closed or resolved state. Your team picks it up from there.
+  </Step>
+</Steps>
+
+<Note>
+  Depending on how the protocol is written, an escalation can be **silent** (no message to the customer) or come with a short holding reply letting them know a specialist will follow up. Either way, the internal note and open status are the same. See [Escalating to a human](/training/protocols#escalating-to-a-human) for how this is configured.
+</Note>
+
+## Tracking escalated tickets in one place
+
+Gorgias doesn't automatically group escalated tickets for you, but you can build your own view for it:
+
+<Steps>
+  <Step title="Create a custom view in Gorgias">
+    In Gorgias, create a new view (Settings \> Views, or from the sidebar \> Add view) and filter it on the internal note Minimal leaves, or on a tag if you've set one up for escalations.
+  </Step>
+  <Step title="Share it with your team">
+    Make the view shared so everyone on your support team can see which tickets Minimal has handed off and pick them up quickly.
+  </Step>
+</Steps>
+
+<Tip>
+  Not sure how to filter for it, or want the agent to tag escalations for easier filtering? Ask the [AI Manager](/ai-manager) — it can point you to the exact note text used, or help you adjust a protocol to also apply a tag on escalation.
+</Tip>
+
+## Related
+
+- [Protocols](/training/protocols) — how escalation points are configured
+- [Automation](/training/automation) — why some replies are drafted instead of sent automatically
+- [AI Manager](/ai-manager) — ask why a specific ticket was escalated

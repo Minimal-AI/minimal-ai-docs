@@ -1,0 +1,39 @@
+---
+title: 'How do I stop the agent replying to "thank you" or resolved tickets?'
+description: "Setting up a protocol so the agent doesn't reply when a ticket is already finished"
+icon: "circle-check"
+---
+
+## Why this happens
+
+By default your AI Agent tries to be helpful on every incoming message. Without specific guidance, that can mean it drafts or sends a reply to a customer's "thank you" or a ticket that's already resolved, when really no reply is needed at all.
+
+## The fix is a protocol, not a Gorgias setting
+
+This isn't something you configure in Gorgias — it's a training question for your agent. The best way to set it up is to describe the situation to the [AI Manager](/ai-manager):
+
+<Steps>
+  <Step title="Open the AI Manager">
+    Go to the [AI Manager](https://gominimal.ai/dashboard/ai-manager) in your dashboard.
+  </Step>
+  <Step title="Describe the scenario">
+    Tell it something like _"Don't reply when a customer just says thanks or the ticket is already resolved."_ Be specific about what counts as 'finished' for your business — a short thank-you note, a closed ticket with no new question, and so on.
+  </Step>
+  <Step title="Review and publish">
+    The AI Manager will draft a protocol (or a rule) covering this and show you the proposed change. Review it, then publish it so the agent starts using it.
+  </Step>
+</Steps>
+
+<Note>
+  This typically ends in a **silent escalation** or simply no action: the agent recognises the ticket doesn't need a reply and leaves it alone rather than sending something unnecessary. See [Escalating to a human](/training/protocols#escalating-to-a-human) for how that's structured inside a protocol.
+</Note>
+
+<Tip>
+  Test the change in the [Playground](https://gominimal.ai/dashboard/playground) with a few real thank-you or closed tickets before trusting it fully — it runs the same pipeline as a live ticket.
+</Tip>
+
+## Related
+
+- [Protocols](/training/protocols)
+- [AI Manager](/ai-manager)
+- [Automation](/training/automation)
