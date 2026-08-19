@@ -12,7 +12,7 @@ The loop has two halves:
 
 <CardGroup cols={2}>
   <Card title="Giving feedback" icon="thumbs-down">
-    Your support agents review each suggestion in the helpdesk and flag what's wrong — and what it should have said. Takes seconds per ticket.
+    Your support agents review each suggestion in the helpdesk and flag what's wrong — and what it should have said.
   </Card>
 
   <Card title="Processing feedback" icon="wand-magic-sparkles">
@@ -21,14 +21,14 @@ The loop has two halves:
 </CardGroup>
 
 <Note>
-  These are usually different people. In your organisation settings you can invite colleagues as **support agents**, who can only give feedback on tickets, or as **admins**, who can see and change everything. A common setup is the whole support team giving feedback, and one admin processing it.
+  These are usually different people. In your organisation settings you can invite colleagues as **support agents**, who can only give feedback on tickets, or as **admins**, who can see and change protocols. A common setup is the whole support team giving feedback, and one admin processing it.
 </Note>
 
 ## Giving feedback on a suggestion
 
 ### Finding the insights page
 
-Minimal writes its suggestion as an internal note on the ticket. Directly **above that note sits a second note containing a link to the insights page** — it looks slightly different in each helpdesk, but there is always a link, on every message the agent creates. Open it and you'll see:
+Minimal writes its suggestion as an internal note on the ticket. Directly **above that note sits a second note containing a link to the insights page**. it looks slightly different in each helpdesk, but there is always a link on every message the agent creates. Open it and you'll see:
 
 - **The message** the agent produced
 - **The answer explanation** — which protocols it used, which systems it looked in, and why it took the steps it took
@@ -40,23 +40,30 @@ Minimal writes its suggestion as an internal note on the ticket. Directly **abov
 
 If the draft is good, just copy it into your reply and send. You don't need to mark it as good — Minimal measures directly-copied suggestions automatically in the background. You can also use only part of the answer.
 
-### Leaving feedback
+### Leaving and processing feedback:
 
 If the answer is wrong, incomplete, or off-tone:
 
 <Steps>
-  <Step title="Press thumbs down">
-    A text field appears underneath.
+  <Step title="Click on the insights page">
+    Linked in the internal note in the ticketing system.
+  </Step>
+  <Step title="Scrol to the AI manager">
+    This AI manager is specifically trained on this specific text
   </Step>
   <Step title="Write what was wrong and what it should have been">
     Both halves matter. See the guidance below.
   </Step>
-  <Step title="Submit">
-    The feedback lands in the **Feedback** overview in your dashboard for your admin to process.
+  <Step title="Work through what it proposes">
+    Most often a protocol edit, sometimes a rule, a tone-of-voice change, or a change to the reply prompt. It may ask you a question back, or offer you a choice (for example: update this protocol, that one, or both).
+  </Step>
+  <Step title="Review the change and publish it">
+    Click **Review protocol** to open a side-by-side diff: the current version on the left, the new one on the right, with additions in green and removals in red. Read it properly, then **publish the new version**. Nothing you do in the AI Manager takes effect until you save and publish it.
+  </Step>
+  <Step title="Always save your changes">
+    Always apply or save the added or changed tone of voice/rule, or always review the protocol and published the latest version
   </Step>
 </Steps>
-
-Thumbs up works the same way and is genuinely useful — positive feedback shows which protocols are performing well and which subjects are ready to automate — but the thumbs down is where the improvement comes from.
 
 <Warning>
   Rewriting the draft yourself, or drafting your own reply in another tool, teaches the agent nothing. The ticket gets answered and the same mistake comes back tomorrow. If you had to change something, spend the extra ten seconds saying why.
@@ -76,17 +83,17 @@ The difference between feedback that improves the agent and feedback that sits i
   <Accordion title="Name the exact system and field">
     Our agents need to know precisely where to look — "somewhere in the order" isn't enough, in the same way it wouldn't be enough for a new colleague on their first day.
 
-    **Weak:** _"It should use the date the return arrived."_<br /> **Strong:** _"It should use the date from the `Return to customer` field on the tracking page linked in the `Otro seguimiento` field in Shopify."_
+    **Weak:** _"It should use the date the return arrived."_<br /> **Strong:** _"It should use the date from the_ `Return to customer `_field on the tracking page linked in the_ `Shipping link `_field in Shopify."_
 
-    Avoid relative directions like _"follow the instructions below"_ or _"the link underneath the order number"_ — they're ambiguous outside the screen you're looking at.
+    Avoid relative directions like _"follow the instructions below"_ or _"the link underneath the order number"_, they're ambiguous outside the screen you're looking at.
   </Accordion>
 
   <Accordion title="Tone and channel feedback counts too">
-    _"I wouldn't open an email this way"_, _"always thank the customer for their message first"_, or _"I'd never send this as an email at all"_ are all valid feedback. Tone feedback gets applied to your agent's tone of voice or rules, so it improves every future reply at once — and telling us a scenario shouldn't be answered by email is exactly what decides whether it's a candidate for automation.
+    _"I wouldn't open an email this way"_, _"always thank the customer for their message first"_, or _"I'd never send this as an email at all"_ are all valid feedback. Tone feedback gets applied to your agent's tone of voice or rules, so it improves every future reply at once, and telling us a scenario shouldn't be answered by email is exactly what decides whether it's a candidate for automation.
   </Accordion>
 
   <Accordion title="Say when you'd rather it escalated">
-    If the right outcome was a hand-off, say so: _"For complaints about a damaged product I'd rather it escalated straight away than sent a holding reply."_ That's a protocol change, and it's one of the fastest wins there is.
+    If the right outcome was a hand-off, say so: _"For complaints about a damaged product I'd rather it escalated straight away than sent a holding reply."_ 
   </Accordion>
 
   <Accordion title="Include a ticket ID when behaviour is inconsistent">
@@ -95,7 +102,7 @@ The difference between feedback that improves the agent and feedback that sits i
 </AccordionGroup>
 
 <Tip>
-  You don't have to work out the cause yourself. On the insights page you can ask the AI Manager **"how did you arrive at this answer?"** — it reconstructs the run and tells you which protocol it followed and what information it was missing. That usually turns "this is wrong" into a concrete gap in a couple of seconds.
+  You don't have to work out the cause yourself. On the insights page you can ask the AI Manager **"how did you arrive at this answer?"** it reconstructs the run and tells you which protocol it followed and what information it was missing. That usually turns "this is wrong" into a concrete gap in a couple of seconds.
 </Tip>
 
 ### Two signals worth recognising
@@ -104,7 +111,7 @@ The difference between feedback that improves the agent and feedback that sits i
 
 **A good suggestion isn't proof the knowledge is there.** An agent can reach the right answer on a subject your protocols only partly cover, and then get the next, slightly different ticket wrong. It's worth occasionally asking the AI Manager how it reached an answer you were happy with — you'll sometimes find a gap before it costs you a ticket.
 
-## Processing the feedback
+## Processing the feedback from colleagues 
 
 Feedback only changes the agent once someone processes it. That happens on the **Feedback** page in your dashboard.
 
