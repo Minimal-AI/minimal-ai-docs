@@ -1,0 +1,151 @@
+---
+title: "Feedback"
+description: "How your team reviews the agent's suggestions and turns feedback into better answers"
+icon: "comment-dots"
+---
+
+## Overview
+
+Before your agents automate anything, they work in **suggestion mode**: every ticket gets a drafted reply that a human reviews before it goes to the customer. That review is the single most valuable thing your team does in the first weeks. Every piece of feedback you process makes the next ticket on that subject better, and it's what lifts your [direct resolution rate](/analytics) high enough to start [automating](/training/automation).
+
+The loop has two halves:
+
+<CardGroup cols={2}>
+  <Card title="Giving feedback" icon="thumbs-down">
+    Your support agents review each suggestion in the helpdesk and flag what's wrong — and what it should have said. Takes seconds per ticket.
+  </Card>
+
+  <Card title="Processing feedback" icon="wand-magic-sparkles">
+    One owner works through the feedback queue with the [AI Manager](/ai-manager), turns valid feedback into protocol or agent changes, and publishes them.
+  </Card>
+</CardGroup>
+
+<Note>
+  These are usually different people. In your organisation settings you can invite colleagues as **support agents**, who can only give feedback on tickets, or as **admins**, who can see and change everything. A common setup is the whole support team giving feedback, and one admin processing it.
+</Note>
+
+## Giving feedback on a suggestion
+
+### Finding the insights page
+
+Minimal writes its suggestion as an internal note on the ticket. Directly **above that note sits a second note containing a link to the insights page** — it looks slightly different in each helpdesk, but there is always a link, on every message the agent creates. Open it and you'll see:
+
+- **The message** the agent produced
+- **The answer explanation** — which protocols it used, which systems it looked in, and why it took the steps it took
+- **A thumbs up and a thumbs down**
+- **The [AI Manager](/ai-manager)**, already loaded with this specific ticket
+- Any **proposed actions** waiting for approval (see [Actions](/training/actions))
+
+### Using the suggestion
+
+If the draft is good, just copy it into your reply and send. You don't need to mark it as good — Minimal measures directly-copied suggestions automatically in the background. You can also use only part of the answer.
+
+### Leaving feedback
+
+If the answer is wrong, incomplete, or off-tone:
+
+<Steps>
+  <Step title="Press thumbs down">
+    A text field appears underneath.
+  </Step>
+  <Step title="Write what was wrong and what it should have been">
+    Both halves matter. See the guidance below.
+  </Step>
+  <Step title="Submit">
+    The feedback lands in the **Feedback** overview in your dashboard for your admin to process.
+  </Step>
+</Steps>
+
+Thumbs up works the same way and is genuinely useful — positive feedback shows which protocols are performing well and which subjects are ready to automate — but the thumbs down is where the improvement comes from.
+
+<Warning>
+  Rewriting the draft yourself, or drafting your own reply in another tool, teaches the agent nothing. The ticket gets answered and the same mistake comes back tomorrow. If you had to change something, spend the extra ten seconds saying why.
+</Warning>
+
+## Writing feedback that's actually usable
+
+The difference between feedback that improves the agent and feedback that sits in the queue is specificity.
+
+<AccordionGroup>
+  <Accordion title="Say what it should have been, not just what was wrong">
+    **Weak:** _"The return window is wrong."_<br /> **Strong:** _"It said 30 days. Our return window is 14 days."_
+
+    Feedback that only says something is wrong needs a follow-up conversation before anything can change. Feedback that includes the correct answer can be processed immediately.
+  </Accordion>
+
+  <Accordion title="Name the exact system and field">
+    Our agents need to know precisely where to look — "somewhere in the order" isn't enough, in the same way it wouldn't be enough for a new colleague on their first day.
+
+    **Weak:** _"It should use the date the return arrived."_<br /> **Strong:** _"It should use the date from the `Return to customer` field on the tracking page linked in the `Otro seguimiento` field in Shopify."_
+
+    Avoid relative directions like _"follow the instructions below"_ or _"the link underneath the order number"_ — they're ambiguous outside the screen you're looking at.
+  </Accordion>
+
+  <Accordion title="Tone and channel feedback counts too">
+    _"I wouldn't open an email this way"_, _"always thank the customer for their message first"_, or _"I'd never send this as an email at all"_ are all valid feedback. Tone feedback gets applied to your agent's tone of voice or rules, so it improves every future reply at once — and telling us a scenario shouldn't be answered by email is exactly what decides whether it's a candidate for automation.
+  </Accordion>
+
+  <Accordion title="Say when you'd rather it escalated">
+    If the right outcome was a hand-off, say so: _"For complaints about a damaged product I'd rather it escalated straight away than sent a holding reply."_ That's a protocol change, and it's one of the fastest wins there is.
+  </Accordion>
+
+  <Accordion title="Include a ticket ID when behaviour is inconsistent">
+    If the agent handles a scenario correctly on one ticket and wrongly on another, the ticket ID where it **worked** is the most useful thing you can send. It lets us compare the two runs and find out what differed.
+  </Accordion>
+</AccordionGroup>
+
+<Tip>
+  You don't have to work out the cause yourself. On the insights page you can ask the AI Manager **"how did you arrive at this answer?"** — it reconstructs the run and tells you which protocol it followed and what information it was missing. That usually turns "this is wrong" into a concrete gap in a couple of seconds.
+</Tip>
+
+### Two signals worth recognising
+
+**"I'll check with the team and get back to you."** When the agent writes something like this, it almost always means it has **no information** for the scenario. It won't invent an answer, so a holding reply is the only thing left to it. Treat it as a flag that a protocol is missing or wasn't matched — tell the AI Manager what should have happened instead.
+
+**A good suggestion isn't proof the knowledge is there.** An agent can reach the right answer on a subject your protocols only partly cover, and then get the next, slightly different ticket wrong. It's worth occasionally asking the AI Manager how it reached an answer you were happy with — you'll sometimes find a gap before it costs you a ticket.
+
+## Processing the feedback
+
+Feedback only changes the agent once someone processes it. That happens on the **Feedback** page in your dashboard.
+
+The list opens on **Negative** feedback — that's where the improvements are. Switch to **Positive** to see what's working; it's a good source of automation candidates.
+
+Open any entry and you'll see the **ticket ID** (searchable in your helpdesk), the rating, the agent, who submitted it and when, the **message** the feedback was left on, the **feedback itself** — and the **AI Manager** underneath it.
+
+<Steps>
+  <Step title="Judge the feedback first">
+    Not every piece of feedback is correct. Agents sometimes ask for something that conflicts with the process you actually want to run, or with another protocol. Decide what's valid before you act on it.
+  </Step>
+  <Step title="Hand it to the AI Manager">
+    Paste the feedback into the AI Manager on that page, or describe it in your own words — in any language. It pulls the full run for that ticket: the protocols used, the lookups it made, and the reasoning behind the reply.
+  </Step>
+  <Step title="Work through what it proposes">
+    It will tell you what was missing and propose a fix — most often a protocol edit, sometimes a rule, a tone-of-voice change, or a change to the reply prompt. It may ask you a question back, or offer you a choice (for example: update this protocol, that one, or both).
+  </Step>
+  <Step title="Review the change and publish it">
+    Click **Review protocol** to open a side-by-side diff: the current version on the left, the new one on the right, with additions in green and removals in red. Read it properly, then **publish the new version**. Nothing you do in the AI Manager takes effect until you save and publish it.
+  </Step>
+  <Step title="Mark as processed">
+    Back on the feedback entry, scroll down and click **Mark as processed**. It disappears from your queue but isn't deleted — you can always find it again.
+  </Step>
+</Steps>
+
+<Check>
+  A published change is live immediately. The very next ticket on that subject uses the new version.
+</Check>
+
+<Info>
+  The AI Manager checks the rest of your library before it changes anything, so it won't quietly create duplicate or contradicting instructions. If your feedback belongs somewhere other than where you expected — in Rules or Tone of Voice rather than a protocol — it will tell you and put it there instead.
+</Info>
+
+## Making it a habit
+
+- **Give feedback in the moment.** It costs seconds while the ticket is open in front of you, and it's much harder to reconstruct later.
+- **Process daily, not monthly.** Five minutes a day beats a two-hour session once a month, because every processed item improves the tickets that arrive tomorrow.
+- **Go hardest in the first two weeks.** The first jump in quality comes quickly from protocols alone. The last stretch — the details that make answers correct every time — comes almost entirely from this loop.
+- **Watch your direct resolution rate, not your automation rate.** If your team is rewriting most drafts, your direct resolution rate is telling you the answers aren't good enough yet. Feedback is how you fix that, and a high direct resolution rate is what makes [automation](/training/automation) safe to switch on.
+- **Re-test after a change.** Put a protocol you've just changed back into suggestion mode, watch the next few suggestions, and give feedback again. Implement, test, then scale.
+
+<Tip>
+  If you're not sure where to start, ask the [AI Manager](/ai-manager) which subjects are worth looking at first. It ranks them by how many tickets a realistic fix would actually resolve — see [Analytics & performance](/analytics).
+</Tip>

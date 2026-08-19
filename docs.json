@@ -106,7 +106,8 @@
             "pages": [
               "training/protocols",
               "training/actions",
-              "training/automation"
+              "training/automation",
+              "training/feedback"
             ]
           },
           {
