@@ -104,11 +104,7 @@
           {
             "group": "FAQ",
             "icon": "circle-question",
-            "pages": [
-              "faq/escalated-tickets-gorgias",
-              "faq/ignored-tickets",
-              "faq/stop-replies-to-thank-you-tickets"
-            ]
+            "pages": []
           },
           {
             "group": "Training",
