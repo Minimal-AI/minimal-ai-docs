@@ -120,7 +120,8 @@
             "group": "Starting with Minimal",
             "pages": [
               "untitled-page"
-            ]
+            ],
+            "hidden": true
           }
         ]
       }
