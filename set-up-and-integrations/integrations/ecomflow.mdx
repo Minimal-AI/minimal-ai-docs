@@ -1,0 +1,31 @@
+---
+title: "Ecomflow"
+description: "Connect Ecomflow to Minimal AI"
+---
+
+Connecting Ecomflow lets your AI agents look up orders, shipments, tracking, and inventory from your Ecomflow warehouse.
+
+## What you'll need
+
+- **API token** — an Ecomflow organization or channel token. Tokens look like `EF-CH-<channel_id>-<32 characters>` or `EF-<org_id>-<32 characters>`.
+
+## Find your Ecomflow API token
+
+<Steps>
+  <Step title="Open API Keys">
+    Log in to the [Ecomflow dashboard](https://app.ecomflow.com/) as an organization admin and go to **Settings → API Keys**.
+  </Step>
+  <Step title="Generate a token">
+    Create a new API token (or copy an existing one). Paste the token into Minimal AI without a `Bearer` prefix — Ecomflow expects the raw token in the `Authorization` header.
+  </Step>
+</Steps>
+
+If you don't have dashboard access, ask your Ecomflow representative for an API token. Official API reference: [api.ecomflow.com/docs](https://api.ecomflow.com/docs).
+
+## Connect in Minimal AI
+
+Go to [Dashboard > Integrations](https://gominimal.ai/dashboard/integrations), click **Add an integration > Ecomflow**, and paste your API token.
+
+<Warning>
+  Keep your API token secret and only paste it into Minimal AI's Ecomflow integration.
+</Warning>
