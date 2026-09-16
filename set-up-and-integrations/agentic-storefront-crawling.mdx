@@ -1,0 +1,123 @@
+---
+title: "How website scraping works"
+description: "How the Agentic Storefront crawler discovers, scrapes, and uses your public pages."
+sidebarTitle: "Website scraping"
+icon: "spider"
+keywords:
+  - "crawl"
+  - "scrape"
+  - "scraping"
+  - "sitemap"
+  - "website"
+  - "storefront"
+---
+
+The storefront crawler visits the public pages of your website, turns them into text, and uses that text so the widget can answer from the page a shopper is on. Crawling is optional. If you create a storefront without scraping, the widget still loads, but it has no page content of its own.
+
+This is separate from the [Website integration](/set-up-and-integrations/integrations/website) used to add URLs to a helpdesk agent's knowledge. Storefront crawling is configured in [Dashboard > Storefront](https://gominimal.ai/dashboard/storefront) on the **Website** tab.
+
+## What scraping is for
+
+After a crawl, Minimal can:
+
+- Answer from the content of the page the shopper is viewing
+- Retrieve related content from other crawled pages on the same site
+- Show auto-generated suggested questions on that page
+- Let you turn the floating **Launcher** and **Inline** open target on or off per page, folder, or the whole site
+
+Without a crawl, those per-page controls and page-aware answers are not available. The assistant then relies on the connected [AI Agent](/set-up-and-integrations/ai-agents) instructions and knowledge bases only.
+
+## What the crawler does
+
+<Steps>
+  <Step title="Start from your website URL">
+    The URL you enter when creating the storefront is the origin the widget may load on, and the root of the crawl. The crawler stays on that site. It does not follow links out to other domains.
+  </Step>
+  <Step title="Find pages">
+    By default it discovers pages from **sitemaps and page links**. You can switch this under **Crawl scope**:
+
+    - **Sitemaps and page links** — use both (default)
+    - **Sitemaps only** — only URLs listed in sitemaps you provide
+    - **Page links only** — follow links from crawled pages, ignore sitemaps
+
+    If you paste specific sitemap URLs, the crawler expands sitemap indexes recursively. Add more than one root when a locale splits products, pages, collections, and blogs into separate sitemaps. Pages listed in a sitemap still have to belong to this website.
+  </Step>
+  <Step title="Decide which URLs to keep">
+    A URL is crawled only if it is allowed by your include and ignore rules, is not blocked by `robots.txt`, and is not treated as junk structure (for example a filter URL that repeats the same path segment over and over).
+
+    Query parameters are ignored by default, so `/products/shirt` and `/products/shirt?utm_source=ad` count as the same page.
+  </Step>
+  <Step title="Fetch the page and keep the main content">
+    The crawler requests the public HTML and converts the main content to markdown. Cookie-consent widgets are detected automatically and left out of that text. You can add extra CSS selectors under **Excluded page elements** if a banner, chatbot, or other chrome is still leaking into the content.
+
+    Pages behind a login, paywall, or heavy bot challenge cannot be scraped this way. The crawler only sees what an unauthenticated visitor would see.
+  </Step>
+  <Step title="Index the text and generate questions">
+    Each kept page is stored, split into searchable chunks, and used to generate suggested questions. Those questions appear in the widget unless you override them in the sitemap. You can still edit, lock, or replace them later; a recrawl does not blindly wipe questions you have customized.
+  </Step>
+</Steps>
+
+When a shopper asks a question, the widget sends the current page URL. Minimal loads the crawled text for that page as context, and can search the rest of the crawled site for related passages.
+
+## Crawl scope
+
+Open **Crawl scope** when you connect a website, or later from the **Website** tab.
+
+| Setting | What it does |
+| --- | --- |
+| How pages are discovered | Sitemaps and links, sitemaps only, or links only |
+| Only crawl these paths | Limit the crawl to prefixes such as `/products` or `/faq` (or regular expressions) |
+| Ignore these paths | Skip carts, accounts, checkout, search, or other noisy areas |
+| Excluded page elements | Extra CSS selectors stripped from scraped text |
+| Specific sitemap URLs | One sitemap URL per line |
+| Browser language | Optional BCP-47 tag such as `nl-BE` or `de-DE` sent with scrape requests |
+| Maximum pages | Stop after this many pages have been found |
+| Maximum link depth | How many link hops discovery may follow from the start URL |
+| Concurrent pages | How many pages are fetched at once |
+| Delay between requests | Pause between page fetches so large stores are not overloaded |
+
+Leave include paths empty to crawl from the website URL normally. Use ignore paths for `/cart`, `/checkout`, `/account`, and similar pages you do not want in the sitemap or in answers.
+
+<Tip>
+  Prefer a sitemap URL on large catalogs. Link-following alone can miss products that are only listed in filters or pagination the crawler never reaches.
+</Tip>
+
+## After the crawl
+
+The **Website** tab shows the site as a tree of folders and pages. Failed pages are marked so you can see what the crawler could not fetch. From that tree you can:
+
+- Turn **Launcher** and **Inline** on or off for a page, folder, or the whole site. See [Choose where the widget appears](/set-up-and-integrations/agentic-storefront#choose-where-the-widget-appears).
+- Review and edit suggested questions.
+- Start a **Recrawl** to pick up new or changed pages before the next automatic refresh.
+
+Crawled pages start with both surfaces on, so the widget keeps showing wherever it already did.
+
+## Keeping content up to date
+
+Minimal recrawls connected storefront websites on a weekly schedule. Use **Recrawl** on the **Website** tab if you published a large catalog or policy change and do not want to wait.
+
+A recrawl replaces the crawl with a new generation of page content. Customized suggested questions you have edited are kept; questions that were only auto-generated can be refreshed from the new page text.
+
+## What scraping does not do
+
+- It does not log in, fill forms, or click through a cookie wall as a shopper would.
+- It does not scrape other domains, even if your pages link there.
+- It does not replace a store backend integration. Live stock, orders, and customer accounts still come from [Shopify](/set-up-and-integrations/integrations/shopify) or the other store integrations you connect to the agent.
+- It is not the same as adding FAQ URLs under **Integrations > Website** for helpdesk tickets. That path feeds a different agent knowledge source.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="The crawl finishes with missing product pages">
+    Add the product sitemap URL under **Specific sitemap URLs**, set discovery to **Sitemaps only** or **Sitemaps and page links**, and check that `/products` is not in **Ignore these paths**.
+  </Accordion>
+  <Accordion title="Answers include cookie-banner or chatbot text">
+    Add a CSS selector for that element under **Excluded page elements**, then recrawl. Cookie-consent widgets are stripped automatically; extra chrome on the page is not.
+  </Accordion>
+  <Accordion title="A page exists on the site but not in the sitemap">
+    Confirm it is linked from another crawled page or listed in a sitemap, that `robots.txt` allows it, and that it matches your include/ignore rules. Login-only pages will not appear.
+  </Accordion>
+  <Accordion title="The widget has no page-aware answers">
+    The storefront must be in crawled mode with a finished crawl, and the current page must exist in the website tree. Also confirm the storefront is connected as a channel to an active [AI Agent](/set-up-and-integrations/ai-agents).
+  </Accordion>
+</AccordionGroup>

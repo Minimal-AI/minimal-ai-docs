@@ -1,6 +1,7 @@
 ---
 title: "Agentic Storefront (Beta)"
 description: "Install and configure the Minimal Agentic Storefront widget on your webstore"
+sidebarTitle: "Install the widget"
 ---
 
 The Agentic Storefront widget adds Minimal's AI shopping assistant to your webstore. Shoppers can ask questions and get page-aware answers directly on your site, and escalate to a human when needed.
@@ -29,7 +30,7 @@ Make sure you have:
 
 When you create a storefront you enter a **Website URL**, then pick how Minimal should use it:
 
-- **Connect and start crawl** - Minimal crawls the website and the assistant answers from your page content. You get a sitemap in the **Website** tab, per-page control over where the widget appears, and auto-generated suggested questions.
+- **Connect and start crawl** - Minimal crawls the website and the assistant answers from your page content. You get a sitemap in the **Website** tab, per-page control over where the widget appears, and auto-generated suggested questions. See [How website scraping works](/set-up-and-integrations/agentic-storefront-crawling).
 - **Create without scraping** - Minimal skips crawling entirely. The widget runs on every page where you install the script, and the assistant answers from your AI agent's instructions and knowledge bases.
 
 <Note>
@@ -39,7 +40,7 @@ When you create a storefront you enter a **Website URL**, then pick how Minimal 
 |  | Connect and start crawl | Create without scraping |
 | --- | --- | --- |
 | Answers from your page content | Yes | No |
-| Where the floating widget appears | Only on pages marked **active** | Every page where the script is installed |
+| Where the floating widget appears | Only on pages with **Launcher** on | Every page where the script is installed |
 | Auto-generated suggested questions | Yes | No |
 | **Website** tab in the dashboard | Shown | Hidden |
 
@@ -81,9 +82,11 @@ You are not locked into the mode you picked:
     - `data-widget-id` is the public ID of your storefront channel (it starts with `sw_pub_`). It is safe to expose in your page source.
 
     The loader validates the page origin, fetches your widget config, and mounts the chat in a hosted iframe. No channel keys or secrets are placed in your page.
+
+    To move the launcher up or down from JavaScript, or to hide it on a page and open chat from a button instead, see the [storefront widget JavaScript API](/set-up-and-integrations/storefront-widget-javascript).
   </Step>
-  <Step title="(Optional) Add an inline product-page open target">
-    To let shoppers open the assistant from within a product page (using that page's configured questions), paste the inline block into your product-page template wherever you want the open target to appear:
+  <Step title="(Optional) Add an inline open target">
+    To let shoppers open the assistant from a control in your own layout (a product-page block, an editor toolbar button, a help link), paste the inline block wherever that control should appear:
 
     ```html
     <div
@@ -93,11 +96,13 @@ You are not locked into the mode you picked:
     ```
 
     Use the same `data-widget-id` as the script snippet. You still need the widget script from the previous step on the page for the inline target to work.
+
+    This is the supported way to open the widget from your own UI. There is no `window.MinimalStorefrontWidget.open()` method. If you also want the floating launcher hidden on that page, turn **Launcher** off and keep **Inline** on in the website sitemap. See [Hide the floating launcher and open from a button](/set-up-and-integrations/storefront-widget-javascript#hide-the-floating-launcher-and-open-from-a-button).
   </Step>
 </Steps>
 
 <Warning>
-  If you connected a crawled website, the floating widget only appears on pages you mark as **active** in the website sitemap under [Dashboard \> Storefront](https://gominimal.ai/dashboard/storefront). If the widget is installed but does not show on a page, check that the page (or its parent folder) is set to active. See [Choose where the widget appears](#choose-where-the-widget-appears).
+  If you connected a crawled website, the floating widget only appears on pages with **Launcher** enabled in the website sitemap under [Dashboard > Storefront](https://gominimal.ai/dashboard/storefront). If the widget is installed but does not show on a page, check that the page (or its parent folder) has the surface you expect turned on. See [Choose where the widget appears](#choose-where-the-widget-appears).
 
   This does not apply to storefronts created without scraping - there is no sitemap, so the widget appears on every page where you install the script.
 </Warning>
@@ -106,21 +111,21 @@ You are not locked into the mode you picked:
 
 <AccordionGroup>
   <Accordion title="Shopify">
-    Add the widget script to your theme's `theme.liquid`, just before `</body>`, so it loads on every storefront page. For the inline open target, add the `<div>` block to your product template (`product.liquid` or the relevant product section). Remember to add your `myshopify.com` domain and any custom domain to the allowed origins.
+    Add the widget script to your theme's `theme.liquid`, just before `</body>`, so it loads on every storefront page. For the inline open target, add the `<div>` block to the template where the in-page control should appear (`product.liquid`, an editor section, or any other template). Remember to add your `myshopify.com` domain and any custom domain to the allowed origins.
   </Accordion>
 
   <Accordion title="Google Tag Manager">
-    Create a **Custom HTML** tag containing the widget script snippet and set it to fire on the pages where the widget should appear (for example, All Pages). GTM injects the loader for you. The inline product-page open target must be placed directly in your product template, not through GTM.
+    Create a **Custom HTML** tag containing the widget script snippet and set it to fire on the pages where the widget should appear (for example, All Pages). GTM injects the loader for you. The inline open target must be placed directly in the page template, not through GTM.
   </Accordion>
 
   <Accordion title="Custom / other platforms">
-    Paste the widget script once in your global layout or footer so it is present on every page, then add the inline `<div>` block only on product templates if you want the inline open target. Any platform works as long as you can insert HTML and the page origin is in your allowed origins list.
+    Paste the widget script once in your global layout or footer so it is present on every page, then add the inline `<div>` block on templates that should open chat from an in-page control. Any platform works as long as you can insert HTML and the page origin is in your allowed origins list.
   </Accordion>
 </AccordionGroup>
 
 ## Website content and where the widget appears
 
-You manage the widget's knowledge and behavior from the **Website** tab in [Dashboard \> Storefront](https://gominimal.ai/dashboard/storefront), where your crawled pages appear as a sitemap. See the [Website integration](/set-up-and-integrations/integrations/website) for more on connecting content.
+You manage the widget's knowledge and behavior from the **Website** tab in [Dashboard > Storefront](https://gominimal.ai/dashboard/storefront), where your crawled pages appear as a sitemap. See [How website scraping works](/set-up-and-integrations/agentic-storefront-crawling) for how pages are discovered, scraped, and kept up to date.
 
 <Note>
   This section applies only to storefronts with a crawled website. If you created yours without scraping, the **Website** tab is hidden and none of the settings below apply. See [Choose a website mode](#choose-a-website-mode).
@@ -128,24 +133,26 @@ You manage the widget's knowledge and behavior from the **Website** tab in [Dash
 
 ### Choose where the widget appears
 
-Every page, folder, and the website itself has an **active** toggle in the sitemap. The floating widget only appears on pages that are set to active:
+Every page, folder, and the website itself has two independent controls in the sitemap: **Launcher** (the floating pill or bulb) and **Inline** (the in-page open target).
 
-- Toggling a **folder** active or inactive applies to every page inside it.
+- Toggling a **folder** applies to every page inside it.
 - An individual **page** can override its folder.
-- If the widget is installed but does not show on a page, confirm that page (or its parent folder) is active.
+- You can hide the floating launcher on a page and still open chat from an inline target on that page. That is the pattern for editors, configurators, and other dense UIs where a floating widget would cover a CTA.
+- If both **Launcher** and **Inline** are off, the widget does not show on that page.
 
 <Note>
-  Marking a page inactive stops the widget from showing there and removes the page from the knowledge used for answers. Use this for pages like carts, checkout, or account pages.
+  Turning both surfaces off hides the widget on that page. Use that for carts, checkout, or account pages. If you only want to hide the floating launcher and still open chat from an in-page control, leave **Inline** on.
 </Note>
+
+To move the launcher so it does not sit on top of a sticky mobile CTA, set **Bottom spacing** under **Appearance**, or use [`setBottomOffset()`](/set-up-and-integrations/storefront-widget-javascript#javascript-override).
+
+To hide the floating launcher while a cookie banner, cart drawer, or footer is on screen, use **Hide widget when elements are visible** under **Appearance > Advanced**. See [Hide the floating launcher while other elements are visible](/set-up-and-integrations/storefront-widget-javascript#hide-the-floating-launcher-while-other-elements-are-visible).
 
 ### Advanced crawl options
 
-When you connect or configure your website, open **Advanced** to control how Minimal crawls your store:
+When you connect or configure your website, open **Crawl scope** to control how Minimal finds and fetches pages: sitemap URLs, include and ignore paths, extra delay between requests, and excluded page elements.
 
-- **Submit a sitemap** - point Minimal at your sitemap URL so it discovers pages reliably instead of only following links.
-- **Additional delay between scrapes** - add a delay between page requests to avoid overloading your server or hitting rate limits on large stores.
-
-You can also narrow the crawl with include and ignore paths under **Crawl scope** (for example, only crawl `/products`, or ignore `/cart`).
+The full behavior of discovery, `robots.txt`, recrawls, and what the crawler does not scrape is in [How website scraping works](/set-up-and-integrations/agentic-storefront-crawling).
 
 ### Influence the suggested questions
 
@@ -167,7 +174,7 @@ Edit, add, remove, or reorder the questions and save. Your custom questions repl
 
 <AccordionGroup>
   <Accordion title="The widget does not appear">
-    Check that the page's origin is listed under allowed origins, that the storefront channel is active, and that the kill switch is off in the dashboard. Also confirm the script snippet is actually present in the page source. If your storefront has a crawled website, check that the current page (or its folder) is set to **active** in the website sitemap - storefronts created without scraping have no sitemap and are not gated this way.
+    Check that the page's origin is listed under allowed origins, that the storefront channel is active, and that the kill switch is off in the dashboard. Also confirm the script snippet is actually present in the page source. If your storefront has a crawled website, check that the current page (or its folder) has **Launcher** or **Inline** on in the website sitemap - storefronts created without scraping have no sitemap and are not gated this way.
   </Accordion>
 
   <Accordion title="The widget appears but doesn't reply">
@@ -180,6 +187,14 @@ Edit, add, remove, or reorder the questions and save. Your custom questions repl
 
   <Accordion title="I updated a snippet from an older install">
     Older snippets used a `data-channel-key` attribute. Replace them with the current snippet that uses `data-widget-id`. Copy the latest snippet from the dashboard to be sure.
+  </Accordion>
+
+  <Accordion title="The widget covers a sticky CTA on mobile">
+    Increase **Bottom spacing** for mobile under **Appearance**, or call `window.MinimalStorefrontWidget.setBottomOffset(24, { valueMobile: 80 })` on that page. Extra spacing only moves the closed launcher; the open chat panel stays at the normal gutter. See [Position the widget](/set-up-and-integrations/storefront-widget-javascript#position-the-widget).
+  </Accordion>
+
+  <Accordion title="I want to hide the launcher but still open chat from a button">
+    Keep the widget script on the page. On a crawled website, turn **Launcher** off and **Inline** on for that page in the sitemap. Without a crawled website, hide the floating launcher with a **Hide widget when elements are visible** selector that only exists on that page. Then place the `data-minimal-storefront-inline-chat` target where the button should appear. There is no JavaScript `open()` method. See [Hide the floating launcher and open from a button](/set-up-and-integrations/storefront-widget-javascript#hide-the-floating-launcher-and-open-from-a-button).
   </Accordion>
 
   <Accordion title="I need to disable the widget quickly">
