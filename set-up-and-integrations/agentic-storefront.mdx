@@ -1,6 +1,7 @@
 ---
 title: "Agentic Storefront (Beta)"
 description: "Install and configure the Minimal Agentic Storefront widget on your webstore"
+sidebarTitle: "Install the widget"
 ---
 
 The Agentic Storefront widget adds Minimal's AI shopping assistant to your webstore. Shoppers can ask questions and get page-aware answers directly on your site, and escalate to a human when needed.
@@ -29,7 +30,7 @@ Make sure you have:
 
 When you create a storefront you enter a **Website URL**, then pick how Minimal should use it:
 
-- **Connect and start crawl** - Minimal crawls the website and the assistant answers from your page content. You get a sitemap in the **Website** tab, per-page control over where the widget appears, and auto-generated suggested questions.
+- **Connect and start crawl** - Minimal crawls the website and the assistant answers from your page content. You get a sitemap in the **Website** tab, per-page control over where the widget appears, and auto-generated suggested questions. See [How website scraping works](/set-up-and-integrations/agentic-storefront-crawling).
 - **Create without scraping** - Minimal skips crawling entirely. The widget runs on every page where you install the script, and the assistant answers from your AI agent's instructions and knowledge bases.
 
 <Note>
@@ -124,7 +125,7 @@ You are not locked into the mode you picked:
 
 ## Website content and where the widget appears
 
-You manage the widget's knowledge and behavior from the **Website** tab in [Dashboard \> Storefront](https://gominimal.ai/dashboard/storefront), where your crawled pages appear as a sitemap. See the [Website integration](/set-up-and-integrations/integrations/website) for more on connecting content.
+You manage the widget's knowledge and behavior from the **Website** tab in [Dashboard > Storefront](https://gominimal.ai/dashboard/storefront), where your crawled pages appear as a sitemap. See [How website scraping works](/set-up-and-integrations/agentic-storefront-crawling) for how pages are discovered, scraped, and kept up to date.
 
 <Note>
   This section applies only to storefronts with a crawled website. If you created yours without scraping, the **Website** tab is hidden and none of the settings below apply. See [Choose a website mode](#choose-a-website-mode).
@@ -149,12 +150,9 @@ To hide the floating launcher while a cookie banner, cart drawer, or footer is o
 
 ### Advanced crawl options
 
-When you connect or configure your website, open **Advanced** to control how Minimal crawls your store:
+When you connect or configure your website, open **Crawl scope** to control how Minimal finds and fetches pages: sitemap URLs, include and ignore paths, extra delay between requests, and excluded page elements.
 
-- **Submit a sitemap** - point Minimal at your sitemap URL so it discovers pages reliably instead of only following links.
-- **Additional delay between scrapes** - add a delay between page requests to avoid overloading your server or hitting rate limits on large stores.
-
-You can also narrow the crawl with include and ignore paths under **Crawl scope** (for example, only crawl `/products`, or ignore `/cart`).
+The full behavior of discovery, `robots.txt`, recrawls, and what the crawler does not scrape is in [How website scraping works](/set-up-and-integrations/agentic-storefront-crawling).
 
 ### Influence the suggested questions
 
