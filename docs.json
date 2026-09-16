@@ -98,7 +98,8 @@
             "group": "AI Agents",
             "pages": [
               "set-up-and-integrations/ai-agents",
-              "set-up-and-integrations/agentic-storefront"
+              "set-up-and-integrations/agentic-storefront",
+              "set-up-and-integrations/storefront-widget-javascript"
             ]
           },
           {

@@ -1,0 +1,196 @@
+---
+title: "Storefront widget JavaScript API"
+description: "Position the storefront widget, hide the floating launcher, and open chat from an in-page trigger."
+sidebarTitle: "Widget JavaScript API"
+icon: "code"
+keywords:
+  - "widget"
+  - "javascript"
+  - "setBottomOffset"
+  - "inline"
+  - "launcher"
+  - "hide"
+  - "mobile"
+  - "offset"
+---
+
+Use this page when you need to move the widget on specific pages, hide the floating launcher, or open chat from a button in your own UI. Install the widget first using the [Agentic Storefront](/set-up-and-integrations/agentic-storefront) guide.
+
+The public host-page API is `window.MinimalStorefrontWidget`. It is created by the widget script after it loads. There is no `open()` or `hide()` JavaScript method. Opening chat from your own UI is done with the inline HTML target below.
+
+## Position the widget
+
+The closed launcher sits a few pixels above the bottom edge of the page. Extra spacing is useful when a sticky add-to-cart bar, cookie banner, or mobile CTA would otherwise sit under the launcher.
+
+<Note>
+  Extra bottom spacing applies only while the launcher is closed. When the chat panel opens, it uses the normal bottom gutter so the conversation is not pushed up the page.
+</Note>
+
+### Dashboard setting
+
+In [Dashboard > Storefront](https://gominimal.ai/dashboard/storefront), open **Appearance** and set **Bottom spacing** for desktop and mobile. Values are pixels, from `0` to `200`. This is the right place for a site-wide nudge.
+
+### JavaScript override
+
+Use JavaScript when the offset must change per page, per viewport, or while the shopper scrolls (for example, a sticky bar that appears only on a product page).
+
+A single number applies to both desktop and mobile. Pass `valueMobile` to set mobile separately. Values are pixels, clamped from `0` to `2000`. Pass `null` to clear the override and fall back to the dashboard setting.
+
+```html
+<script>
+  window.MinimalStorefrontWidgetBottomOffset = 24;
+  window.MinimalStorefrontWidgetBottomOffsetMobile = 80;
+</script>
+<script
+  async
+  src="https://app.gominimal.ai/storefront-widget.js"
+  data-widget-id="sw_pub_xxxxxxxxxxxxxxxx"
+></script>
+```
+
+Set those globals **before** the widget script when you need the first paint to already clear a sticky bar. If the loader arrives after your other scripts, calling `setBottomOffset()` too early is a no-op because the API does not exist yet.
+
+Once the script has loaded:
+
+```html
+<script>
+  // Keep the launcher above a sticky mobile CTA on product pages.
+  window.MinimalStorefrontWidget.setBottomOffset(24, {
+    valueMobile: 80,
+  });
+</script>
+```
+
+Target one widget when several are on the page:
+
+```javascript
+window.MinimalStorefrontWidget.setBottomOffset(80, {
+  valueMobile: 24,
+  widgetId: "sw_pub_xxxxxxxxxxxxxxxx",
+});
+```
+
+Clear the override:
+
+```javascript
+window.MinimalStorefrontWidget.setBottomOffset(null);
+```
+
+You can call `setBottomOffset()` from a scroll or resize handler. Identical values are ignored, so repeating the same offset is cheap.
+
+### Animate offset changes
+
+By default the launcher jumps to the new offset. Enable a short slide when a sticky bar appears or disappears:
+
+```javascript
+window.MinimalStorefrontWidget.setBottomTransition(true);
+window.MinimalStorefrontWidget.setBottomOffset(72, { valueMobile: 96 });
+```
+
+| Value | Effect |
+| --- | --- |
+| `true` | Use the built-in `0.15s ease-in-out` timing |
+| `"0.2s ease"` | Use a custom CSS timing string |
+| `false` or `null` | No animation (default) |
+
+You can also set `window.MinimalStorefrontWidgetBottomTransition` before the script loads, using the same values.
+
+<Tip>
+  A typical product-page pattern is a larger mobile offset so the launcher sits above the sticky add-to-cart bar, and a smaller desktop offset (or `0`) where that bar is not in the way.
+</Tip>
+
+## Hide the floating launcher and open from a button
+
+Keep the widget script on the page. Hide the floating launcher, then open chat from an in-page control.
+
+There is no `window.MinimalStorefrontWidget.open()` call. The in-page trigger is an HTML target the loader binds to. Clicking it opens the same widget that the floating launcher would have opened.
+
+<Steps>
+  <Step title="Keep the widget script on the page">
+    The script must still be present, including on pages where the floating launcher is hidden:
+
+    ```html
+    <script async src="https://app.gominimal.ai/storefront-widget.js" data-widget-id="sw_pub_xxxxxxxxxxxxxxxx"></script>
+    ```
+  </Step>
+  <Step title="Turn off the floating launcher for that page">
+    If the storefront has a crawled website, open the **Website** tab in [Dashboard > Storefront](https://gominimal.ai/dashboard/storefront). Each page has two controls:
+
+    - **Launcher** — the floating pill or bulb in the corner
+    - **Inline** — the in-page open target
+
+    Set **Launcher** to inactive and keep **Inline** active on the editor (or any other page where you do not want the floating widget).
+
+    If the storefront was created without scraping, there is no sitemap, so the floating launcher cannot be turned off per page. Hide it instead with **Hide widget when elements are visible** under **Appearance > Advanced**, using a selector that is only present on the editor (for example `#product-editor` or `.configurator[open]`). That rule hides the floating launcher only; the inline target still works.
+  </Step>
+  <Step title="Place the inline open target">
+    Paste this block where the in-page button should appear. Use the same `data-widget-id` as the script snippet:
+
+    ```html
+    <div
+      data-minimal-storefront-inline-chat
+      data-widget-id="sw_pub_xxxxxxxxxxxxxxxx"
+    ></div>
+    ```
+
+    The loader renders the in-page composer (and suggested questions, when configured) into that element. Shoppers type a question or tap a suggestion; that opens the chat. If a conversation is already in progress, the target becomes a **Continue conversation** control instead.
+  </Step>
+</Steps>
+
+<Warning>
+  Do not put the inline target in Google Tag Manager. It must live in the page template so it appears in the right place in the layout (for example next to an editor toolbar).
+</Warning>
+
+The inline target is a singleton per widget: if the same snippet is present more than once on a page, only the first connected target is used.
+
+## Hide the floating launcher while other elements are visible
+
+In **Appearance > Advanced**, **Hide widget when elements are visible** accepts one CSS selector per line. While any matching element is visible, the floating launcher hides and reappears when the element is gone. This does not affect inline embeds.
+
+Examples:
+
+```text
+cart-drawer[open]
+.fixed.z-50.bottom-0:text(Cookies)
+.footer:inview
+.sticky-atc:mobile
+```
+
+| Modifier | Meaning |
+| --- | --- |
+| `:text(word)` | Also require that text inside the matched element. Chain several to require every word. |
+| `:inview` | Hide only once the element has scrolled into view. Use this for footers, which always exist in the DOM. |
+| `:inview(150)` | Same as `:inview`, but wait until the element is 150px into view. Larger values trigger later. |
+| `:mobile` | Apply the rule only on compact viewports. |
+
+Keep a CSS selector in front of `:text(...)` so the match stays specific. A bare `.footer` without `:inview` would hide the launcher permanently because the footer is always on the page.
+
+## API reference
+
+`window.MinimalStorefrontWidget` is created by `/storefront-widget.js`. Methods no-op on invalid input instead of throwing into the host page.
+
+### `setBottomOffset(value, options?)`
+
+| Argument | Type | Description |
+| --- | --- | --- |
+| `value` | `number` or `null` | Extra bottom spacing in pixels for desktop. `null` clears the override. |
+| `options.valueMobile` | `number` or `null` | Extra bottom spacing for mobile. Defaults to `value` when omitted. |
+| `options.widgetId` | `string` | Limit the change to one widget. Omit to update every Minimal widget on the page. |
+
+### `setBottomTransition(value, options?)`
+
+| Argument | Type | Description |
+| --- | --- | --- |
+| `value` | `boolean`, `string`, or `null` | `true` enables the default slide. A string is used as CSS transition timing. `false` or `null` turns animation off. |
+| `options.widgetId` | `string` | Limit the change to one widget. |
+
+### Globals read before the script loads
+
+| Global | Description |
+| --- | --- |
+| `window.MinimalStorefrontWidgetBottomOffset` | Default desktop extra offset, in pixels. |
+| `window.MinimalStorefrontWidgetBottomOffsetMobile` | Default mobile extra offset, in pixels. |
+| `window.MinimalStorefrontWidgetBottomTransition` | Default offset animation. Same values as `setBottomTransition()`. |
+| `window.MinimalStorefrontWidgetAllowHostCss` | Set to `true` before load to allow host-page CSS to affect the widget shell. Equivalent to `data-allow-host-css="true"` on the script tag. Leave this off unless you are deliberately restyling the shell. |
+
+Copy the latest snippets from [Dashboard > Storefront](https://gominimal.ai/dashboard/storefront) so the host URL and widget ID match your channel.
