@@ -121,7 +121,9 @@
           {
             "group": "Analytics",
             "pages": [
-              "analytics"
+              "analytics",
+              "analytics/insights",
+              "analytics/conversations"
             ]
           },
           {

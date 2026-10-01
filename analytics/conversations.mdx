@@ -1,0 +1,66 @@
+---
+title: "Conversations"
+description: "Read any conversation from the last 30 days and understand who answered, why it was escalated and which protocols were used"
+---
+
+## Overview
+
+The **Conversations** page shows individual conversations from the last 30 days, together with Minimal's reading of each one. Use it to check the stories behind the trends on [Insights](/analytics/insights), or to find out why a specific ticket went the way it did.
+
+You'll find it under **Analytics** at [gominimal.ai/dashboard/conversations](https://gominimal.ai/dashboard/conversations). To find a ticket, search for its id or filter the list.
+
+[Insights](/analytics/insights) explains what a conversation is and what its **status**, **sentiment**, **topics** and **tags** mean. This page covers what you see inside a conversation.
+
+## Who answered
+
+Every conversation is described by who replied to the customer:
+
+| Value | Meaning |
+|---|---|
+| **AI only** | Only the AI replied. No human touched the conversation |
+| **AI assisted** | A human sent the reply, working from a draft the AI wrote. The customer only saw the human's message, but the AI did the first pass |
+| **Mixed** | The AI replied, and a human was also involved |
+| **Human only** | Only humans replied. The AI wrote nothing, not even a draft |
+| **No reply** | Nothing reached the customer. An AI draft that nobody sent counts here too |
+
+## Messages
+
+The transcript shows everything on the thread, including messages the customer never saw:
+
+- **Sent reply**: a message the customer received.
+- **Draft**: a reply the AI wrote for your team to review. **From AI draft** marks a human message that started as one.
+- **Internal note**: a note visible only to your team.
+
+Click any message to see its details, such as how long the reply took, its language, and the lookups and actions the agent ran. For AI replies, **See detailed feedback** opens the full analysis of that reply.
+
+## Escalations
+
+A conversation is **escalated** when the AI decides a person is needed. It can say so in a reply, in a draft, or silently, by handing off without telling the customer.
+
+Every escalation gets a **cause**, which tells you what, if anything, to change:
+
+| Cause | What to do |
+|---|---|
+| **Your instructions said to**: a protocol, an operational rule or your tone of voice required a person | Nothing. The agent did what you asked. Review the instruction if you want these automated |
+| **No protocol covered it** | Write a [protocol](/training/protocols) for the request |
+| **No action could do it**: the reply would have promised a change no connected action can make | Connect an [action](/training/actions) |
+| **Customer asked for a person**, or **Minimal's safety rules** required one, for example a serious health issue | Nothing. These should stay human |
+| **A lookup or action failed**, or the system forced the hand-off | Nothing on your side. Minimal fixes these |
+
+The escalation panel quotes the instruction or protocol behind the hand-off, so you can go straight to it.
+
+The cause is an AI assessment. Read it as a trend across many conversations, not as an exact verdict on any single one.
+
+## Protocols
+
+A conversation lists [protocols](/training/protocols) in three ways:
+
+- **Exposed to the agent**: protocols the agent was shown for a reply. It sees at most 20 per reply.
+- **Used by the agent**: protocols it actually followed.
+- **Used by the human**: protocols your team followed in their replies.
+
+A protocol that is exposed but rarely used may need a clearer description. A request your team keeps handling without a protocol is a candidate for a new one.
+
+<Note>
+  Conversations are kept for 30 days after their last message. Older messages show **This message is no longer retained.**
+</Note>
