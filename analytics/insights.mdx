@@ -1,0 +1,62 @@
+---
+title: "Insights"
+description: "See what your customers ask about, how conversations end, and where the AI hands off to your team"
+---
+
+## Overview
+
+The **Insights** page reads and scores every customer conversation, and turns the results into trends you can act on: which topics are growing, how many conversations end resolved, and what is waiting for a human.
+
+You'll find it under **Analytics** at [gominimal.ai/dashboard/insights](https://gominimal.ai/dashboard/insights), next to [Usage & Performance](/analytics) and [Conversations](/analytics/conversations).
+
+<Note>
+  Insights is switched on per organization. If you see **Support Insights is not enabled for this organization**, contact Minimal to turn it on.
+</Note>
+
+## Choosing what you see
+
+Three controls at the top scope every number on the page:
+
+| Control | Options | Default |
+|---|---|---|
+| **Provider** | **Tickets** (every connected helpdesk) or **Storefront** (conversations handled by the storefront agent) | Tickets |
+| **Agent** | **Minimal took part** (one of your agents drafted or replied at least once), **All messages**, or a single agent | Minimal took part |
+| **Range** | **7d**, **14d**, **30d**, or a **Custom** interval within the past 30 days | 7d |
+
+Conversations are counted by the day they **started**, in UTC. Use **Refresh** to re-read the numbers with the window moved up to now.
+
+<Tip>
+  The page keeps its filters in the URL, so you can share a view by copying the link.
+</Tip>
+
+## What's on the page
+
+### Headline numbers
+
+- **Conversations**: conversations that started in the window, compared with the previous window of the same length.
+- **Awaiting a human**: conversations the AI escalated that no human has replied to yet. A human draft only counts once it is sent.
+- **Neutral or positive**: the share of customers whose closing sentiment was neutral or positive.
+- **Median first response**: the time from the customer's first message to the first visible reply, shown separately for the AI and for humans replying from an AI draft.
+
+### Breakdowns
+
+| Card | What it shows |
+|---|---|
+| **Most used** | Top **Topics**, **Tags** or **Protocols**, by number of conversations, with the change versus the previous window |
+| **Volume over time** | Daily conversations, split into **Replied** and **Waiting for reply** |
+| **Conversations per agent** | How many conversations each agent took part in. Click an agent to filter the page to it |
+| **Languages** | The main language of each conversation |
+| **Status** | **Resolved**, **Open** or **Unresolved**, based on the closing messages |
+| **Customer sentiment** | **Positive**, **Neutral** or **Negative**, based on how the customer felt by the end |
+
+### Days that stand out
+
+This grid compares each topic, tag or protocol against its own normal, day by day. Colour marks a day that was unusual for that row, from **A bit unusual** to **Very unusual**. Switch the **Measure** to look for spikes in unresolved conversations, negative sentiment or escalations rather than volume.
+
+## Drilling into a number
+
+Click any number to open the conversations behind it. Select a conversation to see its status, sentiment, escalation and the protocols used, then choose **Open in Conversations** to read the full transcript.
+
+<Info>
+  Status, sentiment, escalation reasons and tags are AI assessments of each conversation. Read them as trends across many conversations rather than as exact figures for any single one.
+</Info>

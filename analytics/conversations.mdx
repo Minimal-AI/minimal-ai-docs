@@ -1,0 +1,67 @@
+---
+title: "Conversations"
+description: "Read any conversation from the last 30 days, with the AI's verdict, escalations and protocols alongside the transcript"
+---
+
+## Overview
+
+The **Conversations** page lets you read individual customer conversations together with Minimal's analysis of them: how the conversation ended, who answered, why it was escalated and which protocols were used. Use it to check the stories behind the trends on [Insights](/analytics/insights).
+
+You'll find it under **Analytics** at [gominimal.ai/dashboard/conversations](https://gominimal.ai/dashboard/conversations). It covers the **last 30 days**, newest first.
+
+The page has three panes:
+
+<CardGroup cols={3}>
+  <Card title="List" icon="list">
+    Every conversation, with its status, who answered and whether it was escalated.
+  </Card>
+  <Card title="Transcript" icon="messages">
+    The full read-only conversation, including drafts and internal notes.
+  </Card>
+  <Card title="Details" icon="circle-info">
+    The verdict, escalation, protocols, lookups and timing.
+  </Card>
+</CardGroup>
+
+## Finding a conversation
+
+- **Search ticket id**: type a ticket id and press Enter. Only exact matches are returned.
+- **Filters**: narrow the list by **Language**, **Status**, **Sentiment**, **Who answered**, **Escalated** and **Protocol**. Each option shows how many conversations it matches.
+- **Show**: switch between **Minimal took part** and **All messages**, and between **Tickets** and **Storefront**.
+
+Use **↑ / ↓** (or **j / k**) to move through the list, and **Esc** to step back.
+
+## Reading the list
+
+Each row has a status dot, the subject, the time since the last message and a **who answered** chip:
+
+| Chip | Meaning |
+|---|---|
+| **AI only** | Only the AI replied |
+| **AI assisted** | A human sent the reply, working from a draft the AI wrote |
+| **Mixed** | Both the AI and a human replied |
+| **Human only** | Only humans replied |
+| **No reply** | Nobody replied to the customer |
+
+An **Escalated** chip means the AI decided a person was needed in this conversation.
+
+## Reading a conversation
+
+The transcript shows each message with its author: **Customer**, your agent, or **Human agent**. Chips below a message show what happened behind it, for example **Draft · never sent**, **Escalated**, **From AI draft**, **Internal note**, or the protocol and lookups that were used.
+
+The **Details** panel summarises the whole conversation:
+
+- **Verdict**: status, sentiment and who answered.
+- **Escalation**: why the AI handed off, with the instruction or protocol behind it.
+- **Protocols**: those exposed to the agent, used by the agent, and used by the human.
+- **Lookups & actions**, **Tags & topics** and **Timing**.
+
+Click any message to see its own details, such as reply latency, language and tool calls. For AI replies, **See detailed feedback** opens the full analysis of that reply.
+
+<Tip>
+  An escalation's cause tells you what to fix. For example, **No protocol coverage** points to a missing [protocol](/training/protocols), and **No action connected** to a missing [action](/training/actions).
+</Tip>
+
+<Note>
+  Conversations are kept for 30 days. Older messages show **This message is no longer retained.**
+</Note>
