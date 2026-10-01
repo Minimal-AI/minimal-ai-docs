@@ -1,62 +1,81 @@
 ---
 title: "Insights"
-description: "See what your customers ask about, how conversations end, and where the AI hands off to your team"
+description: "What your customers ask about, how their conversations end, and how they felt — the concepts behind the Insights page"
 ---
 
 ## Overview
 
-The **Insights** page reads and scores every customer conversation, and turns the results into trends you can act on: which topics are growing, how many conversations end resolved, and what is waiting for a human.
+The **Insights** page reads every customer conversation and describes it: what the customer asked about, whether the problem was solved, how they felt by the end, and whether the AI handed off to your team. It adds those descriptions up into trends.
 
-You'll find it under **Analytics** at [gominimal.ai/dashboard/insights](https://gominimal.ai/dashboard/insights), next to [Usage & Performance](/analytics) and [Conversations](/analytics/conversations).
+You'll find it under **Analytics** at [gominimal.ai/dashboard/insights](https://gominimal.ai/dashboard/insights). To read the conversations behind any number, click it, or go to [Conversations](/analytics/conversations).
 
 <Note>
   Insights is switched on per organization. If you see **Support Insights is not enabled for this organization**, contact Minimal to turn it on.
 </Note>
 
-## Choosing what you see
+## Conversations
 
-Three controls at the top scope every number on the page:
+A **conversation** is one customer thread: a ticket in your helpdesk, or a chat with the storefront agent. It includes every message on that thread, whether it came from the customer, the AI or your team.
 
-| Control | Options | Default |
-|---|---|---|
-| **Provider** | **Tickets** (every connected helpdesk) or **Storefront** (conversations handled by the storefront agent) | Tickets |
-| **Agent** | **Minimal took part** (one of your agents drafted or replied at least once), **All messages**, or a single agent | Minimal took part |
-| **Range** | **7d**, **14d**, **30d**, or a **Custom** interval within the past 30 days | 7d |
+- **Counted by start day.** A conversation belongs to the day its first message arrived (UTC), so a ticket that runs over several days is counted once.
+- **Kept for 30 days.** Conversations are kept for 30 days after their last message, which is why you can look back at most 30 days.
+- **Tickets and Storefront are separate.** Helpdesk tickets and storefront chats behave differently, so you see one at a time.
 
-Conversations are counted by the day they **started**, in UTC. Use **Refresh** to re-read the numbers with the window moved up to now.
+By default you see only conversations where **Minimal took part**, meaning one of your agents drafted or replied at least once. That includes drafts a human sent as their own. Switch to **All messages** to include every conversation, or pick a single agent.
 
-<Tip>
-  The page keeps its filters in the URL, so you can share a view by copying the link.
-</Tip>
+## Status
 
-## What's on the page
+**Status** is where a conversation stands now, based on its closing messages:
 
-### Headline numbers
-
-- **Conversations**: conversations that started in the window, compared with the previous window of the same length.
-- **Awaiting a human**: conversations the AI escalated that no human has replied to yet. A human draft only counts once it is sent.
-- **Neutral or positive**: the share of customers whose closing sentiment was neutral or positive.
-- **Median first response**: the time from the customer's first message to the first visible reply, shown separately for the AI and for humans replying from an AI draft.
-
-### Breakdowns
-
-| Card | What it shows |
+| Status | Meaning |
 |---|---|
-| **Most used** | Top **Topics**, **Tags** or **Protocols**, by number of conversations, with the change versus the previous window |
-| **Volume over time** | Daily conversations, split into **Replied** and **Waiting for reply** |
-| **Conversations per agent** | How many conversations each agent took part in. Click an agent to filter the page to it |
-| **Languages** | The main language of each conversation |
-| **Status** | **Resolved**, **Open** or **Unresolved**, based on the closing messages |
-| **Customer sentiment** | **Positive**, **Neutral** or **Negative**, based on how the customer felt by the end |
+| **Resolved** | The customer's problem was solved |
+| **Unresolved** | The conversation closed without solving the problem |
+| **Open** | Nothing has settled it yet, or it went quiet without a clear outcome |
 
-### Days that stand out
+## Sentiment
 
-This grid compares each topic, tag or protocol against its own normal, day by day. Colour marks a day that was unusual for that row, from **A bit unusual** to **Very unusual**. Switch the **Measure** to look for spikes in unresolved conversations, negative sentiment or escalations rather than volume.
+**Sentiment** is how the customer felt about your business by the end of the conversation, not how polite or loud they were.
 
-## Drilling into a number
+| Sentiment | Meaning |
+|---|---|
+| **Positive** | They left happy: praise, thanks, or confirmation that the problem was solved |
+| **Neutral** | A question asked and answered, with nothing said about how it went |
+| **Negative** | They left unhappy: an order, product or charge that went wrong, or support that didn't help |
 
-Click any number to open the conversations behind it. Select a conversation to see its status, sentiment, escalation and the protocols used, then choose **Open in Conversations** to read the full transcript.
+A calm request for a refund after a month of waiting is **negative**. A frustrated customer whose problem was then solved can end **positive**.
+
+## Topics
+
+A **topic** is a type of request your customers make, such as "Where is my order" or "Change delivery address". Topics are **discovered automatically** from what customers actually write, so you don't have to set them up.
+
+- Each customer request is filed under the topic it matches. A conversation can raise several topics.
+- A request that fits no existing topic goes under **Other**. When enough similar requests build up, they become a new topic, so new problems surface on their own.
+
+## Tags
+
+A **tag** is a label from a fixed list set up for your organization, such as "Claim delay" or "Damaged on arrival". The AI reads each conversation and assigns the tags that apply. A conversation can carry several tags, or none.
+
+Topics show what customers ask about. Tags flag the things you have chosen to track. To change your tag list, contact Minimal.
+
+## Protocols
+
+A conversation **ran a protocol** when the AI or a human actually followed one of your [protocols](/training/protocols) in it. A protocol that was shown to the agent but not followed doesn't count.
+
+## Escalations
+
+An **escalation** is when the AI decides a person is needed and hands the conversation to your team. **Awaiting a human** counts escalated conversations that no human has replied to yet. A human draft doesn't count as a reply until it is sent.
+
+To see why a conversation was escalated, open it in [Conversations](/analytics/conversations#escalations).
+
+## First response time
+
+**First response time** is the time from the customer's first message to the first reply they could see. It is measured separately for conversations where the AI replied first, and for those where a human replied first using an AI draft.
+
+## Unusual days
+
+**Days that stand out** compares each topic, tag or protocol with its own normal level, so a small topic that suddenly doubles is as visible as a large one. Here a conversation is placed on the day of its **last** message, because that's when its outcome is known. Today is still filling in and is marked as provisional.
 
 <Info>
-  Status, sentiment, escalation reasons and tags are AI assessments of each conversation. Read them as trends across many conversations rather than as exact figures for any single one.
+  Status, sentiment, tags and escalation reasons are AI assessments. Read them as trends across many conversations, not as exact figures for any single one.
 </Info>
