@@ -66,6 +66,22 @@ Tags are an AI assessment. Read them as a trend across many conversations, not a
 
 **First response time** is the time from the customer's first message to the first reply they could see. It is measured separately for conversations where the AI replied first, and for those where a human replied first using an AI draft.
 
+## Conversation length
+
+**Conversation length** shows how much back-and-forth it took to settle a conversation. It is counted in turns, not messages.
+
+- **A turn** is one or more messages in a row from the same side. Three customer messages sent one after another are one turn. Drafts and internal notes are not counted.
+- **A reply** is one turn from your side, written by the AI or by your team. If a team member writes straight after the AI, that is a new reply. Customer messages are not replies.
+- **Settled conversations only.** A conversation is counted once it has had no new messages for 24 hours and has received at least one reply. Conversations still in progress are left out, so the numbers don't shift while a thread is ongoing.
+
+| Metric | Meaning |
+|---|---|
+| **Turns per conversation** | The average number of turns, from the customer and from your side together |
+| **One-reply rate** | The share of conversations settled with a single reply. Higher is better |
+| **Multi-reply rate** | The share of conversations that needed three or more replies. Lower is better |
+
+Conversations with exactly two replies count toward neither rate. You can see the numbers for all conversations, or for a single topic, tag or protocol to find the requests that take the most back-and-forth.
+
 ## Unusual days
 
 **Days that stand out** compares each topic, tag or protocol with its own normal level, so a small topic that suddenly doubles is as visible as a large one. Here a conversation is placed on the day of its **last** message, because that's when its outcome is known. Today is still filling in and is marked as provisional.
