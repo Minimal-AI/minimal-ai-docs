@@ -102,7 +102,6 @@
           },
           {
             "group": "Agentic Storefront",
-            "icon": "store",
             "pages": [
               "set-up-and-integrations/agentic-storefront-crawling",
               "set-up-and-integrations/agentic-storefront",
