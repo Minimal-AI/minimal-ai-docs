@@ -127,6 +127,12 @@
             ]
           },
           {
+            "group": "MCP",
+            "pages": [
+              "mcp"
+            ]
+          },
+          {
             "group": "Starting with Minimal",
             "pages": [
               "untitled-page",
