@@ -109,6 +109,11 @@
             ]
           },
           {
+            "group": "FAQ",
+            "icon": "circle-question",
+            "pages": []
+          },
+          {
             "group": "Training",
             "pages": [
               "training/protocols",
