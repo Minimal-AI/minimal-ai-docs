@@ -103,8 +103,8 @@
           {
             "group": "Agentic Storefront",
             "pages": [
-              "set-up-and-integrations/agentic-storefront-crawling",
               "set-up-and-integrations/agentic-storefront",
+              "set-up-and-integrations/agentic-storefront-crawling",
               "set-up-and-integrations/storefront-widget-javascript"
             ]
           },
