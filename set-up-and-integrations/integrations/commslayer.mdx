@@ -1,0 +1,109 @@
+---
+title: "Commslayer"
+description: "Connect Commslayer to Minimal AI"
+---
+
+Connecting Commslayer lets your AI agents answer the email conversations that **you** send them. You decide which conversations reach Minimal AI with one rule in Commslayer, for example every new customer message, or only the conversations Commslayer's own AI could not solve.
+
+It takes about 10 minutes.
+
+## How it works
+
+- **Your rule** sends a conversation to Minimal AI. Minimal AI never watches the whole inbox.
+- **Minimal AI** reads the conversation, answers in Commslayer, and escalates to your team when it cannot solve it.
+- **Commslayer's own AI** keeps working as before. Minimal AI waits while Commslayer's AI is still handling a conversation.
+
+## What you'll need
+
+- A Commslayer account with **admin** rights (needed for integration tokens and rules).
+- An email inbox connected in Commslayer.
+
+## Step 1: Create an integration token
+
+<Steps>
+  <Step title="Open Integration tokens">
+    In Commslayer, open **Settings > Integration tokens** and create a token named `Minimal AI`.
+  </Step>
+  <Step title="Enable the permissions">
+    Enable **Conversations** (read and write), **Messages** (read and write), **Contacts** (read and write), **Webhooks** (manage) and **Reports** (read).
+  </Step>
+  <Step title="Copy the token">
+    Copy the token when Commslayer shows it.
+  </Step>
+</Steps>
+
+<Note>
+  Commslayer tokens expire 90 days after they are created. Before that date, create a new token and paste it under **Replace integration token** on the Commslayer connection in Minimal AI.
+</Note>
+
+## Step 2: Connect in Minimal AI
+
+<Steps>
+  <Step title="Add the integration">
+    Go to [Dashboard \> Integrations](https://gominimal.ai/dashboard/integrations), click **Add an integration \> Commslayer**, paste your token and click **Connect Commslayer**.
+  </Step>
+  <Step title="Choose inboxes and escalation">
+    Select the email inboxes Minimal AI may answer. Under **Escalate to**, choose the teammate who receives conversations Minimal AI cannot solve, or keep **Unassigned human inbox**. Click **Connect Commslayer**.
+  </Step>
+  <Step title="Assign an agent">
+    Open the Commslayer connection and assign a published, active AI agent to each inbox.
+  </Step>
+  <Step title="Copy the webhook URL">
+    In the same connection, copy the **Webhook URL**. You need it in the next step.
+  </Step>
+</Steps>
+
+<Warning>
+  Treat the webhook URL like a password. Anyone with it can send conversations to Minimal AI. Only paste it into your Commslayer rule.
+</Warning>
+
+## Step 3: Create a rule in Commslayer
+
+Open **Automations** in Commslayer and create a rule that ends with the action **Send webhook event**, using your webhook URL. Choose the trigger that matches how you want to work:
+
+<Tabs>
+  <Tab title="Answer every new customer message">
+    - **Event**: *Message created*
+    - **Conditions**: *Message type* is incoming, and *Inbox* is your support inbox
+    - **Action**: *Send webhook event*, with your webhook URL
+  </Tab>
+  <Tab title="Answer only after Commslayer's AI hands over">
+    1. In your Commslayer AI agent's handover settings, choose the teammate the conversation is assigned to when the AI hands over.
+    2. Create the rule:
+       - **Event**: *Conversation updated*
+       - **Conditions**: *Assignee* is that teammate, and *Inbox* is your support inbox
+       - **Action**: *Send webhook event*, with your webhook URL
+  </Tab>
+</Tabs>
+
+Make sure the rule is on the **Active** tab. To stop Minimal AI, switch the rule off in Commslayer.
+
+## Step 4: Test it
+
+1. Send a test email to the inbox from a mailbox you control, and let it reach your rule.
+2. Within a minute Minimal AI answers in the Commslayer conversation. If your agent is in review mode, it adds its suggested answer as a private note instead.
+3. Reply as a teammate in the same conversation to confirm Minimal AI does not answer it again.
+
+## Good to know
+
+- **Email only.** Chat, WhatsApp, Facebook and Instagram conversations are not handled yet.
+- **Escalation.** When Minimal AI cannot solve a conversation it adds a private note, opens the conversation and assigns it to your escalation teammate (or leaves it unassigned). It does not answer that conversation again.
+- **Teammates take over.** Once a teammate has replied, Minimal AI stays out.
+- **Files.** Minimal AI reads files customers send. Its replies cannot include files.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Commslayer rejected the token">
+    Check that the token has all five permissions from Step 1 and has not expired, then paste it again.
+  </Accordion>
+  <Accordion title="No inbox appears">
+    Only email inboxes are listed. Finish connecting the inbox in Commslayer first, and make sure the token has **Reports** (read).
+  </Accordion>
+  <Accordion title="Minimal AI does not answer">
+    Check that the rule is active and uses the exact webhook URL from the connection, that the inbox in the rule is one you connected, and that a published, active agent is assigned to that inbox. If Commslayer's own AI is still handling the conversation, Minimal AI waits.
+  </Accordion>
+  <Accordion title="I need a new webhook URL">
+    Disconnect the Commslayer connection in Minimal AI and connect it again. Then update your rule with the new URL.
+  </Accordion>
+</AccordionGroup>
