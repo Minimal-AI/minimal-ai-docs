@@ -68,16 +68,16 @@ Actions have their own automation toggle *per protocol*. An action only runs aut
 
 ### Escalating to a human
 
-Within a protocol you decide exactly when a ticket should be handed to a human. There are two ways to escalate:
+Put handoff instructions that apply across topics in your AI Agent's **Rules**. Put scenario-specific handoffs in the relevant **protocol**.
 
-- **Silent escalation** — the agent sends no message and leaves the ticket open for your team to pick up.
-- **Escalate with a message** — the agent sends a short holding reply (for example, letting the customer know a specialist will follow up) and then leaves the ticket for a human.
+- **Silent escalation** — no main reply is generated. A separate sign-off message may still be sent if **Send sign-off messages** is enabled and its delivery conditions are met.
+- **Escalate with a message** — the agent prepares a short holding reply. Normal automation and safety checks determine whether it is sent automatically or left as a draft.
 
-Tell the AI Manager exactly when each type should happen and it will add the right escalation points; you can also add them manually with the `/` command in the editor.
+In both cases, the ticket remains open for human follow-up. Escalation does not guarantee a customer message.
 
-<Warning>
-  Escalate sparingly. Before adding an escalation, ask: can the protocol simply answer the question, or resolve it with an action? Only hand off to a human when that's genuinely the right outcome — over-escalating means more work for your team and slower replies for customers.
-</Warning>
+Sign-offs require automation to be enabled and their own delivery checks to pass, including human-takeover restrictions. They are separate from the main reply.
+
+Tell the AI Manager when to hand off and whether to prepare a reply. In a protocol, you can also add an escalation with the `/` command.
 
 ## Best practices
 
