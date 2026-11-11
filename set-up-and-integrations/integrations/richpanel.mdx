@@ -7,9 +7,11 @@ Connecting Richpanel lets your AI agents read and reply to conversations in your
 
 ## What you'll need
 
+- A Richpanel account with **admin** rights.
 - **API key** — an API key created in your Richpanel settings.
+- About 10 minutes.
 
-## Create your Richpanel API key
+## Step 1: Connect your API key
 
 <Info>
   Developer API access is available on Richpanel's **Enterprise** plan. If you don't see API Keys, contact your Richpanel account manager.
@@ -22,12 +24,49 @@ Connecting Richpanel lets your AI agents read and reply to conversations in your
   <Step title="Generate a key">
     Generate a new API key (or copy an existing one).
   </Step>
+  <Step title="Connect in Minimal AI">
+    Go to [Dashboard \> Integrations](https://gominimal.ai/dashboard/integrations), click **Add an integration \> Richpanel**, and paste your API key.
+  </Step>
 </Steps>
-
-## Connect in Minimal AI
-
-Go to [Dashboard \> Integrations](https://gominimal.ai/dashboard/integrations), click **Add an integration \> Richpanel**, and paste your API key.
 
 <Warning>
   Keep your API key secret and only paste it into Minimal AI's Richpanel integration.
+</Warning>
+
+## Step 2: Connect Richpanel to Minimal
+
+<Steps>
+  <Step title="Copy the values from Minimal">
+    In Minimal, go to **Integrations \> Richpanel** and open your connection. Keep the **Richpanel Create Target Values** box open; you'll copy from it in the next step.
+  </Step>
+  <Step title="Create the HTTP target in Richpanel">
+    Go to **Settings \> Integrations \> HTTP Target** and create a new target. Copy each value from Minimal into the matching field:
+
+    - **Title**
+    - **URL**
+    - **Method**: `POST`
+    - **Content type**: `JSON Template`
+    - **JSON Template**
+    - **Header** `x-minimal-webhook-secret` with its value
+
+    Save the target.
+  </Step>
+  <Step title="Create the automation rule in Richpanel">
+    Add a new rule:
+
+    - **When**: *A new message is received* (add *A customer starts a new conversation* too if it's offered as a separate option).
+    - **Then**: trigger the HTTP target **Minimal AI Richpanel Webhook**.
+
+    Save the rule and switch it on.
+  </Step>
+  <Step title="Test it">
+    Send a new email to your support address from an outside address.
+  </Step>
+  <Step title="Check it arrived">
+    Within a few minutes, the ticket should appear under **Conversations** in Minimal. If it doesn't, send us the Richpanel ticket number and we'll check it on our side.
+  </Step>
+</Steps>
+
+<Warning>
+  Please don't delete and reconnect the Richpanel integration in Minimal. That resets your channel setup and changes the URL and secret.
 </Warning>
