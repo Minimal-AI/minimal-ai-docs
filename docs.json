@@ -31,7 +31,9 @@
               {
                 "group": "1. Prepare",
                 "icon": "plug",
-                "pages": []
+                "pages": [
+                  "onboarding/prepare/prepare-your-team"
+                ]
               },
               {
                 "group": "2. Onboard",
