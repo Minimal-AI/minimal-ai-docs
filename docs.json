@@ -26,7 +26,29 @@
           {
             "group": "Onboarding",
             "icon": "route",
-            "pages": []
+            "pages": [
+              "onboarding/overview",
+              {
+                "group": "1. Prepare",
+                "icon": "plug",
+                "pages": []
+              },
+              {
+                "group": "2. Onboard",
+                "icon": "brain",
+                "pages": []
+              },
+              {
+                "group": "3. Feedback",
+                "icon": "comments",
+                "pages": []
+              },
+              {
+                "group": "4. Actions",
+                "icon": "bolt",
+                "pages": []
+              }
+            ]
           },
           {
             "group": "Integrations",
