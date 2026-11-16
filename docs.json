@@ -33,7 +33,8 @@
                 "icon": "plug",
                 "pages": [
                   "onboarding/prepare/prepare-your-team",
-                  "onboarding/prepare/connect-your-systems"
+                  "onboarding/prepare/connect-your-systems",
+                  "onboarding/prepare/start-your-subscription"
                 ]
               },
               {
