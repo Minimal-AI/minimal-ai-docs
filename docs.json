@@ -40,12 +40,18 @@
               {
                 "group": "2. Onboard",
                 "icon": "brain",
-                "pages": []
+                "pages": [
+                  "onboarding/onboard/set-up-your-agent",
+                  "onboarding/onboard/write-your-first-protocols",
+                  "onboarding/onboard/test-in-the-playground"
+                ]
               },
               {
                 "group": "3. Feedback",
                 "icon": "comments",
-                "pages": []
+                "pages": [
+                  "onboarding/feedback/go-live-in-suggestion-mode"
+                ]
               },
               {
                 "group": "4. Actions",

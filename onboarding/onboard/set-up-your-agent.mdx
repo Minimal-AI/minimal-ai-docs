@@ -1,0 +1,96 @@
+---
+title: "Set up your agent"
+sidebarTitle: "Set up your agent"
+description: "Step 2 of the onboarding: create your agent, connect its channels and systems, and set its tone of voice and rules"
+keywords:
+  - "onboarding"
+  - "agent"
+  - "tone of voice"
+  - "rules"
+  - "reply settings"
+  - "channels"
+  - "base"
+---
+
+## Overview
+
+In the Onboard step you teach Minimal how your customer service works, just like you would onboard a new colleague: first the broad lines, then the details. It has three parts: this page (your agent), [writing your first protocols](/onboarding/onboard/write-your-first-protocols) and [testing in the Playground](/onboarding/onboard/test-in-the-playground).
+
+{/* VIDEO: add the Loom embed for step 2, Onboard, here */}
+
+**What you achieve on this page:** an agent connected to your helpdesk channels, webshop and other systems, with a tone of voice and rules that sound like your team.
+
+**Time needed:** about 15 minutes.
+
+## How the parts fit together
+
+- **Agent:** the colleague who replies in your helpdesk. It has its own channels, systems, language settings, tone of voice and rules.
+- **Base:** the knowledge the agent uses, organised in the Training Center as categories with protocols. Several agents can share one base.
+- **Channel:** an inbox or channel in your helpdesk, such as your support email or WhatsApp. A channel belongs to one agent. Integrations can be shared by several agents.
+- **Protocols** describe *what* the agent does. **Tone of voice** and **rules** describe *how* it replies, on every ticket.
+
+<Tip>
+  One agent is usually enough. Create a second agent when the tone, language or automation differs, for example for a second brand or country. Two brands with the same processes can share one base, each with its own agent, channels and rules.
+</Tip>
+
+## Before you start
+
+- Your helpdesk and webshop are connected. See [Connect your systems](/onboarding/prepare/connect-your-systems).
+- Have your brand book, tone of voice guide or a few typical replies from your team at hand.
+
+## Steps
+
+<Steps>
+  <Step title="Create the agent">
+    Go to [Agents](https://gominimal.ai/dashboard/agents) and click **Add agent**. You create agents yourself, the AI Manager cannot do this for you. Give it a name: this is the name the agent signs with.
+  </Step>
+  <Step title="Connect channels, stores and systems">
+    In the agent, select the helpdesk channels it should answer, your webshop under **Stores**, your other systems under **Other integrations**, your website and the base it uses. Click **Update**.
+
+    An integration the agent is not connected to is not used, even if it exists under **Integrations**.
+  </Step>
+  <Step title="Check the language and reply settings">
+    By default the agent replies in the language of the ticket. In **Reply settings**, describe which messages it should skip, for example automated notifications, messages from suppliers or business partners, or marketplace messages you answer elsewhere.
+  </Step>
+  <Step title="Set your tone of voice">
+    Open the [AI Manager](https://gominimal.ai/dashboard/ai-manager) and describe how you write: formal or informal, how you greet and sign off, and what your brand sounds like. Paste a few recent replies from your team, your brand book or the tone settings of a previous tool. You can also ask it to draft a tone of voice from your website.
+
+    Review the proposal and click **Apply** or **Save**. You find the result under **Language and behavior** in your agent.
+  </Step>
+  <Step title="Add a few rules">
+    Rules are short do's and don'ts that apply to every reply, for example how to write your company name, or never mentioning the name of your warehouse system. Keep them few and general. Everything that describes a situation or a step plan belongs in a protocol.
+
+    You don't need to decide where an instruction goes. Tell the AI Manager what you want, and it proposes whether it belongs in a rule, the tone of voice or a protocol.
+  </Step>
+</Steps>
+
+<Warning>
+  Nothing the AI Manager proposes is saved automatically. Always click the blue **Apply**, **Save** or **Publish** button below the proposal. This is the most common reason a change seems not to work.
+</Warning>
+
+<Check>
+  **Done when:**
+
+  - Your agent is connected to your helpdesk channels, webshop, other systems, website and base.
+  - Its tone of voice is saved and it has a few rules.
+  - The agent is still **paused**. You set it to active in step 3.
+</Check>
+
+## Common pitfalls
+
+<AccordionGroup>
+  <Accordion title="Many separate rules">
+    Every rule applies to every reply and takes priority over protocols. Many rules make the agent less predictable. Prefer a few short rules and clear protocols.
+  </Accordion>
+  <Accordion title="Writing the greeting into protocols">
+    Greetings, sign offs and style belong in the tone of voice. Protocols only describe the steps.
+  </Accordion>
+</AccordionGroup>
+
+More about every setting in [AI Agents](/set-up-and-integrations/ai-agents).
+
+## Next step
+
+<Card title="Write your first protocols" icon="list-check" href="/onboarding/onboard/write-your-first-protocols">
+  Explain your most common topics to the AI Manager.
+</Card>
