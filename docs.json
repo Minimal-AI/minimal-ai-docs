@@ -24,6 +24,11 @@
             ]
           },
           {
+            "group": "Onboarding",
+            "icon": "route",
+            "pages": []
+          },
+          {
             "group": "Integrations",
             "pages": [
               "set-up-and-integrations/integrations/overview",
