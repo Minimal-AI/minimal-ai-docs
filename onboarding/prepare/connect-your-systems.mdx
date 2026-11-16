@@ -1,0 +1,109 @@
+---
+title: "Connect your systems"
+sidebarTitle: "Connect your systems"
+description: "Step 1 of the onboarding: give the agent access to your helpdesk, webshop, backend systems and website"
+keywords:
+  - "onboarding"
+  - "integrations"
+  - "api key"
+  - "shopify"
+  - "helpdesk"
+  - "custom integration"
+  - "website"
+---
+
+## Overview
+
+The agent can only answer what it can look up. Connect every system a customer service colleague uses to answer a ticket before you write protocols. The [AI Manager](https://gominimal.ai/dashboard/ai-manager) uses your integrations to build protocols, so without them it can only write a simplified version.
+
+**What you achieve:** your helpdesk, webshop, backend systems and website content are connected, and a test lookup finds a real order.
+
+**Time needed:** 5 to 15 minutes per system. Waiting for an API key from an external partner can take days, so request those first.
+
+## Before you start
+
+- Make a list of your systems: helpdesk, webshop, warehouse or fulfilment, carrier, returns portal, ERP, subscriptions and anything else your team checks.
+- For each system, find out who can create an API key. Often that is an admin, and sometimes an external party:
+  - **Helpdesk:** an admin account. A permission error when connecting usually means the key was not created by an admin.
+  - **Shopify:** the store owner. An account with full admin rights cannot create the app.
+  - **Magento or a custom platform:** your developer or agency.
+  - **Warehouse or fulfilment:** sometimes your fulfilment partner owns the account and has to create the key for you.
+- Have a test order ready: an order number with the email address used on it. An existing open order works fine.
+
+## Steps
+
+<Steps>
+  <Step title="Request the keys you depend on others for">
+    Ask your fulfilment partner, agency or developer for API access on day one. This is the most common delay in an onboarding, especially in busy periods such as Black Friday.
+  </Step>
+  <Step title="Connect your helpdesk">
+    Go to [Integrations](https://gominimal.ai/dashboard/integrations), choose your helpdesk and follow the steps on its page, for example [Zendesk](/set-up-and-integrations/integrations/zendesk), [Gorgias](/set-up-and-integrations/integrations/gorgias), [Trengo](/set-up-and-integrations/integrations/trengo) or [Freshdesk](/set-up-and-integrations/integrations/freshdesk).
+
+    Create a separate API key for Minimal and name it Minimal, instead of reusing the key of another tool.
+  </Step>
+  <Step title="Connect your webshop">
+    Follow the page for your platform, for example [Shopify](/set-up-and-integrations/integrations/shopify), [Magento](/set-up-and-integrations/integrations/magento), [WooCommerce](/set-up-and-integrations/integrations/woocommerce) or [Lightspeed](/set-up-and-integrations/integrations/lightspeed).
+
+    After connecting, Minimal indexes your store. This usually takes 30 to 60 minutes and can take longer for large stores. Lookups and the Playground only show your data once indexing is done.
+  </Step>
+  <Step title="Connect your backend systems">
+    Add your warehouse, carrier, returns and other systems. Every supported system has its own page under [Integrations](/set-up-and-integrations/integrations/overview) with the exact steps and the values to paste.
+
+    You can safely start with the basic permissions in the docs. Minimal only carries out an action that is in a protocol and that you switched on.
+  </Step>
+  <Step title="Add your website pages">
+    Under **Integrations** > **Website**, add the pages with customer service information, such as `/faq`, `/returns` or `/shipping`. Do not add your homepage or product pages. If your site has several languages, add each language separately. See [Website](/set-up-and-integrations/integrations/website).
+  </Step>
+  <Step title="Request a custom integration for anything else">
+    For a system without a standard integration, such as an ERP or an in-house platform, create a case through the [AI Manager](https://gominimal.ai/dashboard/ai-manager). The Minimal team builds and maintains the connection. Share:
+
+    1. An API key and secret
+    2. The API documentation
+    3. What Minimal should look up, and later change
+    4. A test order with its email address
+
+    See [Custom integrations](/set-up-and-integrations/integrations/custom-integrations) for what your API should provide.
+  </Step>
+  <Step title="Test a lookup">
+    Ask the AI Manager to find your test order, for example: *"Look up order 10042 for test@yourstore.com and tell me its status and tracking link."* If it finds the order, the integration works.
+  </Step>
+</Steps>
+
+<Warning>
+  Do not email API keys or passwords. Paste them into Minimal yourself, or share them through a one time secret link.
+</Warning>
+
+<Check>
+  **Done when:**
+
+  - Every system on your list shows under **Integrations**, or has a case for a custom integration.
+  - Your website's customer service pages are added.
+  - The AI Manager finds your test order with its status and tracking information.
+</Check>
+
+## Common pitfalls
+
+<AccordionGroup>
+  <Accordion title="A 403 or permission error">
+    The key was created by an account without admin rights. Ask an admin to create a new key and paste it into the existing integration with **Replace API key**.
+  </Accordion>
+  <Accordion title="Shopify will not install the app">
+    Only the store owner can create and install the app. The owner is the person who originally created the store, which is not always who you expect. Follow the [Shopify](/set-up-and-integrations/integrations/shopify) page step by step, and use the shop domain that ends in `.myshopify.com`, not your website address.
+  </Accordion>
+  <Accordion title="Writing protocols before systems are connected">
+    The AI Manager pushes back on protocols that refer to lookups it does not have. Connect first, then write.
+  </Accordion>
+  <Accordion title="Deleting an integration to fix a key">
+    Don't. A new integration is removed from your agents' channels and its actions disappear from your protocols. Use **Replace API key** on the existing integration instead.
+  </Accordion>
+</AccordionGroup>
+
+<Info>
+  Minimal does not copy your databases. It only requests the data it needs through the API, at the moment of the question, and you decide which permissions a key has. Ask us for our data processing agreement (DPA) if your legal team needs it.
+</Info>
+
+## Next step
+
+<Card title="Start your subscription" icon="credit-card" href="/onboarding/prepare/start-your-subscription">
+  Unlock the Playground and live suggestions in your helpdesk.
+</Card>
