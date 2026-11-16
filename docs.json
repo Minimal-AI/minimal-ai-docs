@@ -24,6 +24,37 @@
             ]
           },
           {
+            "group": "Onboarding",
+            "icon": "route",
+            "pages": [
+              "onboarding/overview",
+              {
+                "group": "1. Prepare",
+                "icon": "plug",
+                "pages": [
+                  "onboarding/prepare/prepare-your-team",
+                  "onboarding/prepare/connect-your-systems",
+                  "onboarding/prepare/start-your-subscription"
+                ]
+              },
+              {
+                "group": "2. Onboard",
+                "icon": "brain",
+                "pages": []
+              },
+              {
+                "group": "3. Feedback",
+                "icon": "comments",
+                "pages": []
+              },
+              {
+                "group": "4. Actions",
+                "icon": "bolt",
+                "pages": []
+              }
+            ]
+          },
+          {
             "group": "Integrations",
             "pages": [
               "set-up-and-integrations/integrations/overview",
