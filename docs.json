@@ -50,13 +50,17 @@
                 "group": "3. Feedback",
                 "icon": "comments",
                 "pages": [
-                  "onboarding/feedback/go-live-in-suggestion-mode"
+                  "onboarding/feedback/go-live-in-suggestion-mode",
+                  "onboarding/feedback/give-and-process-feedback",
+                  "onboarding/feedback/automate-your-first-topics"
                 ]
               },
               {
                 "group": "4. Actions",
                 "icon": "bolt",
-                "pages": []
+                "pages": [
+                  "onboarding/actions/choose-and-request-actions"
+                ]
               }
             ]
           },

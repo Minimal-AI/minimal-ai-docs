@@ -1,0 +1,90 @@
+---
+title: "Choose and request actions"
+sidebarTitle: "Choose and request actions"
+description: "Step 4 of the onboarding: decide which changes the agent should make in your systems, and where"
+keywords:
+  - "onboarding"
+  - "actions"
+  - "lookups"
+  - "request actions"
+  - "write access"
+  - "case"
+---
+
+## Overview
+
+So far the agent looks things up and writes replies. With actions it also makes changes in your systems, such as cancelling an order, creating a return label or changing a shipping address. This step has two parts: this page (choosing and requesting actions) and [adding, testing and automating them](/onboarding/actions/add-test-and-automate-actions).
+
+{/* VIDEO: add the Loom embed for step 4, Actions, here */}
+
+**What you achieve on this page:** a short list of actions, available in your account, with a clear answer to where each one should run.
+
+**Time needed:** about 30 minutes, plus a few days if a new action has to be built.
+
+## Lookups and actions
+
+- A **lookup** reads information, such as an order status or track and trace. Lookups work as soon as a system is connected.
+- An **action** changes something. Actions are set up for your account by the Minimal team, on top of your integrations, and need write access in your system.
+
+Minimal can perform any action for which your system offers an API endpoint. Common examples:
+
+| System | Example actions |
+| --- | --- |
+| Webshop | Cancel or refund an order, change the shipping or email address, create a replacement order or discount code |
+| Warehouse and returns | Cancel or block an order, register a return, create a return label |
+| Carrier | Start an investigation for a lost parcel |
+| Subscriptions | Pause, skip, reactivate or cancel a subscription |
+| Helpdesk | Add internal notes and tags, assign a ticket, start a side conversation with a supplier |
+
+## Before you start
+
+- Your first topics run well in suggestion mode. Actions build on protocols that already work.
+- You know who can give write access to your systems. Often that is your developer or agency.
+
+## Steps
+
+<Steps>
+  <Step title="List what your team still does by hand">
+    Write down the changes your team makes every day after reading a ticket. Good first candidates are changing an address, cancelling an order and unsubscribing from the newsletter.
+  </Step>
+  <Step title="Check what you already have">
+    Open [Integrations](https://gominimal.ai/dashboard/integrations). Each integration lists its lookups and actions and whether they are in use. You can also ask the [AI Manager](https://gominimal.ai/dashboard/ai-manager): *"Which actions do we have that we are not using yet?"* The [Actions page](https://gominimal.ai/dashboard/actions) shows every action that was proposed or executed.
+  </Step>
+  <Step title="Decide where each action runs">
+    Per action, note in which system your team makes the change today, and whether that change reaches your other systems automatically. A change in your webshop, for example, may no longer reach the warehouse once the order has been sent there. If it doesn't, the action must run in each system, in the right order: first cancel at the warehouse, then cancel and refund in the webshop.
+  </Step>
+  <Step title="Request the missing actions">
+    Create a case through the [AI Manager](https://gominimal.ai/dashboard/ai-manager), for example: *"We want the actions Cancel order and Change shipping address on our Shopify connection. Which already exist, and what do you need from us for the rest?"* For a new action, share the API documentation of the endpoint and a test order that may be changed.
+  </Step>
+</Steps>
+
+<Tip>
+  One button in your backend often hides several actions. Writing out what happens behind the button prevents changes that are only half carried out.
+</Tip>
+
+<Check>
+  **Done when:**
+
+  - You have a short list of actions to start with.
+  - For each action you know in which system, or systems, it should run.
+  - Each action is available in your account, or has a case with the Minimal team.
+</Check>
+
+## Common pitfalls
+
+<AccordionGroup>
+  <Accordion title="No API endpoint for the change">
+    Common actions are standard. Less common ones often need a custom endpoint. Check with your developer or platform whether one exists. A process that cannot be done through an API, such as one that needs a printed form, cannot be automated.
+  </Accordion>
+  <Accordion title="Read only keys">
+    Many teams start with read only access. Actions need write access, so you may need a new key with more permissions. Replace it in the existing integration with **Replace API key**.
+  </Accordion>
+</AccordionGroup>
+
+More in [Actions](/training/actions).
+
+## Next step
+
+<Card title="Add, test and automate actions" icon="bolt" href="/onboarding/actions/add-test-and-automate-actions">
+  Connect actions to your protocols and let the agent use them.
+</Card>

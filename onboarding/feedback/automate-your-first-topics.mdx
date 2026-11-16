@@ -1,0 +1,91 @@
+---
+title: "Automate your first topics"
+sidebarTitle: "Automate your first topics"
+description: "Step 3 of the onboarding: decide when a topic is ready and let the agent send those replies on its own"
+keywords:
+  - "onboarding"
+  - "automation"
+  - "automated protocol"
+  - "global automation"
+  - "direct resolution rate"
+---
+
+## Overview
+
+You don't automate the agent as a whole. You automate topic by topic, starting with the ones that already go well. Everything you have not automated stays a suggestion for your team.
+
+**What you achieve:** your first protocols send replies on their own.
+
+**Time needed:** about 2 minutes per protocol, once a topic is ready.
+
+## When is a topic ready?
+
+- Your team sends the suggestions for that topic without changes, ticket after ticket.
+- Your **direct resolution rate** on [Analytics](/analytics) is rising. Watch it rather than your automation rate in the first weeks, and look at the trend across weeks rather than the daily number.
+- The topic is simple, common and low risk. Good first candidates are order status, return instructions or unsubscribing from the newsletter. Topics involving money, such as refunds, usually come last.
+
+<Tip>
+  Not sure which topics are ready? Ask the [AI Manager](https://gominimal.ai/dashboard/ai-manager). It can check your ticket history and point out where automation is safe to switch on.
+</Tip>
+
+## Steps
+
+<Steps>
+  <Step title="Automate the protocol">
+    Open the protocol in the [Training Center](https://gominimal.ai/dashboard/training-center), tick **Automated** at the top right and **Publish** the new version. An automated protocol shows a yellow **automated** label.
+  </Step>
+  <Step title="Switch on global automation">
+    Once, open your agent in [Agents](https://gominimal.ai/dashboard/agents), go to **Automation**, enable automation and click **Update**. This unlocks automation for the agent. On its own, it sends nothing.
+  </Step>
+  <Step title="Watch the first automated replies">
+    Check the tickets on that topic for the next few days. Keep giving feedback on anything that is still not right.
+  </Step>
+  <Step title="Add the next topic">
+    Automate one or two topics at a time. Move on once the previous ones run well.
+  </Step>
+</Steps>
+
+## How the agent decides to send
+
+A reply is only sent on its own when all of these are true:
+
+1. Global automation is on for the agent.
+2. Every protocol the reply uses is set to **Automated**. A message about two topics needs both protocols automated.
+3. Any action in the reply is automated too. See [step 4](/onboarding/actions/add-test-and-automate-actions).
+4. No guardrail trips, for example an angry customer or a customer asking for a person.
+
+If one of these fails, the reply stays a suggestion. **Active** means the agent may use a protocol, **Automated** means it may send the reply.
+
+<Note>
+  Your agent also has an **automation prompt**, a second way to allow whole categories of replies. Leave it empty if you want to automate protocol by protocol. See [Automation](/training/automation).
+</Note>
+
+<Check>
+  **Done when:** your first one or two topics are automated, and their replies go out without your team stepping in.
+</Check>
+
+## Common pitfalls
+
+<AccordionGroup>
+  <Accordion title="A ticket was not automated">
+    Open the insights page of the ticket and read the **Automation Coverage** section. It shows which layer held the reply back. Common reasons are a second matched protocol that is not automated, an action that is not automated, or a guardrail.
+  </Accordion>
+  <Accordion title="Lines that hold automation back">
+    Remove instructions such as *"if the customer has further questions, escalate"* from your protocols. The agent already hands over when it cannot answer. Steps that depend on information no connected system provides have the same effect.
+  </Accordion>
+  <Accordion title="Automating part of a topic">
+    You don't need to split a protocol. Add an **Escalate to Human** step on the path your team should handle. Only conversations that reach that step go to your team.
+  </Accordion>
+</AccordionGroup>
+
+<Tip>
+  To pause automation, for example over a weekend, switch off automation on the agent. Your protocol settings stay as they are.
+</Tip>
+
+More in [Automation](/training/automation).
+
+## Next step
+
+<Card title="Choose and request actions" icon="bolt" href="/onboarding/actions/choose-and-request-actions">
+  Step 4: let the agent make changes in your systems.
+</Card>
