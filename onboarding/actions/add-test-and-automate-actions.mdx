@@ -1,0 +1,84 @@
+---
+title: "Add, test and automate actions"
+sidebarTitle: "Add, test and automate"
+description: "Step 4 of the onboarding: connect actions to your protocols, approve the first proposals and automate the ones that are right every time"
+keywords:
+  - "onboarding"
+  - "actions"
+  - "execute"
+  - "proposed action"
+  - "automate action"
+  - "playground"
+---
+
+## Overview
+
+An action is only used when a protocol tells the agent when to use it. You add it at the right step, test it, and approve the first proposals yourself. Only when the agent gets it right every time do you let it run on its own. Same rhythm as replies: propose first, automate later.
+
+**What you achieve:** your first actions run automatically inside automated protocols.
+
+**Time needed:** about 5 minutes per action to add it, then a few days of approving proposals.
+
+## Before you start
+
+- The action is available in your account. See [Choose and request actions](/onboarding/actions/choose-and-request-actions).
+- The protocol it belongs to is published and runs well.
+
+## Steps
+
+<Steps>
+  <Step title="Add the action to the protocol">
+    Open the protocol in the [Training Center](https://gominimal.ai/dashboard/training-center), type **/** at the step where the action should happen and pick it from the menu. Or tell the [AI Manager](https://gominimal.ai/dashboard/ai-manager): *"Add the action Cancel order to the protocol about cancellations."*
+
+    Say exactly when the action runs and what the agent tells the customer afterwards. Then **Publish**. A new action starts in draft: the agent proposes it and waits for you.
+  </Step>
+  <Step title="Test in the Playground">
+    In the [Playground](https://gominimal.ai/dashboard/playground), use the name and email address of a customer you can safely test on and ask for the action, for example *"Please cancel my order."* Check that:
+
+    - the agent picks the action in the right situation,
+    - the details it fills in are correct, such as the order number and email address,
+    - the change went through in your system after you execute it.
+  </Step>
+  <Step title="Approve proposed actions on real tickets">
+    While an action is in draft, a proposal arrives as a link to the insights page in your helpdesk. Review the details, click **Execute**, confirm with **Execute** again and check the result in your system. The [Actions page](https://gominimal.ai/dashboard/actions) keeps an overview of everything proposed and executed.
+  </Step>
+  <Step title="Automate the action">
+    Once you would have approved nearly every proposal, about nine out of ten, switch on the **Automated** toggle of the action inside the protocol and publish. An action only runs on its own when the action, the protocol and global automation are all switched on.
+  </Step>
+</Steps>
+
+<Note>
+  While an action is still proposed, the agent neither carries it out nor sends the reply, and the ticket stays open until someone approves it.
+</Note>
+
+<Check>
+  **Done when:**
+
+  - Your first actions sit in published protocols.
+  - You have approved a good number of proposals and they were right every time.
+  - Those actions are automated, and their tickets are handled without your team.
+</Check>
+
+## Common pitfalls
+
+<AccordionGroup>
+  <Accordion title="The agent never uses the action">
+    A protocol must mention the action at the step where it should happen. You can only add actions and integrations that are connected to this agent.
+  </Accordion>
+  <Accordion title="Waiting for the result before replying">
+    The agent writes the reply and starts the action in the same step. Let the protocol call the action and confirm it in the same message. If the action fails, the reply is not sent automatically.
+  </Accordion>
+  <Accordion title="Helpdesk actions in the Playground">
+    Tags, internal notes and ticket fields cannot run in the Playground. Test those on a real ticket in suggestion mode.
+  </Accordion>
+</AccordionGroup>
+
+More in [Actions](/training/actions) and [Automation](/training/automation).
+
+## What comes next
+
+Your onboarding is done. From here, the AI Manager suggests improvement tasks based on your tickets, and the [Insights](/analytics/insights) page shows which topics are growing and which protocols are missing. Keep automating the next topic once its suggestions are good.
+
+<Card title="Back to the overview" icon="flag" href="/onboarding/overview">
+  See all four steps of the onboarding.
+</Card>

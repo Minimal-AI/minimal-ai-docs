@@ -59,7 +59,8 @@
                 "group": "4. Actions",
                 "icon": "bolt",
                 "pages": [
-                  "onboarding/actions/choose-and-request-actions"
+                  "onboarding/actions/choose-and-request-actions",
+                  "onboarding/actions/add-test-and-automate-actions"
                 ]
               }
             ]
@@ -172,14 +173,6 @@
             "pages": [
               "minimal-ai-mcp"
             ]
-          },
-          {
-            "group": "Starting with Minimal",
-            "pages": [
-              "untitled-page",
-              "untitled-page-2"
-            ],
-            "hidden": true
           }
         ]
       }
@@ -211,6 +204,16 @@
     {
       "source": "/llms-full.txt",
       "destination": "/llms.txt",
+      "permanent": true
+    },
+    {
+      "source": "/untitled-page",
+      "destination": "/onboarding/overview",
+      "permanent": true
+    },
+    {
+      "source": "/untitled-page-2",
+      "destination": "/onboarding/feedback/go-live-in-suggestion-mode",
       "permanent": true
     }
   ],
