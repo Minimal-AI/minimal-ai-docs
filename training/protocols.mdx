@@ -60,7 +60,29 @@ Each protocol has two toggles:
 - **Active** — when on, the agent can use this protocol. When paused, the agent ignores it even if it's part of a connected base.
 - **Automated** — when on, the agent can send replies for this protocol automatically. When off, it drafts a suggestion for your team instead.
 
-Actions have their own automation toggle *per protocol*. An action only runs automatically when **both** the protocol **and** the action are set to automated (and global automation is enabled). If the protocol is automated but the action isn't, the agent will **propose** the action and wait for a human to approve it.
+Actions have their own automation setting *per protocol*. An action only runs automatically when **both** the protocol **and** the action are set to automated (and global automation is enabled). If the protocol is automated but the action isn't, the agent will **propose** the action and wait for a human to approve it.
+
+### Action automation levels
+
+Every action under **Actions** in a protocol has three settings:
+
+- **Requires approval** (clock icon) — the action always waits for a human to approve it.
+- **Automatic** (lightning icon) — the action runs automatically, but waits when the ticket is escalated or the reply needs approval.
+- **Automatic, even when escalated** (person icon) — the action also runs in those cases, after Minimal has checked that the protocol's conditions are met.
+
+<Frame>
+  ![The Actions tab of a protocol, with the three automation levels next to each action](/images/protocols/actions-automation-levels.png)
+</Frame>
+
+**Automatic, even when escalated** is useful for internal updates you always want, like an internal note, tags, or the contact reason. Actions with real impact, like refunds or replacement orders, are better left on **Automatic** or **Requires approval**.
+
+<Frame>
+  ![An action set to run automatically, even when escalated](/images/protocols/action-even-when-escalated.png)
+</Frame>
+
+<Note>
+  If someone on your team has already replied in the ticket and continuing after takeover is off, the action still waits, whatever its level.
+</Note>
 
 <Info>
   When a customer message covers multiple topics, the agent needs a protocol for **every** topic mentioned. If even one topic lacks a protocol, the agent won't send an automated reply.
